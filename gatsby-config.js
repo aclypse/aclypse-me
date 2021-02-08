@@ -6,9 +6,9 @@ module.exports = {
   plugins: [
     "gatsby-plugin-emotion",
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: "gatsby-plugin-mdx",
       options: {
-        extensions: [`.mdx`, `.md`],
+        extensions: [".mdx", ".md"],
       },
     },
     {
@@ -19,10 +19,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: `posts`,
-        path: `${__dirname}/src/posts/`,
+        name: "work",
+        path: "./src/work/",
       },
     },
     {

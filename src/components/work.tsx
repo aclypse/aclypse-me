@@ -5,7 +5,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import Layout from "./layout";
 
-const PostLayout: FC<{ data: TData }> = (props) => {
+const Work: FC<{ data: TData }> = props => {
   const { frontmatter, body } = props.data.mdx;
   return (
     <Layout>
@@ -29,7 +29,7 @@ type TData = {
 };
 
 export const query = graphql`
-  query PostsById($id: String!) {
+  query WorkById($id: String!) {
     mdx(id: { eq: $id }) {
       body
       frontmatter {
@@ -40,4 +40,4 @@ export const query = graphql`
   }
 `;
 
-export default PostLayout;
+export default Work;

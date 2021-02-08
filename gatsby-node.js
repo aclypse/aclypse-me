@@ -12,7 +12,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       name: "slug",
       node,
-      value: `/posts/${value}`,
+      value: `/work/${value}`,
     });
   }
 };
@@ -45,8 +45,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   posts.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
-      component: path.resolve("./src/components/post-layout.tsx"),
-      // context: { slug: post.fields.slug },
+      component: path.resolve("./src/components/work.tsx"),
+      // context: { slug: work.fields.slug },
       context: { id: node.id },
     });
   });

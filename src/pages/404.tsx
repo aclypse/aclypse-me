@@ -1,18 +1,15 @@
+import Layout from "@components/layout";
 import React from "react";
 
 const NotFoundPage = () => {
   return (
-    <main style={pageStyles}>
-      <title>Not found</title>
-      <h1>Page not found</h1>
-    </main>
+    <Layout>
+      <main>
+        <title>Not found</title>
+        <h1>Page not found</h1>
+      </main>
+    </Layout>
   );
-};
-
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
 };
 
 export default NotFoundPage;

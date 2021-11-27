@@ -21,9 +21,5 @@ jobs:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           deploy-branch: gh-pages
           GH_PAT: ${{ secrets.GH_PAT }}
-          GH_COMMENTS_CLIENT_ID: ${{ secrets.GH_COMMENTS_CLIENT_ID }}
-          GH_COMMENTS_CLIENT_SECRET: ${{ secrets.GH_COMMENTS_CLIENT_SECRET }}
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
-          GH_COMMENTS_CLIENT_ID: ${{ secrets.GH_COMMENTS_CLIENT_ID }}
-          GH_COMMENTS_CLIENT_SECRET: ${{ secrets.GH_COMMENTS_CLIENT_SECRET }}

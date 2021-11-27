@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { graphql } from "gatsby";
 
 import Layout from "@components/layout";
-import CategoriesList from "@components/left-pane/categories-list";
+import CategoriesList from "@components/asides/categories-list";
 import ContentContainer from "@components/content";
 import ArticleListItem from "@components/article-list-item";
 

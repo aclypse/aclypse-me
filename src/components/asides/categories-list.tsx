@@ -3,13 +3,13 @@ import { graphql, Link, useStaticQuery } from "gatsby";
 import slugify from "slugify";
 import styled from "@emotion/styled";
 
-import LeftPaneContainer from "./left-pane-container";
+import AsideContainer from "./aside-container";
 
 const CategoriesList: FC<{}> = () => {
   const { distinct: categories, group } = useCategoriesListQuery();
 
   return (
-    <LeftPaneContainer title="Categories">
+    <AsideContainer title="Categories">
       <Categories>
         {categories.map((category, idx) => {
           const slug = `/categories/${slugify(category).toLocaleLowerCase()}`;
@@ -36,7 +36,7 @@ const CategoriesList: FC<{}> = () => {
           );
         })}
       </Categories>
-    </LeftPaneContainer>
+    </AsideContainer>
   );
 };
 

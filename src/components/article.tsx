@@ -5,7 +5,7 @@ import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import Layout from "./layout";
-import ArticlesList from "./left-pane/articles-list";
+import ArticlesList from "./asides/articles-list";
 import ContentContainer from "./content";
 import Comments from "./comments";
 

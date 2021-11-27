@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
 
-const LeftPaneContainer: FC<{
+const AsideContainer: FC<{
   title: string;
 }> = props => {
   return (
@@ -43,4 +43,4 @@ const ContentContainer = styled.div(() => ({
   height: "100%",
 }));
 
-export default LeftPaneContainer;
+export default AsideContainer;

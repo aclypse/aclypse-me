@@ -2,34 +2,26 @@ import React, { FC } from "react";
 import { graphql } from "gatsby";
 
 import Layout from "@components/layout";
+import ContentContainer from "@components/content";
 
-const IndexPage: FC<{ data: TData }> = (props) => {
-  const { title, description } = props.data.site.siteMetadata;
+const IndexPage: FC<{
+  data: GatsbyTypes.HomePageDataQuery;
+  location: Location;
+}> = props => {
+  const { title, description } = props.data.site?.siteMetadata!;
 
   return (
-    <Layout>
-      <main>
-        <h2>Main page</h2>
-        <div>
-          <h1>{title}</h1>
-          <p>{description}</p>
-        </div>
-      </main>
+    <Layout location={props.location}>
+      <ContentContainer title="Welcome">
+        <h1>{title}</h1>
+        <p>{description}</p>
+      </ContentContainer>
     </Layout>
   );
 };
 
-type TData = {
-  site: {
-    siteMetadata: {
-      title: string;
-      description: string;
-    };
-  };
-};
-
 export const query = graphql`
-  query HomePageQuery {
+  query HomePageData {
     site {
       siteMetadata {
         title

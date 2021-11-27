@@ -1,0 +1,29 @@
+name: Gatsby Publish
+
+on:
+  push:
+    branches: master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: create CNAME file
+        run: |
+          echo "aclypse" > CNAME
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+
+      - uses: actions/checkout@v1
+      - uses: enriikke/gatsby-gh-pages-action@v2
+        with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+          deploy-branch: gh-pages
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GH_COMMENTS_CLIENT_ID: ${{ secrets.GH_COMMENTS_CLIENT_ID }}
+          GH_COMMENTS_CLIENT_SECRET: ${{ secrets.GH_COMMENTS_CLIENT_SECRET }}
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GH_COMMENTS_CLIENT_ID: ${{ secrets.GH_COMMENTS_CLIENT_ID }}
+          GH_COMMENTS_CLIENT_SECRET: ${{ secrets.GH_COMMENTS_CLIENT_SECRET }}

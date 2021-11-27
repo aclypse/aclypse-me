@@ -6,7 +6,7 @@ import styled from "@emotion/styled";
 import { lightTheme } from "@themes/light";
 
 import Footer from "@components/footer";
-import AppBar from "@components/app-bar";
+import Navigation from "@components/navigation";
 
 const theme = lightTheme;
 
@@ -16,7 +16,7 @@ const Layout: FC<{ aside?: React.ReactChild; location: Location }> = props => {
       <Wrapper>
         <Global styles={globalStyles} />
         <Container>
-          <AppBar location={props.location} />
+          <Navigation location={props.location} />
           {props.aside && <aside>{props.aside}</aside>}
           <div>{props.children}</div>
         </Container>

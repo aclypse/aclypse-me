@@ -2,13 +2,13 @@ import React, { FC } from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import styled from "@emotion/styled";
 
-import LeftPaneContainer from "./left-pane-container";
+import AsideContainer from "./aside-container";
 
 const ArticlesList: FC<{}> = () => {
   const { edges } = useArticlesListQuery();
 
   return (
-    <LeftPaneContainer title="Articles">
+    <AsideContainer title="Articles">
       <Articles>
         {edges.map(edge => {
           if (!edge.node.fields?.slug || !edge.node.frontmatter?.date) {
@@ -35,7 +35,7 @@ const ArticlesList: FC<{}> = () => {
           );
         })}
       </Articles>
-    </LeftPaneContainer>
+    </AsideContainer>
   );
 };
 

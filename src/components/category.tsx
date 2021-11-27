@@ -3,7 +3,7 @@ import React, { FC } from "react";
 import { graphql } from "gatsby";
 
 import Layout from "./layout";
-import CategoriesList from "./left-pane/categories-list";
+import CategoriesList from "./asides/categories-list";
 import ContentContainer from "./content";
 import ArticleListItem from "./article-list-item";
 

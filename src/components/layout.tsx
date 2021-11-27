@@ -2,25 +2,34 @@ import React, { FC } from "react";
 
 import { Global, css, ThemeProvider } from "@emotion/react";
 import styled from "@emotion/styled";
+import { AnchorLink } from "gatsby-plugin-anchor-links";
 
 import { lightTheme } from "@themes/light";
 
-import Footer from "@components/footer";
-import Navigation from "@components/navigation";
-
 const theme = lightTheme;
 
-const Layout: FC<{ aside?: React.ReactChild; location: Location }> = props => {
+const Layout: FC<{ aside?: React.ReactChild; location?: Location }> = props => {
   return (
     <ThemeProvider theme={theme}>
       <Wrapper>
         <Global styles={globalStyles} />
-        <Container>
-          <Navigation location={props.location} />
-          {props.aside && <aside>{props.aside}</aside>}
-          <div>{props.children}</div>
-        </Container>
-        <Footer />
+        <nav>
+          <ul>
+            <li>
+              <AnchorLink to="/#about">About</AnchorLink>
+            </li>
+            <li>
+              <AnchorLink to="/#projects">Projects</AnchorLink>
+            </li>
+            <li>
+              <AnchorLink to="/#portfolio">Portfolio</AnchorLink>
+            </li>
+            <li>
+              <AnchorLink to="/#contacts">Contacts</AnchorLink>
+            </li>
+          </ul>
+        </nav>
+        {props.children}
       </Wrapper>
     </ThemeProvider>
   );
@@ -30,11 +39,6 @@ const Wrapper = styled.div({
   display: "flex",
   flexDirection: "column",
   height: "100vh",
-});
-
-const Container = styled.div({
-  display: "flex",
-  flex: 1,
 });
 
 const globalStyles = css`

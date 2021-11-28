@@ -2,34 +2,19 @@ import React, { FC } from "react";
 
 import { Global, css, ThemeProvider } from "@emotion/react";
 import styled from "@emotion/styled";
-import { AnchorLink } from "gatsby-plugin-anchor-links";
 
 import { lightTheme } from "@themes/light";
+import Header from "@components//header";
 
 const theme = lightTheme;
 
 const Layout: FC<{ aside?: React.ReactChild; location?: Location }> = props => {
   return (
     <ThemeProvider theme={theme}>
+      <Global styles={globalStyles} />
       <Wrapper>
-        <Global styles={globalStyles} />
-        <nav>
-          <ul>
-            <li>
-              <AnchorLink to="/#about">About</AnchorLink>
-            </li>
-            <li>
-              <AnchorLink to="/#projects">Projects</AnchorLink>
-            </li>
-            <li>
-              <AnchorLink to="/#portfolio">Portfolio</AnchorLink>
-            </li>
-            <li>
-              <AnchorLink to="/#contacts">Contacts</AnchorLink>
-            </li>
-          </ul>
-        </nav>
-        {props.children}
+        <Header />
+        <Main>{props.children}</Main>
       </Wrapper>
     </ThemeProvider>
   );
@@ -38,7 +23,13 @@ const Layout: FC<{ aside?: React.ReactChild; location?: Location }> = props => {
 const Wrapper = styled.div({
   display: "flex",
   flexDirection: "column",
+  paddingTop: 60,
   height: "100vh",
+});
+
+const Main = styled.main({
+  display: "flex",
+  flex: 1,
 });
 
 const globalStyles = css`

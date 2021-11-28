@@ -1,0 +1,35 @@
+diff --git a/node_modules/gatsby-plugin-anchor-links/index.d.ts b/node_modules/gatsby-plugin-anchor-links/index.d.ts
+index 3d77765..7493172 100644
+--- a/node_modules/gatsby-plugin-anchor-links/index.d.ts
++++ b/node_modules/gatsby-plugin-anchor-links/index.d.ts
+@@ -7,7 +7,7 @@ export interface AnchorLinkProps {
+     stripHash?: boolean
+     children?: React.ReactNode
+     gatsbyLinkProps?: object
+-    onAnchorLinkClick?: () => void
++    onAnchorLinkClick?: (to: string) => void
+ }
+ 
+ export function AnchorLink(props: AnchorLinkProps): any
+diff --git a/node_modules/gatsby-plugin-anchor-links/utils.js b/node_modules/gatsby-plugin-anchor-links/utils.js
+index 5898399..724bcc4 100644
+--- a/node_modules/gatsby-plugin-anchor-links/utils.js
++++ b/node_modules/gatsby-plugin-anchor-links/utils.js
+@@ -74,7 +74,7 @@ function handleLinkClick(to, e, onAnchorLinkClick) {
+     }
+   }
+ 
+-  if (onAnchorLinkClick) onAnchorLinkClick();
++  if (onAnchorLinkClick) onAnchorLinkClick(to);
+ }
+ 
+ function handleStrippedLinkClick(to, e, onAnchorLinkClick) {
+@@ -105,7 +105,7 @@ function handleStrippedLinkClick(to, e, onAnchorLinkClick) {
+     window.gatsby_scroll_hash = "#".concat(anchor);
+   }
+ 
+-  if (onAnchorLinkClick) onAnchorLinkClick();
++  if (onAnchorLinkClick) onAnchorLinkClick(to);
+ }
+ 
+ function stripHashedLocation(to) {

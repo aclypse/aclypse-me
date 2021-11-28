@@ -4,9 +4,7 @@ import { graphql } from "gatsby";
 import About from "@components/about";
 import Projects from "@components/projects";
 import Portfolio from "@components/portfolio";
-import Contacts from "@components/contacts";
-// import Layout from "@components/layout";
-// import ContentContainer from "@components/content";
+import Contact from "@components/contact";
 
 const IndexPage: FC<{
   data: GatsbyTypes.HomePageDataQuery;
@@ -17,7 +15,7 @@ const IndexPage: FC<{
       <About />
       <Projects />
       <Portfolio />
-      <Contacts />
+      <Contact />
     </>
   );
 };

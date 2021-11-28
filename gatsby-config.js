@@ -10,7 +10,12 @@ module.exports = {
     "gatsby-plugin-emotion",
     "gatsby-plugin-typescript",
     "gatsby-plugin-typescript-checker",
-    "gatsby-plugin-anchor-links",
+    {
+      resolve: "gatsby-plugin-anchor-links",
+      options: {
+        offset: -60,
+      },
+    },
     {
       resolve: "gatsby-plugin-mdx",
       options: {

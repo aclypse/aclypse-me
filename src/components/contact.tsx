@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import Layout from "./layout";
 
-const Contacts: FC<{}> = () => {
+const Contact: FC<{}> = () => {
   return (
     <Layout>
-      <div id="contacts">
-        <h1>Contacts</h1>
+      <div id="contact">
+        <h1>Contact</h1>
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel fugit
           velit ipsa consectetur corporis? Explicabo ipsum, temporibus eveniet
@@ -17,4 +17,4 @@ const Contacts: FC<{}> = () => {
   );
 };
 
-export default Contacts;
+export default Contact;

@@ -11,6 +11,7 @@
   ],
   "license": "CC BY-NC-SA 4.0",
   "scripts": {
+    "postinstall": "patch-package",
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
@@ -42,6 +43,8 @@
     "gatsby-source-filesystem": "^4.2.0",
     "gatsby-transformer-remark": "^5.2.0",
     "lodash": "^4.17.21",
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-markdown": "^7.1.0",

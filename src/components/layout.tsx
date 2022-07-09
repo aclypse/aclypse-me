@@ -3,10 +3,14 @@ import React, { FC } from "react";
 import { Global, css, ThemeProvider } from "@emotion/react";
 import styled from "@emotion/styled";
 
+import cssReset from "@eaze/css-reset";
+
 import { lightTheme } from "@themes/light";
 import Header from "@components//header";
 
 const theme = lightTheme;
+
+cssReset();
 
 const Layout: FC<{ aside?: React.ReactChild; location?: Location }> = props => {
   return (
@@ -23,13 +27,18 @@ const Layout: FC<{ aside?: React.ReactChild; location?: Location }> = props => {
 const Wrapper = styled.div({
   display: "flex",
   flexDirection: "column",
-  paddingTop: 60,
+  paddingTop: 66,
   height: "100vh",
+
+  color: "#0f1c2e",
 });
 
 const Main = styled.main({
   display: "flex",
   flex: 1,
+  flexDirection: "column",
+
+  backgroundColor: "#0f1c2e",
 });
 
 const globalStyles = css`

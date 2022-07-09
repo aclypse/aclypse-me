@@ -1430,6 +1430,14 @@
   dependencies:
     core-js "^3.6.5"
 
+"@eaze/css-reset@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@eaze/css-reset/-/css-reset-2.1.0.tgz#929d87b16803fd02190ac6ef1127ab916f3d508d"
+  integrity sha512-dTpNLtrObgcYxF/I87p8JgjugVOWelg30ePvcTf/jpHhybcdkGY6a3kbZ4km8Vo+VqNEWeFbrEMAh13qSDYd4Q==
+  dependencies:
+    to-css "~1.2.1"
+    xtend "~4.0.2"
+
 "@emotion/babel-plugin-jsx-pragmatic@^0.1.5":
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/@emotion/babel-plugin-jsx-pragmatic/-/babel-plugin-jsx-pragmatic-0.1.5.tgz#27debfe9c27c4d83574d509787ae553bf8a34d7e"
@@ -3130,6 +3138,11 @@ array.prototype.flatmap@^1.2.4, array.prototype.flatmap@^1.2.5:
     call-bind "^1.0.0"
     define-properties "^1.1.3"
     es-abstract "^1.19.0"
+
+arrify@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
+  integrity sha1-iYUI2iIm84DfkEcoRWhJwVAaSw0=
 
 arrify@^2.0.1:
   version "2.0.1"
@@ -12921,6 +12934,15 @@ tmp@^0.2.1:
   dependencies:
     rimraf "^3.0.0"
 
+to-css@~1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/to-css/-/to-css-1.2.1.tgz#24271c727332ed2090dde7a4a652fadb3062926b"
+  integrity sha1-JCcccnMy7SCQ3eekplL62zBikms=
+  dependencies:
+    arrify "^1.0.0"
+    object-assign "^4.0.1"
+    repeat-string "^1.5.2"
+
 to-fast-properties@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-2.0.0.tgz#dc5e698cbd079265bc73e0377681a4e4e83f616e"
@@ -14061,7 +14083,7 @@ xstate@^4.9.1:
   resolved "https://registry.yarnpkg.com/xstate/-/xstate-4.16.0.tgz#e434d0558c0f9a7e9212802834992a6c2f47bca6"
   integrity sha512-2k/49QYLdzG6Ye1JQWYFuPdU6dnRqHXcuFLxuORiuel04GjApSPct7wp2SOz9RAlNME5EkzclRKw1fHm5yejuA==
 
-xtend@^4.0.0, xtend@^4.0.1:
+xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.2.tgz#bb72779f5fa465186b1f438f674fa347fdb5db54"
   integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==

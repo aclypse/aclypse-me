@@ -3,8 +3,6 @@ import styled from "@emotion/styled";
 
 import { AnchorLink } from "gatsby-plugin-anchor-links";
 
-// import startsWith from "lodash/startsWith";
-
 const Navigation: FC<{ location?: Location }> = () => {
   const onAnchorClick = (to: string) => {
     if (to) {

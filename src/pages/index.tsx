@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { graphql } from "gatsby";
 
+import Landing from "@components/landing";
 import About from "@components/about";
 import Projects from "@components/projects";
 import Portfolio from "@components/portfolio";
@@ -12,6 +13,7 @@ const IndexPage: FC<{
 }> = () => {
   return (
     <>
+      <Landing />
       <About />
       <Projects />
       <Portfolio />

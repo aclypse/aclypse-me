@@ -13,7 +13,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-anchor-links",
       options: {
-        offset: -60,
+        offset: -66,
       },
     },
     {
@@ -71,9 +71,9 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: "gatsby-transformer-remark",
       options: {
-        plugins: [`gatsby-remark-reading-time`],
+        plugins: ["gatsby-remark-reading-time"],
       },
     },
   ],

@@ -44,12 +44,11 @@ const TestPage: FC<{
           document
             ?.querySelector(".navigation a[href*=" + sectionId + "]")
             ?.classList.add("active");
-          // location.hash = sectionId || "";
+          location.hash = sectionId || "";
         } else {
           document
             ?.querySelector(".navigation a[href*=" + sectionId + "]")
             ?.classList.remove("active");
-          //  location.hash = sectionId || "";
         }
       });
     }

@@ -1,7 +1,5 @@
 import React, { FC, useEffect } from "react";
 import { Global, css } from "@emotion/react";
-// import Layout from "@components/layout";
-// import ContentContainer from "@components/content";
 
 const TestPage: FC<{
   data: GatsbyTypes.HomePageDataQuery;
@@ -32,7 +30,7 @@ const TestPage: FC<{
         // This allows the use of sections inside a relative parent, which I'm not using here, but needed for a project
         //
         const sectionTop =
-          current.getBoundingClientRect().top + window.pageYOffset - 100;
+          current.getBoundingClientRect().top + window.pageYOffset - 500;
         // current.getBoundingClientRect().top + window.pageYOffset;
         let sectionId = current.getAttribute("id");
 
@@ -57,18 +55,20 @@ const TestPage: FC<{
   return (
     <>
       <Global styles={globalStyles} />
-      <header>
-        <nav className="navigation">
-          <ul>
-            <li>
-              <a href="#about">About</a>
-              <a href="#projects">Projects</a>
-              <a href="#portfolio">Portfolio</a>
-              <a href="#contacts">Contacts</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
+      <div className="header">
+        <header>
+          <nav className="navigation">
+            <ul>
+              <li>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#contacts">Contacts</a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+      </div>
       <div className="main-content">
         <section id="about">
           <h1>About</h1>
@@ -105,6 +105,10 @@ const globalStyles = css`
   // html {
   //   scroll-behavior: smooth;
   // }
+
+  .header {
+    width: 100%;
+  }
 
   header {
     position: fixed;

@@ -12,7 +12,11 @@ const theme = lightTheme;
 
 cssReset();
 
-const Layout: FC<{ aside?: React.ReactChild; location?: Location }> = props => {
+const Layout: FC<{
+  aside?: React.ReactNode;
+  location?: Location;
+  children?: React.ReactNode;
+}> = props => {
   return (
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles} />

@@ -1,14 +1,14 @@
 import React, { FC } from "react";
-import Layout from "@components/layout";
+import PageLayout from "@components/page-layout";
 
-const NotFoundPage: FC<{ location: Location }> = props => {
+const NotFoundPage: FC<{ location: Location }> = () => {
   return (
-    <Layout location={props.location}>
+    <PageLayout id="">
       <main>
         <title>Not found</title>
         <p>Page not found</p>
       </main>
-    </Layout>
+    </PageLayout>
   );
 };
 

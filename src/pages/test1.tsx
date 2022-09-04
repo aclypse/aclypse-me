@@ -101,6 +101,8 @@ const Test1Page: FC<{
 const globalStyles = css`
   * {
     box-sizing: border-box;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
   }
 
   html {
@@ -121,7 +123,9 @@ const globalStyles = css`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
+    background-color: #f9bc3c;
+    height: 4rem;
+    padding: 0 2rem;
   }
 
   nav ul {
@@ -144,12 +148,9 @@ const globalStyles = css`
     color: lime;
   }
 
-  // .main-content {
-  //   margin-left: 160px;
-  // }
-
   section {
-    background-color: #f2f2f2;
+    // background-color: #0f1c2e;
+    background-color: #fff;
     height: 100vh;
     margin: 0;
     padding: 2.5rem 4rem;
@@ -157,15 +158,6 @@ const globalStyles = css`
 
   section:nth-of-type(2n) {
     background-color: #ccc;
-  }
-
-  // section:last-of-type {
-  //   height: 100vh;
-  // }
-
-  h1 {
-    color: #444;
-    font-weight: 600;
   }
 
   .active {

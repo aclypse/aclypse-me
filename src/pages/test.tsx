@@ -1,14 +1,10 @@
 import React, { FC, useEffect } from "react";
 import { Global, css } from "@emotion/react";
-// import Layout from "@components/layout";
-// import ContentContainer from "@components/content";
 
 const TestPage: FC<{
   data: GatsbyTypes.HomePageDataQuery;
   location: Location;
 }> = () => {
-  // const { title, description } = props.data.site?.siteMetadata!;
-
   useEffect(() => {
     // Get all sections that have an ID defined
     const sections = document.querySelectorAll("section[id]");
@@ -34,7 +30,8 @@ const TestPage: FC<{
         // This allows the use of sections inside a relative parent, which I'm not using here, but needed for a project
         //
         const sectionTop =
-          current.getBoundingClientRect().top + window.pageYOffset - 50;
+          current.getBoundingClientRect().top + window.pageYOffset - 500;
+        // current.getBoundingClientRect().top + window.pageYOffset;
         let sectionId = current.getAttribute("id");
 
         /*
@@ -45,6 +42,7 @@ const TestPage: FC<{
           document
             ?.querySelector(".navigation a[href*=" + sectionId + "]")
             ?.classList.add("active");
+          location.hash = sectionId || "";
         } else {
           document
             ?.querySelector(".navigation a[href*=" + sectionId + "]")
@@ -57,18 +55,19 @@ const TestPage: FC<{
   return (
     <>
       <Global styles={globalStyles} />
-      <div className="side-bar">
-        <nav className="navigation">
-          <ul>
-            <li>
-              <a href="#about">About</a>
-              <a href="#products">Products</a>
-              <a href="#services">Services</a>
-              <a href="#contact">Contact</a>
-              <a href="#gallery">Gallery</a>
-            </li>
-          </ul>
-        </nav>
+      <div className="header">
+        <header>
+          <nav className="navigation">
+            <ul>
+              <li>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#contacts">Contacts</a>
+              </li>
+            </ul>
+          </nav>
+        </header>
       </div>
       <div className="main-content">
         <section id="about">
@@ -82,17 +81,14 @@ const TestPage: FC<{
             parent. See the JS file comments for details.
           </p>
         </section>
-        <section id="products">
-          <h1>Products</h1>
+        <section id="projects">
+          <h1>projects</h1>
         </section>
-        <section id="services">
-          <h1>Services</h1>
+        <section id="portfolio">
+          <h1>portfolio</h1>
         </section>
-        <section id="contact">
-          <h1>Contact</h1>
-        </section>
-        <section id="gallery">
-          <h1>Gallery</h1>
+        <section id="contacts">
+          <h1>Contacts</h1>
         </section>
       </div>
     </>
@@ -106,22 +102,21 @@ const globalStyles = css`
     box-sizing: border-box;
   }
 
-  html {
-    scroll-behavior: smooth;
+  // html {
+  //   scroll-behavior: smooth;
+  // }
+
+  .header {
+    width: 100%;
   }
 
-  body {
-    font-family: "Montserrat", sans-serif;
-  }
-
-  .side-bar {
-    width: 160px;
-    height: 100vh;
+  header {
     position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #fff;
   }
 
   nav ul {
@@ -135,7 +130,6 @@ const globalStyles = css`
   nav li a {
     text-decoration: none;
     color: #333;
-    display: block;
     padding: 0.6rem 0.3rem;
     font-weight: 400;
     transition: all ease-out 250ms;
@@ -145,10 +139,6 @@ const globalStyles = css`
     color: lime;
   }
 
-  .main-content {
-    margin-left: 160px;
-  }
-
   section {
     background-color: #f2f2f2;
     height: 100vh;
@@ -156,17 +146,12 @@ const globalStyles = css`
     padding: 2.5rem 4rem;
   }
 
-  section:nth-of-type(2n) {
-    background-color: #ccc;
-  }
-
   section:last-of-type {
     height: 100vh;
   }
 
-  h1 {
-    color: #444;
-    font-weight: 600;
+  section {
+    background-color: #ccc;
   }
 
   .active {

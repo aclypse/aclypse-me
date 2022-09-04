@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
-import Layout from "./layout";
+import PageLayout from "./page-layout";
 
 const Contact: FC<{}> = () => {
   return (
-    <Layout>
-      <Container id="contact">
+    <PageLayout id="contact">
+      <Container>
         <Text>
           <h1>Contact</h1>
           <p>
@@ -16,7 +16,7 @@ const Contact: FC<{}> = () => {
           </p>
         </Text>
       </Container>
-    </Layout>
+    </PageLayout>
   );
 };
 

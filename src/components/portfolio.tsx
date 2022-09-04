@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
-import Layout from "./layout";
+import PageLayout from "./page-layout";
 
 const Portfolio: FC<{}> = () => {
   return (
-    <Layout>
-      <Container id="portfolio">
+    <PageLayout id="portfolio">
+      <Container>
         <Text>
           <h1>Portfolio</h1>
           <p>
@@ -16,7 +16,7 @@ const Portfolio: FC<{}> = () => {
           </p>
         </Text>
       </Container>
-    </Layout>
+    </PageLayout>
   );
 };
 

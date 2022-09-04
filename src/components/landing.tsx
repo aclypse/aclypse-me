@@ -1,17 +1,17 @@
 import styled from "@emotion/styled";
 import React, { FC } from "react";
-import Layout from "./layout";
+import PageLayout from "./page-layout";
 
 const Landing: FC<{}> = () => {
   return (
-    <Layout>
-      <Container id="landing">
+    <PageLayout id="landing">
+      <Container>
         <Text>
           <p>ACLYPSE</p>
           <p>the designer</p>
         </Text>
       </Container>
-    </Layout>
+    </PageLayout>
   );
 };
 

@@ -30,7 +30,6 @@
     "@mdx-js/react": "^1.6.22",
     "dotenv": "^16.0.1",
     "gatsby": "^4.20.0",
-    "gatsby-plugin-anchor-links": "^1.2.1",
     "gatsby-plugin-emotion": "^7.20.0",
     "gatsby-plugin-gitalk": "^1.2.2",
     "gatsby-plugin-mdx": "^3.20.0",

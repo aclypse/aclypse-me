@@ -1,37 +1,67 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import styled from "@emotion/styled";
 
-import { AnchorLink } from "gatsby-plugin-anchor-links";
+const Navigation: FC = () => {
+  const [isClicked, setIsClicked] = React.useState(false);
 
-const Navigation: FC<{ location?: Location }> = () => {
-  const onAnchorClick = (to: string) => {
-    if (to) {
-      location.replace(to);
-    }
-  };
+  useEffect(() => {
+    // Get all sections that have an ID defined
+    const sections: NodeListOf<HTMLElement> =
+      document.querySelectorAll("section[id]");
+    // Add an event listener listening for scroll
+    const navHighlighter = () => {
+      // Get current scroll position
+      let scrollY = window.pageYOffset;
+      // Now we loop through sections to get height, top and ID values for each
+      sections.forEach(current => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 50;
+        const sectionId = current.getAttribute("id");
+        /*
+        - If our current scroll position enters the space where current section on screen is,
+        add .active class to corresponding navigation link, else remove it
+        - To know which link needs an active class, we use sectionId variable we are getting
+        while looping through sections as an selector
+        */
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          document
+            .querySelector("nav a[href*=" + sectionId + "]")!
+            .classList.add("active");
+          if (!isClicked && location.hash !== `#${sectionId}`) {
+            location.hash = sectionId || "";
+            setIsClicked(false);
+          }
+        } else {
+          document
+            .querySelector("nav a[href*=" + sectionId + "]")!
+            .classList.remove("active");
+        }
+      });
+    };
+
+    window.addEventListener("scroll", navHighlighter);
+
+    return () => {
+      window.removeEventListener("scroll", navHighlighter);
+    };
+  }, [isClicked]);
 
   return (
     <Nav>
       <ul>
         <li>
-          <AnchorLink to="/#about" onAnchorLinkClick={onAnchorClick}>
+          <a href="#about" onClick={() => setIsClicked(true)}>
             About
-          </AnchorLink>
-        </li>
-        <li>
-          <AnchorLink to="/#projects" onAnchorLinkClick={onAnchorClick}>
+          </a>
+          <a href="#projects" onClick={() => setIsClicked(true)}>
             Projects
-          </AnchorLink>
-        </li>
-        <li>
-          <AnchorLink to="/#portfolio" onAnchorLinkClick={onAnchorClick}>
+          </a>
+          <a href="#portfolio" onClick={() => setIsClicked(true)}>
             Portfolio
-          </AnchorLink>
-        </li>
-        <li>
-          <AnchorLink to="/#contact" onAnchorLinkClick={onAnchorClick}>
-            Contacts
-          </AnchorLink>
+          </a>
+          <a href="#contact" onClick={() => setIsClicked(true)}>
+            Contact
+          </a>
         </li>
       </ul>
     </Nav>
@@ -46,28 +76,21 @@ const Nav = styled.nav(() => ({
     listStyle: "none",
   },
 
-  "ul > li": {
-    padding: "4px 12px",
+  "ul > li > a": {
+    textDecoration: "none",
+    color: "#333",
+    padding: "0.6rem 0.3rem",
+    fontWeight: 400,
+    transition: "all ease-out 250ms",
+  },
+
+  "ul > li > a:hover": {
+    color: "lime",
+  },
+
+  "ul > li > a.active": {
+    color: "lime",
   },
 }));
-
-// const NavItem: FC<TNavItem & { location: Location }> = props => {
-//   let isActive = props.to === props.location.pathname;
-//   if (props.to !== props.location.pathname && props.to !== "/")
-//     isActive = startsWith(props.location.pathname, props.to);
-
-//   return (
-//     <li>
-//       <div className={isActive ? "active" : undefined}></div>
-//       <Link
-//         to={props.to}
-//         className={isActive ? "active" : undefined}
-//         title={props.title}
-//       >
-//         {props.icon}
-//       </Link>
-//     </li>
-//   );
-// };
 
 export default Navigation;

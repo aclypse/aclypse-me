@@ -11,12 +11,6 @@ module.exports = {
     "gatsby-plugin-typescript",
     "gatsby-plugin-typescript-checker",
     {
-      resolve: "gatsby-plugin-anchor-links",
-      options: {
-        offset: -66,
-      },
-    },
-    {
       resolve: "gatsby-plugin-mdx",
       options: {
         extensions: [".mdx", ".md"],

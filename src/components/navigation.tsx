@@ -47,18 +47,24 @@ const Navigation: FC = () => {
   }, [isClicked]);
 
   return (
-    <Nav>
+    <Nav id="navigation">
       <ul>
         <li>
           <a href="#about" onClick={() => setIsClicked(true)}>
             About
           </a>
+        </li>
+        <li>
           <a href="#projects" onClick={() => setIsClicked(true)}>
             Projects
           </a>
+        </li>
+        <li>
           <a href="#portfolio" onClick={() => setIsClicked(true)}>
             Portfolio
           </a>
+        </li>
+        <li>
           <a href="#contact" onClick={() => setIsClicked(true)}>
             Contact
           </a>
@@ -69,6 +75,9 @@ const Navigation: FC = () => {
 };
 
 const Nav = styled.nav(() => ({
+  marginLeft: "auto",
+  display: "flex",
+
   ul: {
     display: "flex",
     margin: 0,
@@ -90,6 +99,26 @@ const Nav = styled.nav(() => ({
 
   "ul > li > a.active": {
     color: "lime",
+  },
+
+  "@media only screen and (max-width: 768px)": {
+    position: "absolute",
+    display: "none",
+    top: "4rem",
+    left: 0,
+    backgroundColor: "#f9bc3c",
+    width: "100%",
+
+    ul: {
+      display: "flex",
+      flexDirection: "column",
+      width: "100%",
+      alignItems: "center",
+    },
+
+    "ul > li": {
+      padding: "0.3rem 0",
+    },
   },
 }));
 

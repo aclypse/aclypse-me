@@ -10,10 +10,11 @@ const PageLayout: FC<{
 
 const Section = styled.section({
   // backgroundColor: #0f1c2e;
+  display: "flex",
   backgroundColor: "#fff",
   height: "100vh",
   margin: 0,
-  padding: "2.5rem 4rem",
+  paddingTop: "4rem",
 
   "&:nth-of-type(2n)": {
     backgroundColor: "#ccc",

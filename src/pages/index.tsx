@@ -65,6 +65,10 @@ const globalStyles = css`
     width: 0; /* Remove scrollbar space */
     background: transparent; /* Optional: just make scrollbar invisible */
   }
+
+  .openMenu {
+    display: flex !important;
+  }
 `;
 
 export default IndexPage;

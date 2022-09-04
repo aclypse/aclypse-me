@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react";
 import { Global, css } from "@emotion/react";
 
-const TestPage: FC<{
+const Test1Page: FC<{
   data: GatsbyTypes.HomePageDataQuery;
   location: Location;
 }> = () => {
@@ -9,34 +9,30 @@ const TestPage: FC<{
     // Get all sections that have an ID defined
     const sections: NodeListOf<HTMLElement> =
       document.querySelectorAll("section[id]");
-
     // Add an event listener listening for scroll
     window.addEventListener("scroll", navHighlighter);
-
     function navHighlighter() {
       // Get current scroll position
       let scrollY = window.pageYOffset;
-
       // Now we loop through sections to get height, top and ID values for each
       sections.forEach(current => {
         const sectionHeight = current.offsetHeight;
-        const sectionTop =
-          current.getBoundingClientRect().top + window.pageYOffset; // - 500;
-        let sectionId = current.getAttribute("id");
-
+        const sectionTop = current.offsetTop - 50;
+        const sectionId = current.getAttribute("id");
         /*
-        - If our current scroll position enters the space where current section on screen is, add .active class to corresponding navigation link, else remove it
-        - To know which link needs an active class, we use sectionId variable we are getting while looping through sections as an selector
+        - If our current scroll position enters the space where current section on screen is,
+          add .active class to corresponding navigation link, else remove it
+        - To know which link needs an active class, we use sectionId variable we are getting
+          while looping through sections as an selector
         */
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
           document
-            ?.querySelector(".navigation a[href*=" + sectionId + "]")
-            ?.classList.add("active");
-          location.hash = sectionId || "";
+            .querySelector(".navigation a[href*=" + sectionId + "]")!
+            .classList.add("active");
         } else {
           document
-            ?.querySelector(".navigation a[href*=" + sectionId + "]")
-            ?.classList.remove("active");
+            .querySelector(".navigation a[href*=" + sectionId + "]")!
+            .classList.remove("active");
         }
       });
     }
@@ -46,10 +42,10 @@ const TestPage: FC<{
     <>
       <Global styles={globalStyles} />
       <header>
+        <span>
+          <a href="/">Aclypse</a>
+        </span>
         <nav className="navigation">
-          <span>
-            <a href="/">Aclypse</a>
-          </span>
           <ul>
             <li>
               <a href="#about">About</a>
@@ -60,16 +56,14 @@ const TestPage: FC<{
           </ul>
         </nav>
       </header>
-      <main>
+      <div className="main-content">
         <section id="about">
           <h1>About</h1>
           <p>
-            This is a fork of{" "}
-            <a href="https://codepen.io/dbilanoski/pen/LabpzG">
-              the original by Danilo Bilanoski
-            </a>
-            , updated to allow the sections to be placed inside a relative
-            parent. See the JS file comments for details.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis,
+            blanditiis sit. Facilis at repellendus dicta quos aspernatur quas
+            excepturi inventore aliquam pariatur ipsa eum ipsam exercitationem
+            porro, non, minus saepe.
           </p>
         </section>
         <section id="projects">
@@ -99,34 +93,35 @@ const TestPage: FC<{
             Aperiam mollitia hic tempora explicabo sed.
           </p>
         </section>
-      </main>
+      </div>
     </>
   );
 };
 
 const globalStyles = css`
-  @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600");
-
   * {
     box-sizing: border-box;
   }
 
   html {
     scroll-behavior: smooth;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
   }
 
   header {
+    width: 100%;
     position: fixed;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
     background-color: #fff;
-    width: 100%;
-  }
-
-  nav {
-    display: flex;
   }
 
   nav ul {
@@ -149,6 +144,10 @@ const globalStyles = css`
     color: lime;
   }
 
+  // .main-content {
+  //   margin-left: 160px;
+  // }
+
   section {
     background-color: #f2f2f2;
     height: 100vh;
@@ -156,12 +155,17 @@ const globalStyles = css`
     padding: 2.5rem 4rem;
   }
 
-  section:last-of-type {
-    height: 100vh;
+  section:nth-of-type(2n) {
+    background-color: #ccc;
   }
 
-  section {
-    background-color: #ccc;
+  // section:last-of-type {
+  //   height: 100vh;
+  // }
+
+  h1 {
+    color: #444;
+    font-weight: 600;
   }
 
   .active {
@@ -170,4 +174,4 @@ const globalStyles = css`
   }
 `;
 
-export default TestPage;
+export default Test1Page;

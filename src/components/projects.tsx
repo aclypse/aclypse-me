@@ -36,42 +36,6 @@ const Projects: FC<{}> = () => {
                 maxime sapiente. Asperiores.
               </p>
             </GridItem>
-            <GridItem>
-              <img src="https://picsum.photos/160/240" alt="" />
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non
-                deserunt vitae sunt, at, nulla nemo nisi temporibus quia
-                adipisci eaque a mollitia ducimus, dolore hic minus praesentium
-                maxime sapiente. Asperiores.
-              </p>
-            </GridItem>
-            <GridItem>
-              <img src="https://picsum.photos/160/240" alt="" />
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non
-                deserunt vitae sunt, at, nulla nemo nisi temporibus quia
-                adipisci eaque a mollitia ducimus, dolore hic minus praesentium
-                maxime sapiente. Asperiores.
-              </p>
-            </GridItem>
-            <GridItem>
-              <img src="https://picsum.photos/160/240" alt="" />
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non
-                deserunt vitae sunt, at, nulla nemo nisi temporibus quia
-                adipisci eaque a mollitia ducimus, dolore hic minus praesentium
-                maxime sapiente. Asperiores.
-              </p>
-            </GridItem>
-            <GridItem>
-              <img src="https://picsum.photos/160/240" alt="" />
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non
-                deserunt vitae sunt, at, nulla nemo nisi temporibus quia
-                adipisci eaque a mollitia ducimus, dolore hic minus praesentium
-                maxime sapiente. Asperiores.
-              </p>
-            </GridItem>
           </Grid>
         </Text>
       </Container>

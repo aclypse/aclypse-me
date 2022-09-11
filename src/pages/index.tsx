@@ -59,6 +59,7 @@ const globalStyles = css`
     scroll-behavior: smooth;
     overflow: scroll;
     overflow-x: hidden;
+    font-family: "Segoe UI", Arial, sans-serif;
   }
 
   ::-webkit-scrollbar {

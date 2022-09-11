@@ -6,15 +6,18 @@ const About: FC<{}> = () => {
   return (
     <PageLayout id="about">
       <Container>
-        <Content>
+        <Wrapper>
           <Header>About</Header>
-          <Paragraph>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel fugit
-            velit ipsa consectetur corporis? Explicabo ipsum, temporibus eveniet
-            ipsa qui voluptas totam a perferendis quaerat? Expedita atque
-            facilis corrupti accusamus.
-          </Paragraph>
-        </Content>
+          <Content>
+            <Paragraph>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel
+              fugit velit ipsa consectetur corporis? Explicabo ipsum, temporibus
+              eveniet ipsa qui voluptas totam a perferendis quaerat? Expedita
+              atque facilis corrupti accusamus.
+            </Paragraph>
+            <Image src="https://picsum.photos/240/240" alt="My photo" />
+          </Content>
+        </Wrapper>
       </Container>
     </PageLayout>
   );
@@ -27,11 +30,16 @@ const Container = styled.div({
   justifyContent: "center",
 });
 
-const Content = styled.div({
+const Wrapper = styled.div({
   padding: "4.125rem 8.75rem",
   fontSize: "3rem",
   fontWeight: 700,
   color: "#f1f1e6",
+});
+
+const Content = styled.div({
+  display: "flex",
+  flexDirection: "row",
 });
 
 const Header = styled.h2({
@@ -39,8 +47,14 @@ const Header = styled.h2({
 });
 
 const Paragraph = styled.p({
-  fontSize: "1.125rem",
+  fontSize: "1.5rem",
   fontWeight: "normal",
+  paddingRight: "2rem",
+});
+
+const Image = styled.img({
+  width: "25%",
+  minWidth: "25%",
 });
 
 export default About;

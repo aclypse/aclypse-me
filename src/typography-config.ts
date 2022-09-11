@@ -14,8 +14,8 @@ const typography = new Typography({
   }),
   //headerFontFamily: ["consolas"],
   //bodyFontFamily: ["consolas"],
-  headerFontFamily: ["Segoe UI"],
-  bodyFontFamily: ["Segoe UI"],
+  headerFontFamily: ["Segoe UI", "Arial", "sans-serif"],
+  bodyFontFamily: ["Segoe UI", "Arial", "sans-serif"],
 });
 
 export default typography;

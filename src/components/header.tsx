@@ -41,9 +41,19 @@ const HeaderContainer = styled.header({
   justifyContent: "space-between",
   alignItems: "center",
   backgroundColor: "#f9bc3c",
-  height: "4rem",
-  padding: "0 2rem",
+  height: "8rem",
+  padding: "2.5rem 8.75rem",
   textTransform: "uppercase",
+  fontSize: "2.25rem",
+  fontWeight: 700,
+
+  "& a": {
+    color: "#0f1c2e",
+  },
+
+  "& a:hover": {
+    color: "#f1f1e6",
+  },
 
   "@media only screen and (max-width: 768px)": {
     flexDirection: "column",

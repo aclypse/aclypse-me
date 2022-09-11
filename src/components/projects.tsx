@@ -8,12 +8,71 @@ const Projects: FC<{}> = () => {
       <Container>
         <Text>
           <h1>Projects</h1>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel fugit
-            velit ipsa consectetur corporis? Explicabo ipsum, temporibus eveniet
-            ipsa qui voluptas totam a perferendis quaerat? Expedita atque
-            facilis corrupti accusamus.
-          </p>
+          <Grid>
+            <GridItem>
+              <img src="https://picsum.photos/160/240" alt="" />
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non
+                deserunt vitae sunt, at, nulla nemo nisi temporibus quia
+                adipisci eaque a mollitia ducimus, dolore hic minus praesentium
+                maxime sapiente. Asperiores.
+              </p>
+            </GridItem>
+            <GridItem>
+              <img src="https://picsum.photos/160/240" alt="" />
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non
+                deserunt vitae sunt, at, nulla nemo nisi temporibus quia
+                adipisci eaque a mollitia ducimus, dolore hic minus praesentium
+                maxime sapiente. Asperiores.
+              </p>
+            </GridItem>
+            <GridItem>
+              <img src="https://picsum.photos/160/240" alt="" />
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non
+                deserunt vitae sunt, at, nulla nemo nisi temporibus quia
+                adipisci eaque a mollitia ducimus, dolore hic minus praesentium
+                maxime sapiente. Asperiores.
+              </p>
+            </GridItem>
+            <GridItem>
+              <img src="https://picsum.photos/160/240" alt="" />
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non
+                deserunt vitae sunt, at, nulla nemo nisi temporibus quia
+                adipisci eaque a mollitia ducimus, dolore hic minus praesentium
+                maxime sapiente. Asperiores.
+              </p>
+            </GridItem>
+            <GridItem>
+              <img src="https://picsum.photos/160/240" alt="" />
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non
+                deserunt vitae sunt, at, nulla nemo nisi temporibus quia
+                adipisci eaque a mollitia ducimus, dolore hic minus praesentium
+                maxime sapiente. Asperiores.
+              </p>
+            </GridItem>
+            <GridItem>
+              <img src="https://picsum.photos/160/240" alt="" />
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non
+                deserunt vitae sunt, at, nulla nemo nisi temporibus quia
+                adipisci eaque a mollitia ducimus, dolore hic minus praesentium
+                maxime sapiente. Asperiores.
+              </p>
+            </GridItem>
+            <GridItem>
+              <img src="https://picsum.photos/160/240" alt="" />
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non
+                deserunt vitae sunt, at, nulla nemo nisi temporibus quia
+                adipisci eaque a mollitia ducimus, dolore hic minus praesentium
+                maxime sapiente. Asperiores.
+              </p>
+            </GridItem>
+          </Grid>
         </Text>
       </Container>
     </PageLayout>
@@ -30,6 +89,23 @@ const Container = styled.div({
 const Text = styled.div({
   backgroundColor: "#f9bc3c",
   padding: "50px 100px",
+});
+
+const Grid = styled.div({
+  display: "flex",
+  padding: "0 4px",
+});
+
+const GridItem = styled.div({
+  // flex: "25%",
+  // maxWidth: "25%",
+  padding: "4px",
+
+  "& img": {
+    marginTop: "8px",
+    verticalAlign: "middle",
+    // width: "100%",
+  },
 });
 
 export default Projects;

@@ -25,8 +25,8 @@ const Navigation: FC = () => {
         */
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
           document
-            .querySelector("nav a[href*=" + sectionId + "]")!
-            .classList.add("active");
+            .querySelector("nav a[href*=" + sectionId + "]")
+            ?.classList.add("active");
           if (!isClicked && location.hash !== `#${sectionId}`) {
             location.hash = sectionId || "";
             setIsClicked(false);
@@ -34,7 +34,7 @@ const Navigation: FC = () => {
         } else {
           document
             .querySelector("nav a[href*=" + sectionId + "]")!
-            .classList.remove("active");
+            ?.classList.remove("active");
         }
       });
     };
@@ -46,26 +46,37 @@ const Navigation: FC = () => {
     };
   }, [isClicked]);
 
+  const onNavClick = () => {
+    setIsClicked(true);
+    const navElement = document.getElementById("navigation");
+
+    if (!navElement) {
+      return;
+    }
+
+    navElement.classList.remove("openMenu");
+  };
+
   return (
     <Nav id="navigation">
       <ul>
         <li>
-          <a href="#about" onClick={() => setIsClicked(true)}>
+          <a href="#about" onClick={onNavClick}>
             About
           </a>
         </li>
         <li>
-          <a href="#projects" onClick={() => setIsClicked(true)}>
+          <a href="#projects" onClick={onNavClick}>
             Projects
           </a>
         </li>
         <li>
-          <a href="#portfolio" onClick={() => setIsClicked(true)}>
+          <a href="#portfolio" onClick={onNavClick}>
             Portfolio
           </a>
         </li>
         <li>
-          <a href="#contact" onClick={() => setIsClicked(true)}>
+          <a href="#contact" onClick={onNavClick}>
             Contact
           </a>
         </li>
@@ -87,18 +98,19 @@ const Nav = styled.nav(() => ({
 
   "ul > li > a": {
     textDecoration: "none",
-    color: "#333",
-    padding: "0.6rem 0.3rem",
-    fontWeight: 400,
+    color: "#0f1c2e",
+    padding: "0 0 0 2rem",
+    fontWeight: 700,
     transition: "all ease-out 250ms",
+    fontSize: "1.5rem",
   },
 
   "ul > li > a:hover": {
-    color: "lime",
+    color: "#f1f1e6",
   },
 
   "ul > li > a.active": {
-    color: "lime",
+    color: "#f1f1e6",
   },
 
   "@media only screen and (max-width: 768px)": {

@@ -12,7 +12,7 @@ const theme = lightTheme;
 
 cssReset();
 
-// import Landing from "@components/landing";
+import Landing from "@components/landing";
 import About from "@components/about";
 import Projects from "@components/projects";
 import Portfolio from "@components/portfolio";
@@ -27,7 +27,7 @@ const IndexPage: FC<{
       <Global styles={globalStyles} />
       <Header />
       <main>
-        {/* <Landing /> */}
+        <Landing />
         <About />
         <Projects />
         <Portfolio />
@@ -59,6 +59,7 @@ const globalStyles = css`
     scroll-behavior: smooth;
     overflow: scroll;
     overflow-x: hidden;
+    font-family: "Segoe UI", Arial, sans-serif;
   }
 
   ::-webkit-scrollbar {

@@ -6,10 +6,10 @@ const Landing: FC<{}> = () => {
   return (
     <PageLayout id="landing">
       <Container>
-        <Text>
-          <p>ACLYPSE</p>
-          <p>the designer</p>
-        </Text>
+        <Content>
+          <Header>Aclypse</Header>
+          <p>the designer and illustrator</p>
+        </Content>
       </Container>
     </PageLayout>
   );
@@ -22,9 +22,15 @@ const Container = styled.div({
   justifyContent: "center",
 });
 
-const Text = styled.div({
+const Content = styled.div({
   backgroundColor: "#f9bc3c",
-  padding: "50px 100px",
+  padding: "4.125rem 8.75rem",
+  fontSize: "3rem",
+  fontWeight: 700,
+});
+
+const Header = styled.h2({
+  textTransform: "uppercase",
 });
 
 export default Landing;

@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styled from "@emotion/styled";
 
 const PageLayout: FC<{
-  id: string;
+  id?: string;
   children: React.ReactNode;
 }> = props => {
   return <Section id={props.id}>{props.children}</Section>;

@@ -51,6 +51,10 @@ const HeaderContainer = styled.header({
     color: "#0f1c2e",
   },
 
+  "& a:hover": {
+    color: "#f1f1e6",
+  },
+
   "@media only screen and (max-width: 768px)": {
     flexDirection: "column",
     justifyContent: "center",

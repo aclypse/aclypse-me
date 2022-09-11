@@ -25,8 +25,8 @@ const Navigation: FC = () => {
         */
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
           document
-            .querySelector("nav a[href*=" + sectionId + "]")!
-            .classList.add("active");
+            .querySelector("nav a[href*=" + sectionId + "]")
+            ?.classList.add("active");
           if (!isClicked && location.hash !== `#${sectionId}`) {
             location.hash = sectionId || "";
             setIsClicked(false);
@@ -34,7 +34,7 @@ const Navigation: FC = () => {
         } else {
           document
             .querySelector("nav a[href*=" + sectionId + "]")!
-            .classList.remove("active");
+            ?.classList.remove("active");
         }
       });
     };
@@ -106,11 +106,11 @@ const Nav = styled.nav(() => ({
   },
 
   "ul > li > a:hover": {
-    color: "lime",
+    color: "#f1f1e6",
   },
 
   "ul > li > a.active": {
-    color: "lime",
+    color: "#f1f1e6",
   },
 
   "@media only screen and (max-width: 768px)": {

@@ -76,8 +76,8 @@ const Navigation: FC = () => {
           </a>
         </li>
         <li>
-          <a href="#contact" onClick={onNavClick}>
-            Contact
+          <a href="#contacts" onClick={onNavClick}>
+            Contacts
           </a>
         </li>
       </ul>

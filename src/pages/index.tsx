@@ -16,7 +16,7 @@ import Landing from "@components/landing";
 import About from "@components/about";
 import Projects from "@components/projects";
 import Portfolio from "@components/portfolio";
-import Contact from "@components/contact";
+import Contacts from "@components/contacts";
 
 const IndexPage: FC<{
   data: GatsbyTypes.HomePageDataQuery;
@@ -31,7 +31,7 @@ const IndexPage: FC<{
         <About />
         <Projects />
         <Portfolio />
-        <Contact />
+        <Contacts />
       </main>
     </ThemeProvider>
   );
@@ -59,7 +59,7 @@ const globalStyles = css`
     scroll-behavior: smooth;
     overflow: scroll;
     overflow-x: hidden;
-    font-family: "Segoe UI", Arial, sans-serif;
+    font-family: "Segoe UI", Arial, sans-serif !important;
   }
 
   ::-webkit-scrollbar {

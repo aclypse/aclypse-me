@@ -34,7 +34,8 @@ const Wrapper = styled.div({
   padding: "4.125rem 8.75rem",
   fontSize: "3rem",
   fontWeight: 700,
-  color: "#f1f1e6",
+  color: "#0f1c2e",
+  backgroundColor: "#f9bc3c",
 });
 
 const Content = styled.div({

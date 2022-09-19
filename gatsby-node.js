@@ -14,95 +14,78 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
   }
 };
 
-// exports.onCreateNode = ({ node, actions, getNode }) => {
-//   const { createNodeField } = actions;
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions;
 
-//   if (node.internal.type === "Mdx") {
-//     // .substring(12) - removes date from slug
-//     // 2020-10-24-first -> first
-//     const value = createFilePath({ node, getNode }).substring(12);
+  if (node.internal.type === "Mdx") {
+    // .substring(12) - removes date from slug
+    // 2020-10-24-first -> first
+    const value = createFilePath({ node, getNode }).substring(12);
 
-//     createNodeField({
-//       name: "slug",
-//       node,
-//       value: `/articles/${value}`,
-//     });
-//   }
-// };
+    const nodeType =
+      node.fileAbsolutePath.lastIndexOf("projects") > 0
+        ? "project"
+        : "portfolio";
 
-// exports.createPages = async ({ graphql, actions, reporter }) => {
-//   const { createPage } = actions;
-//   const postPage = path.resolve("./src/components/article.tsx");
-//   const tagPage = path.resolve("./src/components/tag.tsx");
-//   const categoryPage = path.resolve("./src/components/category.tsx");
+    createNodeField({
+      name: "slug",
+      node,
+      value: `/${nodeType}/${slugify(value)}`,
+    });
 
-//   const mdxResult = await graphql(`
-//     query AllMdx {
-//       allMdx {
-//         edges {
-//           node {
-//             id
-//             frontmatter {
-//               categories
-//               tags
-//             }
-//             fields {
-//               slug
-//             }
-//           }
-//         }
-//       }
-//     }
-//   `);
+    createNodeField({
+      name: "type",
+      node,
+      value: nodeType,
+    });
+  }
+};
 
-//   if (mdxResult.errors) {
-//     console.error(mdxResult.errors);
-//     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
-//   }
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions;
+  const projectPage = path.resolve("./src/components/project-item.tsx");
+  const portfolioPage = path.resolve("./src/components/portfolio-item.tsx");
 
-//   const tagSet = new Set();
-//   const categorySet = new Set();
+  const mdxResult = await graphql(`
+    query AllMdx {
+      allMdx {
+        edges {
+          node {
+            id
+            fields {
+              slug
+              type
+            }
+            fileAbsolutePath
+          }
+        }
+      }
+    }
+  `);
 
-//   // Create blog post pages.
-//   const posts = mdxResult.data.allMdx.edges;
+  if (mdxResult.errors) {
+    console.error(mdxResult.errors);
+    reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
+  }
 
-//   posts.forEach(({ node }) => {
-//     if (node.frontmatter.tags) {
-//       node.frontmatter.tags.forEach(tag => {
-//         tagSet.add(tag);
-//       });
-//     }
+  // Create blog post pages.
+  const content = mdxResult.data.allMdx.edges;
 
-//     if (node.frontmatter.categories) {
-//       node.frontmatter.categories.forEach(category => {
-//         categorySet.add(category);
-//       });
-//     }
+  content.forEach(({ node }) => {
+    if (node.fileAbsolutePath.lastIndexOf("projects") < 0) {
+      createPage({
+        path: `${node.fields.slug}`,
+        component: projectPage,
+        context: { id: node.id },
+      });
+    }
 
-//     createPage({
-//       path: node.fields.slug,
-//       component: postPage,
-//       context: { id: node.id },
-//     });
-
-//     tagSet.forEach(tag => {
-//       createPage({
-//         path: `/tags/${slugify(tag).toLocaleLowerCase()}`,
-//         component: tagPage,
-//         context: {
-//           tag,
-//         },
-//       });
-//     });
-
-//     categorySet.forEach(category => {
-//       createPage({
-//         path: `/categories/${slugify(category).toLocaleLowerCase()}`,
-//         component: categoryPage,
-//         context: {
-//           category,
-//         },
-//       });
-//     });
-//   });
-// };
+    if (node.fileAbsolutePath.lastIndexOf("portfolio") < 0) {
+      createPage({
+        path: `${node.fields.slug}`,
+        component: portfolioPage,
+        context: { id: node.id },
+      });
+    }
+  });
+};

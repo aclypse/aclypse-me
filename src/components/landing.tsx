@@ -31,6 +31,7 @@ const Content = styled.div({
 
 const Header = styled.h2({
   textTransform: "uppercase",
+  paddingBottom: "2rem",
 });
 
 export default Landing;

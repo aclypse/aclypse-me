@@ -70,6 +70,7 @@ const useProjectsListQuery = () => {
       }
     }
   `);
+
   return allMdx;
 };
 
@@ -95,6 +96,7 @@ const Wrapper = styled.div({
 
 const CardHeader = styled.h3({
   fontSize: "2rem",
+  paddingBottom: "1rem",
 });
 
 const CardBody = styled.h3({
@@ -118,6 +120,7 @@ const Card = styled.div({
   flexDirection: "row",
   flex: "25%",
   padding: "1.8rem 1.8rem",
+  maxWidth: "25%",
 
   "&:hover": {
     transform: "scale(1.05)",

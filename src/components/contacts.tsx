@@ -87,6 +87,7 @@ const Header = styled.h2({
   fontSize: "3rem",
   fontWeight: 700,
   textTransform: "uppercase",
+  paddingBottom: "2rem",
 });
 
 const Paragraph = styled.p({

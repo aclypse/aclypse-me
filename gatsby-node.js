@@ -22,16 +22,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     // 2020-10-24-first -> first
     const value = createFilePath({ node, getNode }).substring(12);
 
-    createNodeField({
-      name: "slug",
-      node,
-      value,
-    });
-
     const nodeType =
       node.fileAbsolutePath.lastIndexOf("projects") > 0
         ? "project"
         : "portfolio";
+
+    createNodeField({
+      name: "slug",
+      node,
+      value: `/${nodeType}/${slugify(value)}`,
+    });
 
     createNodeField({
       name: "type",
@@ -54,6 +54,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             fields {
               slug
+              type
             }
             fileAbsolutePath
           }
@@ -73,7 +74,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   content.forEach(({ node }) => {
     if (node.fileAbsolutePath.lastIndexOf("projects") < 0) {
       createPage({
-        path: `/project/${node.fields.slug}`,
+        path: `${node.fields.slug}`,
         component: projectPage,
         context: { id: node.id },
       });
@@ -81,7 +82,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     if (node.fileAbsolutePath.lastIndexOf("portfolio") < 0) {
       createPage({
-        path: `/portfolio/${node.fields.slug}`,
+        path: `${node.fields.slug}`,
         component: portfolioPage,
         context: { id: node.id },
       });

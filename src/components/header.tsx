@@ -46,6 +46,7 @@ const HeaderContainer = styled.header({
   textTransform: "uppercase",
   fontSize: "2.25rem",
   fontWeight: 700,
+  boxShadow: "0px 10px 14px 2px rgba(0,0,0,0.5)",
 
   "& a": {
     color: "#0f1c2e",

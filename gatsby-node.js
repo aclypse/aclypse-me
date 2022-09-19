@@ -27,6 +27,17 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       node,
       value,
     });
+
+    const nodeType =
+      node.fileAbsolutePath.lastIndexOf("projects") > 0
+        ? "project"
+        : "portfolio";
+
+    createNodeField({
+      name: "type",
+      node,
+      value: nodeType,
+    });
   }
 };
 

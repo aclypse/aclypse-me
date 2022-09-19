@@ -24,17 +24,17 @@ const Contacts: FC<{}> = () => {
         <Footer>
           <Paragraph>
             <a
-              href="https://www.facebook.com/aclypseme"
+              href="https://www.instagram.com/aclypse_aclypse"
               title="Aclypse's Instagram Profile"
-              about="_blank"
+              target="_blank"
               rel="noopener noreferrer"
             >
               <Instagram />
             </a>
             <a
-              href="https://www.instagram.com/aclypse_aclypse"
+              href="https://www.facebook.com/aclypseme"
               title="Aclypse's Facebook Profile"
-              about="_blank"
+              target="_blank"
               rel="noopener noreferrer"
             >
               <Facebook />
@@ -42,7 +42,7 @@ const Contacts: FC<{}> = () => {
             <a
               href="https://github.com/aclypse"
               title="Aclypse's GitHub Profile"
-              about="_blank"
+              target="_blank"
               rel="noopener noreferrer"
             >
               <GitHub />

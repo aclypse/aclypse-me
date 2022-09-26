@@ -9,7 +9,7 @@ import PageLayout from "./page-layout";
 const Projects: FC<{}> = () => {
   const { edges } = useProjectsListQuery();
   const breakpoints = useBreakpoint();
-  const [startIndex, setStartIndex] = React.useState(0);
+  const [currentStartIndex, setCurrentStartIndex] = React.useState(0);
 
   let amountOfProjectsToDisplay = 4;
 
@@ -25,9 +25,32 @@ const Projects: FC<{}> = () => {
     amountOfProjectsToDisplay = 4;
   }
 
+  const [projects, setProjects] = React.useState(
+    edges.slice(0, amountOfProjectsToDisplay)
+  );
+
   useEffect(() => {
-    setStartIndex(0);
-  }, []);
+    let itemsToDisplay = [] as any;
+
+    if (
+      currentStartIndex >= 0 &&
+      currentStartIndex + amountOfProjectsToDisplay <= edges.length
+    ) {
+      itemsToDisplay = edges.slice(
+        currentStartIndex,
+        currentStartIndex + amountOfProjectsToDisplay
+      );
+    } else {
+      itemsToDisplay = edges.slice(currentStartIndex, edges.length);
+    }
+
+    if (itemsToDisplay.length < amountOfProjectsToDisplay) {
+      const difference = amountOfProjectsToDisplay - itemsToDisplay.length;
+      itemsToDisplay = itemsToDisplay.concat(edges.slice(0, difference));
+    }
+
+    setProjects(itemsToDisplay);
+  }, [currentStartIndex, amountOfProjectsToDisplay]);
 
   return (
     <PageLayout id="projects">
@@ -35,31 +58,55 @@ const Projects: FC<{}> = () => {
         <Wrapper>
           <Header>Projects</Header>
           <Grid>
-            {edges
-              .slice(startIndex, amountOfProjectsToDisplay)
-              .map(({ node }) => {
-                if (!node.fields?.slug || !node.frontmatter?.date) {
-                  return null;
-                }
+            <ButtonContainer>
+              <Button
+                onClick={() => {
+                  if (currentStartIndex - 1 < 0) {
+                    setCurrentStartIndex(edges.length - 1);
+                  } else {
+                    setCurrentStartIndex(currentStartIndex - 1);
+                  }
+                }}
+              >
+                &#8249;
+              </Button>
+            </ButtonContainer>
+            {projects.map(({ node }) => {
+              if (!node.fields?.slug || !node.frontmatter?.date) {
+                return null;
+              }
 
-                return (
-                  <Card key={node.id}>
-                    <Link to={node.fields.slug} key={node.fields.slug}>
-                      <CardHeader>{node.frontmatter.title}</CardHeader>
-                      <CardBody>
-                        <Paragraph>
-                          Lorem ipsum dolor sit, amet consectetur adipisicing
-                          elit. Non deserunt vitae sunt, at, nulla nemo nisi
-                          temporibus quia adipisci eaque a mollitia ducimus,
-                          dolore hic minus praesentium maxime sapiente.
-                          Asperiores.
-                        </Paragraph>
-                        <img src="https://picsum.photos/160/160" alt="" />
-                      </CardBody>
-                    </Link>
-                  </Card>
-                );
-              })}
+              return (
+                <Card key={node.id}>
+                  <Link to={node.fields.slug} key={node.fields.slug}>
+                    <CardHeader>{node.frontmatter.title}</CardHeader>
+                    <CardBody>
+                      <Paragraph>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing
+                        elit. Non deserunt vitae sunt, at, nulla nemo nisi
+                        temporibus quia adipisci eaque a mollitia ducimus,
+                        dolore hic minus praesentium maxime sapiente.
+                        Asperiores.
+                      </Paragraph>
+                      <img src="https://picsum.photos/160/160" alt="" />
+                    </CardBody>
+                  </Link>
+                </Card>
+              );
+            })}
+            <ButtonContainer>
+              <Button
+                onClick={() => {
+                  if (currentStartIndex + 1 > edges.length - 1) {
+                    setCurrentStartIndex(0);
+                  } else {
+                    setCurrentStartIndex(currentStartIndex + 1);
+                  }
+                }}
+              >
+                &#8250;
+              </Button>
+            </ButtonContainer>
           </Grid>
         </Wrapper>
       </Container>
@@ -136,6 +183,27 @@ const Paragraph = styled.p({
 const Grid = styled.div({
   display: "flex",
   margin: "0 -1.8rem",
+});
+
+const ButtonContainer = styled.div({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
+const Button = styled.div({
+  borderRadius: "50%",
+  width: "3rem",
+  height: "3rem",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "flex-end",
+
+  "&:hover": {
+    backgroundColor: "#0f1c2e",
+    color: "#f9bc3c",
+    cursor: "pointer",
+  },
 });
 
 const Card = styled.div({

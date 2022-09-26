@@ -15,6 +15,8 @@ module.exports = {
     description: "Work and Life",
   },
   plugins: [
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     "gatsby-plugin-emotion",
     "gatsby-plugin-typescript",
     "gatsby-plugin-typescript-checker",
@@ -42,6 +44,12 @@ module.exports = {
       options: {
         name: "projects",
         path: "./projects/",
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: "./projects/images",
       },
     },
     {

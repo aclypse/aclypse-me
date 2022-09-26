@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 
 import { graphql, Link, useStaticQuery } from "gatsby";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
+import Img from "gatsby-image";
 
 import PageLayout from "./page-layout";
 
@@ -77,18 +78,23 @@ const Projects: FC<{}> = () => {
               }
 
               return (
-                <Card key={node.id}>
-                  <Link to={node.fields.slug} key={node.fields.slug}>
+                <Card key={node.fields.slug}>
+                  <Link to={node.fields.slug}>
                     <CardHeader>{node.frontmatter.title}</CardHeader>
                     <CardBody>
                       <Paragraph>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing
-                        elit. Non deserunt vitae sunt, at, nulla nemo nisi
-                        temporibus quia adipisci eaque a mollitia ducimus,
-                        dolore hic minus praesentium maxime sapiente.
-                        Asperiores.
+                        {node.frontmatter?.description || node.excerpt}
                       </Paragraph>
-                      <img src="https://picsum.photos/160/160" alt="" />
+                      {node.frontmatter?.featuredImage?.childImageSharp
+                        ?.fixed && (
+                        <Img
+                          loading="eager"
+                          fixed={
+                            node.frontmatter.featuredImage.childImageSharp
+                              .fixed as any
+                          }
+                        />
+                      )}
                     </CardBody>
                   </Link>
                 </Card>
@@ -115,33 +121,46 @@ const Projects: FC<{}> = () => {
 };
 
 const useProjectsListQuery = () => {
-  const { allMdx } = useStaticQuery<GatsbyTypes.ProjectsListQuery>(graphql`
-    query ProjectsList {
-      allMdx(
-        sort: { fields: [frontmatter___date], order: DESC }
-        filter: {
-          frontmatter: { published: { eq: true } }
-          fields: { type: { eq: "project" } }
-        }
-      ) {
-        edges {
-          node {
-            id
-            excerpt(pruneLength: 80)
-            frontmatter {
-              title
-              date
-            }
-            fields {
-              slug
+  const { allMarkdownRemark } =
+    useStaticQuery<GatsbyTypes.ProjectsListQuery>(graphql`
+      query ProjectsList {
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
+          filter: {
+            frontmatter: { published: { eq: true } }
+            fields: { type: { eq: "project" } }
+          }
+        ) {
+          edges {
+            node {
+              id
+              excerpt(pruneLength: 80)
+              frontmatter {
+                title
+                date
+                description
+                featuredImage {
+                  childImageSharp {
+                    fixed(width: 160, height: 160) {
+                      base64
+                      width
+                      height
+                      src
+                      srcSet
+                    }
+                  }
+                }
+              }
+              fields {
+                slug
+              }
             }
           }
         }
       }
-    }
-  `);
+    `);
 
-  return allMdx;
+  return allMarkdownRemark;
 };
 
 const Container = styled.div({

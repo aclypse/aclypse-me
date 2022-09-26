@@ -1,12 +1,33 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import styled from "@emotion/styled";
 
 import { graphql, Link, useStaticQuery } from "gatsby";
+import { useBreakpoint } from "gatsby-plugin-breakpoints";
 
 import PageLayout from "./page-layout";
 
 const Projects: FC<{}> = () => {
   const { edges } = useProjectsListQuery();
+  const breakpoints = useBreakpoint();
+  const [startIndex, setStartIndex] = React.useState(0);
+
+  let amountOfProjectsToDisplay = 4;
+
+  if (breakpoints.xl) {
+    amountOfProjectsToDisplay = 4;
+  } else if (breakpoints.l) {
+    amountOfProjectsToDisplay = 3;
+  } else if (breakpoints.md) {
+    amountOfProjectsToDisplay = 2;
+  } else if (breakpoints.sm || breakpoints.xs) {
+    amountOfProjectsToDisplay = 1;
+  } else {
+    amountOfProjectsToDisplay = 4;
+  }
+
+  useEffect(() => {
+    setStartIndex(0);
+  }, []);
 
   return (
     <PageLayout id="projects">
@@ -14,29 +35,31 @@ const Projects: FC<{}> = () => {
         <Wrapper>
           <Header>Projects</Header>
           <Grid>
-            {edges.map(({ node }) => {
-              if (!node.fields?.slug || !node.frontmatter?.date) {
-                return null;
-              }
+            {edges
+              .slice(startIndex, amountOfProjectsToDisplay)
+              .map(({ node }) => {
+                if (!node.fields?.slug || !node.frontmatter?.date) {
+                  return null;
+                }
 
-              return (
-                <Card>
-                  <Link to={node.fields.slug} key={node.fields.slug}>
-                    <CardHeader>{node.frontmatter.title}</CardHeader>
-                    <CardBody>
-                      <Paragraph>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing
-                        elit. Non deserunt vitae sunt, at, nulla nemo nisi
-                        temporibus quia adipisci eaque a mollitia ducimus,
-                        dolore hic minus praesentium maxime sapiente.
-                        Asperiores.
-                      </Paragraph>
-                      <img src="https://picsum.photos/160/160" alt="" />
-                    </CardBody>
-                  </Link>
-                </Card>
-              );
-            })}
+                return (
+                  <Card key={node.id}>
+                    <Link to={node.fields.slug} key={node.fields.slug}>
+                      <CardHeader>{node.frontmatter.title}</CardHeader>
+                      <CardBody>
+                        <Paragraph>
+                          Lorem ipsum dolor sit, amet consectetur adipisicing
+                          elit. Non deserunt vitae sunt, at, nulla nemo nisi
+                          temporibus quia adipisci eaque a mollitia ducimus,
+                          dolore hic minus praesentium maxime sapiente.
+                          Asperiores.
+                        </Paragraph>
+                        <img src="https://picsum.photos/160/160" alt="" />
+                      </CardBody>
+                    </Link>
+                  </Card>
+                );
+              })}
           </Grid>
         </Wrapper>
       </Container>
@@ -121,6 +144,26 @@ const Card = styled.div({
   flex: "25%",
   padding: "1.8rem 1.8rem",
   maxWidth: "25%",
+
+  "@media screen and (max-width: 720px)": {
+    flex: "100%",
+    maxWidth: "100%",
+  },
+
+  "@media screen and (min-width: 721px) and (max-width: 1024px)": {
+    flex: "50%",
+    maxWidth: "50%",
+  },
+
+  "@media screen and (min-width: 1025px) and (max-width: 1536px)": {
+    flex: "33.3%",
+    maxWidth: "33.3%",
+  },
+
+  "@media screen and (min-width: 1537px)": {
+    flex: "25%",
+    maxWidth: "25%",
+  },
 
   "&:hover": {
     transform: "scale(1.05)",

@@ -1,12 +1,57 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import styled from "@emotion/styled";
 
 import { graphql, Link, useStaticQuery } from "gatsby";
+import { useBreakpoint } from "gatsby-plugin-breakpoints";
+import Img from "gatsby-image";
 
 import PageLayout from "./page-layout";
 
 const Portfolio: FC<{}> = () => {
   const { edges } = usePortfolioListQuery();
+  const breakpoints = useBreakpoint();
+  const [currentStartIndex, setCurrentStartIndex] = React.useState(0);
+
+  let amountOfPortfolioToDisplay = 4;
+
+  if (breakpoints.xl) {
+    amountOfPortfolioToDisplay = 4;
+  } else if (breakpoints.l) {
+    amountOfPortfolioToDisplay = 3;
+  } else if (breakpoints.md) {
+    amountOfPortfolioToDisplay = 2;
+  } else if (breakpoints.sm || breakpoints.xs) {
+    amountOfPortfolioToDisplay = 1;
+  } else {
+    amountOfPortfolioToDisplay = 4;
+  }
+
+  const [portfolio, setPortfolios] = React.useState(
+    edges.slice(0, amountOfPortfolioToDisplay)
+  );
+
+  useEffect(() => {
+    let itemsToDisplay = [] as any;
+
+    if (
+      currentStartIndex >= 0 &&
+      currentStartIndex + amountOfPortfolioToDisplay <= edges.length
+    ) {
+      itemsToDisplay = edges.slice(
+        currentStartIndex,
+        currentStartIndex + amountOfPortfolioToDisplay
+      );
+    } else {
+      itemsToDisplay = edges.slice(currentStartIndex, edges.length);
+    }
+
+    if (itemsToDisplay.length < amountOfPortfolioToDisplay) {
+      const difference = amountOfPortfolioToDisplay - itemsToDisplay.length;
+      itemsToDisplay = itemsToDisplay.concat(edges.slice(0, difference));
+    }
+
+    setPortfolios(itemsToDisplay);
+  }, [currentStartIndex, amountOfPortfolioToDisplay]);
 
   return (
     <PageLayout id="portfolio">
@@ -14,29 +59,66 @@ const Portfolio: FC<{}> = () => {
         <Wrapper>
           <Header>Portfolio</Header>
           <Grid>
-            {edges.map(({ node }) => {
+            <ButtonContainer>
+              <Button
+                onClick={() => {
+                  if (currentStartIndex - 1 < 0) {
+                    setCurrentStartIndex(edges.length - 1);
+                  } else {
+                    setCurrentStartIndex(currentStartIndex - 1);
+                  }
+                }}
+              >
+                &#8249;
+              </Button>
+            </ButtonContainer>
+            {portfolio.map(({ node }) => {
               if (!node.fields?.slug || !node.frontmatter?.date) {
                 return null;
               }
 
               return (
-                <Card>
-                  <Link to={node.fields.slug} key={node.fields.slug}>
+                <Card key={node.fields.slug}>
+                  <Link to={node.fields.slug}>
                     <CardHeader>{node.frontmatter.title}</CardHeader>
                     <CardBody>
-                      <img src="https://picsum.photos/160/160" alt="" />
                       <Paragraph>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing
-                        elit. Non deserunt vitae sunt, at, nulla nemo nisi
-                        temporibus quia adipisci eaque a mollitia ducimus,
-                        dolore hic minus praesentium maxime sapiente.
-                        Asperiores.
+                        {node.frontmatter?.description || node.excerpt}
                       </Paragraph>
+
+                      <Img
+                        loading="eager"
+                        style={{
+                          width: "160px",
+                          height: "160px",
+                          minWidth: "160px",
+                          minHeight: "160px",
+                          maxWidth: "160px",
+                          maxHeight: "160px",
+                        }}
+                        fixed={
+                          node!.frontmatter!.featuredImage!.childImageSharp!
+                            .fixed as any
+                        }
+                      />
                     </CardBody>
                   </Link>
                 </Card>
               );
             })}
+            <ButtonContainer>
+              <Button
+                onClick={() => {
+                  if (currentStartIndex + 1 > edges.length - 1) {
+                    setCurrentStartIndex(0);
+                  } else {
+                    setCurrentStartIndex(currentStartIndex + 1);
+                  }
+                }}
+              >
+                &#8250;
+              </Button>
+            </ButtonContainer>
           </Grid>
         </Wrapper>
       </Container>
@@ -45,33 +127,46 @@ const Portfolio: FC<{}> = () => {
 };
 
 const usePortfolioListQuery = () => {
-  const { allMdx } = useStaticQuery<GatsbyTypes.PortfolioListQuery>(graphql`
-    query PortfolioList {
-      allMdx(
-        sort: { fields: [frontmatter___date], order: DESC }
-        filter: {
-          frontmatter: { published: { eq: true } }
-          fields: { type: { eq: "portfolio" } }
-        }
-      ) {
-        edges {
-          node {
-            id
-            excerpt(pruneLength: 80)
-            frontmatter {
-              title
-              date
-            }
-            fields {
-              slug
+  const { allMarkdownRemark } =
+    useStaticQuery<GatsbyTypes.PortfolioListQuery>(graphql`
+      query PortfolioList {
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
+          filter: {
+            frontmatter: { published: { eq: true } }
+            fields: { type: { eq: "portfolio" } }
+          }
+        ) {
+          edges {
+            node {
+              id
+              excerpt(pruneLength: 80)
+              frontmatter {
+                title
+                date
+                description
+                featuredImage {
+                  childImageSharp {
+                    fixed(width: 160, height: 160) {
+                      base64
+                      width
+                      height
+                      src
+                      srcSet
+                    }
+                  }
+                }
+              }
+              fields {
+                slug
+              }
             }
           }
         }
       }
-    }
-  `);
+    `);
 
-  return allMdx;
+  return allMarkdownRemark;
 };
 
 const Container = styled.div({
@@ -99,7 +194,7 @@ const CardHeader = styled.h3({
   paddingBottom: "1rem",
 });
 
-const CardBody = styled.h3({
+const CardBody = styled.div({
   display: "flex",
   flexDirection: "row",
 });
@@ -107,12 +202,33 @@ const CardBody = styled.h3({
 const Paragraph = styled.p({
   fontSize: "1.5rem",
   fontWeight: "normal",
-  paddingLeft: "1rem",
+  paddingRight: "1rem",
 });
 
 const Grid = styled.div({
   display: "flex",
   margin: "0 -1.8rem",
+});
+
+const ButtonContainer = styled.div({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
+const Button = styled.div({
+  borderRadius: "50%",
+  width: "3rem",
+  height: "3rem",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "flex-end",
+
+  "&:hover": {
+    backgroundColor: "#0f1c2e",
+    color: "#f9bc3c",
+    cursor: "pointer",
+  },
 });
 
 const Card = styled.div({
@@ -121,6 +237,26 @@ const Card = styled.div({
   flex: "25%",
   padding: "1.8rem 1.8rem",
   maxWidth: "25%",
+
+  "@media screen and (max-width: 720px)": {
+    flex: "100%",
+    maxWidth: "100%",
+  },
+
+  "@media screen and (min-width: 721px) and (max-width: 1024px)": {
+    flex: "50%",
+    maxWidth: "50%",
+  },
+
+  "@media screen and (min-width: 1025px) and (max-width: 1536px)": {
+    flex: "33.3%",
+    maxWidth: "33.3%",
+  },
+
+  "@media screen and (min-width: 1537px)": {
+    flex: "25%",
+    maxWidth: "25%",
+  },
 
   "&:hover": {
     transform: "scale(1.05)",
@@ -131,15 +267,6 @@ const Card = styled.div({
 
   "& a": {
     color: "#0f1c2e",
-  },
-
-  "& img": {
-    width: "33%",
-    minWidth: "33%",
-    height: "33%",
-    minHeight: "33%",
-    maxWidth: "33%",
-    maxHeight: "33%",
   },
 });
 

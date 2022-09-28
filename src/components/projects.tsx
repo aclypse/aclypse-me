@@ -85,16 +85,22 @@ const Projects: FC<{}> = () => {
                       <Paragraph>
                         {node.frontmatter?.description || node.excerpt}
                       </Paragraph>
-                      {node.frontmatter?.featuredImage?.childImageSharp
-                        ?.fixed && (
-                        <Img
-                          loading="eager"
-                          fixed={
-                            node.frontmatter.featuredImage.childImageSharp
-                              .fixed as any
-                          }
-                        />
-                      )}
+
+                      <Img
+                        loading="eager"
+                        style={{
+                          width: "160px",
+                          height: "160px",
+                          minWidth: "160px",
+                          minHeight: "160px",
+                          maxWidth: "160px",
+                          maxHeight: "160px",
+                        }}
+                        fixed={
+                          node!.frontmatter!.featuredImage!.childImageSharp!
+                            .fixed as any
+                        }
+                      />
                     </CardBody>
                   </Link>
                 </Card>
@@ -188,7 +194,7 @@ const CardHeader = styled.h3({
   paddingBottom: "1rem",
 });
 
-const CardBody = styled.h3({
+const CardBody = styled.div({
   display: "flex",
   flexDirection: "row",
 });
@@ -261,15 +267,6 @@ const Card = styled.div({
 
   "& a": {
     color: "#0f1c2e",
-  },
-
-  "& img": {
-    width: "33%",
-    minWidth: "33%",
-    height: "33%",
-    minHeight: "33%",
-    maxWidth: "33%",
-    maxHeight: "33%",
   },
 });
 

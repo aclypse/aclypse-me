@@ -1,15 +1,31 @@
 const dotenv = require("dotenv");
 dotenv.config();
 
+const myCustomQueries = {
+  xs: "(max-width: 320px)",
+  sm: "(min-width: 321px) and (max-width: 720px)",
+  md: "(min-width: 721px) and (max-width: 1024px)",
+  l: "(min-width: 1025px) and (max-width: 1536px)",
+  xl: "(min-width: 1537px)",
+};
+
 module.exports = {
   siteMetadata: {
     title: "Diana Mykhaylova - Graphic Designer",
     description: "Work and Life",
   },
   plugins: [
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     "gatsby-plugin-emotion",
     "gatsby-plugin-typescript",
     "gatsby-plugin-typescript-checker",
+    {
+      resolve: "gatsby-plugin-breakpoints",
+      options: {
+        queries: myCustomQueries,
+      },
+    },
     {
       resolve: "gatsby-plugin-mdx",
       options: {
@@ -28,6 +44,12 @@ module.exports = {
       options: {
         name: "projects",
         path: "./projects/",
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: "./projects/images",
       },
     },
     {

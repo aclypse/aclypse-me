@@ -9,6 +9,8 @@ tags:
   - first
   - react
   - web
+description: "This is the first post of the blog"
+featuredImage: images/271-160x160.jpg
 ---
 
 One more post, which should be displayed

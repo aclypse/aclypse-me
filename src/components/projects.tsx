@@ -1,12 +1,57 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import styled from "@emotion/styled";
 
 import { graphql, Link, useStaticQuery } from "gatsby";
+import { useBreakpoint } from "gatsby-plugin-breakpoints";
+import Img from "gatsby-image";
 
 import PageLayout from "./page-layout";
 
 const Projects: FC<{}> = () => {
   const { edges } = useProjectsListQuery();
+  const breakpoints = useBreakpoint();
+  const [currentStartIndex, setCurrentStartIndex] = React.useState(0);
+
+  let amountOfProjectsToDisplay = 4;
+
+  if (breakpoints.xl) {
+    amountOfProjectsToDisplay = 4;
+  } else if (breakpoints.l) {
+    amountOfProjectsToDisplay = 3;
+  } else if (breakpoints.md) {
+    amountOfProjectsToDisplay = 2;
+  } else if (breakpoints.sm || breakpoints.xs) {
+    amountOfProjectsToDisplay = 1;
+  } else {
+    amountOfProjectsToDisplay = 4;
+  }
+
+  const [projects, setProjects] = React.useState(
+    edges.slice(0, amountOfProjectsToDisplay)
+  );
+
+  useEffect(() => {
+    let itemsToDisplay = [] as any;
+
+    if (
+      currentStartIndex >= 0 &&
+      currentStartIndex + amountOfProjectsToDisplay <= edges.length
+    ) {
+      itemsToDisplay = edges.slice(
+        currentStartIndex,
+        currentStartIndex + amountOfProjectsToDisplay
+      );
+    } else {
+      itemsToDisplay = edges.slice(currentStartIndex, edges.length);
+    }
+
+    if (itemsToDisplay.length < amountOfProjectsToDisplay) {
+      const difference = amountOfProjectsToDisplay - itemsToDisplay.length;
+      itemsToDisplay = itemsToDisplay.concat(edges.slice(0, difference));
+    }
+
+    setProjects(itemsToDisplay);
+  }, [currentStartIndex, amountOfProjectsToDisplay]);
 
   return (
     <PageLayout id="projects">
@@ -14,29 +59,66 @@ const Projects: FC<{}> = () => {
         <Wrapper>
           <Header>Projects</Header>
           <Grid>
-            {edges.map(({ node }) => {
+            <ButtonContainer>
+              <Button
+                onClick={() => {
+                  if (currentStartIndex - 1 < 0) {
+                    setCurrentStartIndex(edges.length - 1);
+                  } else {
+                    setCurrentStartIndex(currentStartIndex - 1);
+                  }
+                }}
+              >
+                &#8249;
+              </Button>
+            </ButtonContainer>
+            {projects.map(({ node }) => {
               if (!node.fields?.slug || !node.frontmatter?.date) {
                 return null;
               }
 
               return (
-                <Card>
-                  <Link to={node.fields.slug} key={node.fields.slug}>
+                <Card key={node.fields.slug}>
+                  <Link to={node.fields.slug}>
                     <CardHeader>{node.frontmatter.title}</CardHeader>
                     <CardBody>
                       <Paragraph>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing
-                        elit. Non deserunt vitae sunt, at, nulla nemo nisi
-                        temporibus quia adipisci eaque a mollitia ducimus,
-                        dolore hic minus praesentium maxime sapiente.
-                        Asperiores.
+                        {node.frontmatter?.description || node.excerpt}
                       </Paragraph>
-                      <img src="https://picsum.photos/160/160" alt="" />
+
+                      <Img
+                        loading="eager"
+                        style={{
+                          width: "160px",
+                          height: "160px",
+                          minWidth: "160px",
+                          minHeight: "160px",
+                          maxWidth: "160px",
+                          maxHeight: "160px",
+                        }}
+                        fixed={
+                          node!.frontmatter!.featuredImage!.childImageSharp!
+                            .fixed as any
+                        }
+                      />
                     </CardBody>
                   </Link>
                 </Card>
               );
             })}
+            <ButtonContainer>
+              <Button
+                onClick={() => {
+                  if (currentStartIndex + 1 > edges.length - 1) {
+                    setCurrentStartIndex(0);
+                  } else {
+                    setCurrentStartIndex(currentStartIndex + 1);
+                  }
+                }}
+              >
+                &#8250;
+              </Button>
+            </ButtonContainer>
           </Grid>
         </Wrapper>
       </Container>
@@ -45,33 +127,46 @@ const Projects: FC<{}> = () => {
 };
 
 const useProjectsListQuery = () => {
-  const { allMdx } = useStaticQuery<GatsbyTypes.ProjectsListQuery>(graphql`
-    query ProjectsList {
-      allMdx(
-        sort: { fields: [frontmatter___date], order: DESC }
-        filter: {
-          frontmatter: { published: { eq: true } }
-          fields: { type: { eq: "project" } }
-        }
-      ) {
-        edges {
-          node {
-            id
-            excerpt(pruneLength: 80)
-            frontmatter {
-              title
-              date
-            }
-            fields {
-              slug
+  const { allMarkdownRemark } =
+    useStaticQuery<GatsbyTypes.ProjectsListQuery>(graphql`
+      query ProjectsList {
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
+          filter: {
+            frontmatter: { published: { eq: true } }
+            fields: { type: { eq: "project" } }
+          }
+        ) {
+          edges {
+            node {
+              id
+              excerpt(pruneLength: 80)
+              frontmatter {
+                title
+                date
+                description
+                featuredImage {
+                  childImageSharp {
+                    fixed(width: 160, height: 160) {
+                      base64
+                      width
+                      height
+                      src
+                      srcSet
+                    }
+                  }
+                }
+              }
+              fields {
+                slug
+              }
             }
           }
         }
       }
-    }
-  `);
+    `);
 
-  return allMdx;
+  return allMarkdownRemark;
 };
 
 const Container = styled.div({
@@ -99,7 +194,7 @@ const CardHeader = styled.h3({
   paddingBottom: "1rem",
 });
 
-const CardBody = styled.h3({
+const CardBody = styled.div({
   display: "flex",
   flexDirection: "row",
 });
@@ -115,12 +210,53 @@ const Grid = styled.div({
   margin: "0 -1.8rem",
 });
 
+const ButtonContainer = styled.div({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
+const Button = styled.div({
+  borderRadius: "50%",
+  width: "3rem",
+  height: "3rem",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "flex-end",
+
+  "&:hover": {
+    backgroundColor: "#0f1c2e",
+    color: "#f9bc3c",
+    cursor: "pointer",
+  },
+});
+
 const Card = styled.div({
   display: "flex",
   flexDirection: "row",
   flex: "25%",
   padding: "1.8rem 1.8rem",
   maxWidth: "25%",
+
+  "@media screen and (max-width: 720px)": {
+    flex: "100%",
+    maxWidth: "100%",
+  },
+
+  "@media screen and (min-width: 721px) and (max-width: 1024px)": {
+    flex: "50%",
+    maxWidth: "50%",
+  },
+
+  "@media screen and (min-width: 1025px) and (max-width: 1536px)": {
+    flex: "33.3%",
+    maxWidth: "33.3%",
+  },
+
+  "@media screen and (min-width: 1537px)": {
+    flex: "25%",
+    maxWidth: "25%",
+  },
 
   "&:hover": {
     transform: "scale(1.05)",
@@ -131,15 +267,6 @@ const Card = styled.div({
 
   "& a": {
     color: "#0f1c2e",
-  },
-
-  "& img": {
-    width: "33%",
-    minWidth: "33%",
-    height: "33%",
-    minHeight: "33%",
-    maxWidth: "33%",
-    maxHeight: "33%",
   },
 });
 

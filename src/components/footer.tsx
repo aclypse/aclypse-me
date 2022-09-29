@@ -49,6 +49,8 @@ const Paragraph = styled.p({
   fontWeight: "normal",
   display: "flex",
   justifyContent: "center",
+  padding: 0,
+  margin: 0,
 
   "& svg": {
     margin: "0 1rem",

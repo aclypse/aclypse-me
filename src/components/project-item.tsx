@@ -1,184 +1,34 @@
 import * as React from "react";
+import { FC } from "react";
 // import styled from "@emotion/styled";
+import { graphql } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import ContentLayout from "./content-layout";
 
-const ProjectItem = () => {
+const ProjectItem: FC<{ data: GatsbyTypes.ProjectByIdQuery }> = props => {
+  const { frontmatter, body } = props.data.mdx!;
   return (
-    <ContentLayout title="Project Item">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero,
-        rerum fugiat molestiae aut unde aperiam nulla adipisci praesentium iure!
-        Velit, a architecto! Similique dolorem nisi sed hic, ut explicabo.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
-        saepe corrupti quibusdam repellat nostrum voluptas perspiciatis nihil
-        pariatur, sunt magni eius, maxime in officia sequi excepturi voluptatem
-        consectetur modi natus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima debitis
-        quo accusamus quibusdam illo, tenetur corrupti nesciunt delectus.
-        Magnam, consequatur saepe corporis ad modi aperiam ipsa eius quas totam
-        libero.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero,
-        rerum fugiat molestiae aut unde aperiam nulla adipisci praesentium iure!
-        Velit, a architecto! Similique dolorem nisi sed hic, ut explicabo.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
-        saepe corrupti quibusdam repellat nostrum voluptas perspiciatis nihil
-        pariatur, sunt magni eius, maxime in officia sequi excepturi voluptatem
-        consectetur modi natus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima debitis
-        quo accusamus quibusdam illo, tenetur corrupti nesciunt delectus.
-        Magnam, consequatur saepe corporis ad modi aperiam ipsa eius quas totam
-        libero.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero,
-        rerum fugiat molestiae aut unde aperiam nulla adipisci praesentium iure!
-        Velit, a architecto! Similique dolorem nisi sed hic, ut explicabo.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
-        saepe corrupti quibusdam repellat nostrum voluptas perspiciatis nihil
-        pariatur, sunt magni eius, maxime in officia sequi excepturi voluptatem
-        consectetur modi natus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima debitis
-        quo accusamus quibusdam illo, tenetur corrupti nesciunt delectus.
-        Magnam, consequatur saepe corporis ad modi aperiam ipsa eius quas totam
-        libero.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero,
-        rerum fugiat molestiae aut unde aperiam nulla adipisci praesentium iure!
-        Velit, a architecto! Similique dolorem nisi sed hic, ut explicabo.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
-        saepe corrupti quibusdam repellat nostrum voluptas perspiciatis nihil
-        pariatur, sunt magni eius, maxime in officia sequi excepturi voluptatem
-        consectetur modi natus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima debitis
-        quo accusamus quibusdam illo, tenetur corrupti nesciunt delectus.
-        Magnam, consequatur saepe corporis ad modi aperiam ipsa eius quas totam
-        libero.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero,
-        rerum fugiat molestiae aut unde aperiam nulla adipisci praesentium iure!
-        Velit, a architecto! Similique dolorem nisi sed hic, ut explicabo.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
-        saepe corrupti quibusdam repellat nostrum voluptas perspiciatis nihil
-        pariatur, sunt magni eius, maxime in officia sequi excepturi voluptatem
-        consectetur modi natus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima debitis
-        quo accusamus quibusdam illo, tenetur corrupti nesciunt delectus.
-        Magnam, consequatur saepe corporis ad modi aperiam ipsa eius quas totam
-        libero.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero,
-        rerum fugiat molestiae aut unde aperiam nulla adipisci praesentium iure!
-        Velit, a architecto! Similique dolorem nisi sed hic, ut explicabo.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
-        saepe corrupti quibusdam repellat nostrum voluptas perspiciatis nihil
-        pariatur, sunt magni eius, maxime in officia sequi excepturi voluptatem
-        consectetur modi natus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima debitis
-        quo accusamus quibusdam illo, tenetur corrupti nesciunt delectus.
-        Magnam, consequatur saepe corporis ad modi aperiam ipsa eius quas totam
-        libero.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero,
-        rerum fugiat molestiae aut unde aperiam nulla adipisci praesentium iure!
-        Velit, a architecto! Similique dolorem nisi sed hic, ut explicabo.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
-        saepe corrupti quibusdam repellat nostrum voluptas perspiciatis nihil
-        pariatur, sunt magni eius, maxime in officia sequi excepturi voluptatem
-        consectetur modi natus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima debitis
-        quo accusamus quibusdam illo, tenetur corrupti nesciunt delectus.
-        Magnam, consequatur saepe corporis ad modi aperiam ipsa eius quas totam
-        libero.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero,
-        rerum fugiat molestiae aut unde aperiam nulla adipisci praesentium iure!
-        Velit, a architecto! Similique dolorem nisi sed hic, ut explicabo.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
-        saepe corrupti quibusdam repellat nostrum voluptas perspiciatis nihil
-        pariatur, sunt magni eius, maxime in officia sequi excepturi voluptatem
-        consectetur modi natus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima debitis
-        quo accusamus quibusdam illo, tenetur corrupti nesciunt delectus.
-        Magnam, consequatur saepe corporis ad modi aperiam ipsa eius quas totam
-        libero.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero,
-        rerum fugiat molestiae aut unde aperiam nulla adipisci praesentium iure!
-        Velit, a architecto! Similique dolorem nisi sed hic, ut explicabo.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
-        saepe corrupti quibusdam repellat nostrum voluptas perspiciatis nihil
-        pariatur, sunt magni eius, maxime in officia sequi excepturi voluptatem
-        consectetur modi natus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima debitis
-        quo accusamus quibusdam illo, tenetur corrupti nesciunt delectus.
-        Magnam, consequatur saepe corporis ad modi aperiam ipsa eius quas totam
-        libero.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero,
-        rerum fugiat molestiae aut unde aperiam nulla adipisci praesentium iure!
-        Velit, a architecto! Similique dolorem nisi sed hic, ut explicabo.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
-        saepe corrupti quibusdam repellat nostrum voluptas perspiciatis nihil
-        pariatur, sunt magni eius, maxime in officia sequi excepturi voluptatem
-        consectetur modi natus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima debitis
-        quo accusamus quibusdam illo, tenetur corrupti nesciunt delectus.
-        Magnam, consequatur saepe corporis ad modi aperiam ipsa eius quas totam
-        libero.
-      </p>
+    <ContentLayout title={frontmatter?.title!}>
+      <MDXRenderer>{body}</MDXRenderer>
     </ContentLayout>
   );
 };
+
+export const query = graphql`
+  query ProjectById($id: String!) {
+    mdx(id: { eq: $id }) {
+      body
+      frontmatter {
+        title
+        date
+      }
+      fields {
+        slug
+      }
+    }
+  }
+`;
 
 export default ProjectItem;
 

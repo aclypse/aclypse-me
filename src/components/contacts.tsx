@@ -73,6 +73,7 @@ const Wrapper = styled.div({
   flex: 1,
   alignItems: "center",
   backgroundColor: "#0f1c2e",
+  justifyContent: "center",
 });
 
 const Footer = styled.footer({

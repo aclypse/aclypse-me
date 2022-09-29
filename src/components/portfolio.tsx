@@ -45,7 +45,10 @@ const Portfolio: FC<{}> = () => {
       itemsToDisplay = edges.slice(currentStartIndex, edges.length);
     }
 
-    if (itemsToDisplay.length < amountOfPortfolioToDisplay) {
+    if (
+      itemsToDisplay.length < amountOfPortfolioToDisplay &&
+      edges.length >= amountOfPortfolioToDisplay
+    ) {
       const difference = amountOfPortfolioToDisplay - itemsToDisplay.length;
       itemsToDisplay = itemsToDisplay.concat(edges.slice(0, difference));
     }

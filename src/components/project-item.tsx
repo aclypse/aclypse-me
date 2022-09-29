@@ -1,6 +1,5 @@
 import * as React from "react";
 import { FC } from "react";
-// import styled from "@emotion/styled";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
@@ -31,10 +30,3 @@ export const query = graphql`
 `;
 
 export default ProjectItem;
-
-// const Content = styled.div({
-//   backgroundColor: "#f9bc3c",
-//   padding: "4.125rem 8.75rem",
-//   fontSize: "3rem",
-//   fontWeight: 700,
-// });

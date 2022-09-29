@@ -37,6 +37,7 @@ const Content = styled.div({
   flexDirection: "column",
   backgroundColor: "#f9bc3c",
   padding: "4.125rem 8.75rem",
+  width: "100%",
 });
 
 const Wrapper = styled.div({
@@ -58,7 +59,7 @@ const Paragraph = styled.p({
   fontSize: "1.5rem",
   fontWeight: "normal",
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "flex-start",
 
   "& svg": {
     margin: "0 1rem",

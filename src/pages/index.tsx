@@ -6,7 +6,7 @@ import { Global, css, ThemeProvider } from "@emotion/react";
 import cssReset from "@eaze/css-reset";
 
 import { lightTheme } from "@themes/light";
-import Header from "@components//header";
+import Header from "@components/header";
 
 const theme = lightTheme;
 

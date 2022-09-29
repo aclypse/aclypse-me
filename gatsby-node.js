@@ -72,7 +72,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const content = mdxResult.data.allMdx.edges;
 
   content.forEach(({ node }) => {
-    if (node.fileAbsolutePath.lastIndexOf("projects") < 0) {
+    if (node.fileAbsolutePath.lastIndexOf("projects") > 0) {
       createPage({
         path: `${node.fields.slug}`,
         component: projectPage,
@@ -80,7 +80,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     }
 
-    if (node.fileAbsolutePath.lastIndexOf("portfolio") < 0) {
+    if (node.fileAbsolutePath.lastIndexOf("portfolio") > 0) {
       createPage({
         path: `${node.fields.slug}`,
         component: portfolioPage,

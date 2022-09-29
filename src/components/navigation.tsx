@@ -61,22 +61,22 @@ const Navigation: FC = () => {
     <Nav id="navigation">
       <ul>
         <li>
-          <a href="#about" onClick={onNavClick}>
+          <a href="/#about" onClick={onNavClick}>
             About
           </a>
         </li>
         <li>
-          <a href="#projects" onClick={onNavClick}>
+          <a href="/#projects" onClick={onNavClick}>
             Projects
           </a>
         </li>
         <li>
-          <a href="#portfolio" onClick={onNavClick}>
+          <a href="/#portfolio" onClick={onNavClick}>
             Portfolio
           </a>
         </li>
         <li>
-          <a href="#contacts" onClick={onNavClick}>
+          <a href="/#contacts" onClick={onNavClick}>
             Contacts
           </a>
         </li>

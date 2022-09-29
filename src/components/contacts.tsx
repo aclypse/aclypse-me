@@ -1,10 +1,8 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
-import PageLayout from "./page-layout";
 
-import Instagram from "assets/instagram.svg";
-import Facebook from "assets/facebook.svg";
-import GitHub from "assets/github.svg";
+import PageLayout from "./page-layout";
+import Footer from "./footer";
 
 const Contacts: FC<{}> = () => {
   return (
@@ -21,34 +19,7 @@ const Contacts: FC<{}> = () => {
             </Paragraph>
           </Content>
         </Wrapper>
-        <Footer>
-          <Paragraph>
-            <a
-              href="https://www.instagram.com/aclypse_aclypse"
-              title="Aclypse's Instagram Profile"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Instagram />
-            </a>
-            <a
-              href="https://www.facebook.com/aclypseme"
-              title="Aclypse's Facebook Profile"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Facebook />
-            </a>
-            <a
-              href="https://github.com/aclypse"
-              title="Aclypse's GitHub Profile"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <GitHub />
-            </a>
-          </Paragraph>
-        </Footer>
+        <Footer />
       </Container>
     </PageLayout>
   );
@@ -74,14 +45,6 @@ const Wrapper = styled.div({
   alignItems: "center",
   backgroundColor: "#0f1c2e",
   justifyContent: "center",
-});
-
-const Footer = styled.footer({
-  padding: "2.5rem 8.75rem",
-  fontSize: "3rem",
-  fontWeight: 700,
-  color: "#f1f1e6",
-  backgroundColor: "#f9bc3c",
 });
 
 const Header = styled.h2({

@@ -27,6 +27,11 @@ const Content = styled.div({
   padding: "4.125rem 8.75rem",
   fontSize: "3rem",
   fontWeight: 700,
+
+  "@media only screen and (max-width: 768px)": {
+    padding: "2.5rem 2.5rem",
+    height: "auto",
+  },
 });
 
 const Header = styled.h2({

@@ -2,8 +2,6 @@ import React, { FC, useEffect } from "react";
 import styled from "@emotion/styled";
 
 const Navigation: FC = () => {
-  const [isClicked, setIsClicked] = React.useState(false);
-
   useEffect(() => {
     // Get all sections that have an ID defined
     const sections: NodeListOf<HTMLElement> =
@@ -27,10 +25,7 @@ const Navigation: FC = () => {
           document
             .querySelector("nav a[href*=" + sectionId + "]")
             ?.classList.add("active");
-          if (!isClicked && location.hash !== `#${sectionId}`) {
-            location.hash = sectionId || "";
-            setIsClicked(false);
-          }
+          // TODO: reflect the changes into URL, change hash when active section changes
         } else {
           document
             .querySelector("nav a[href*=" + sectionId + "]")!
@@ -44,10 +39,9 @@ const Navigation: FC = () => {
     return () => {
       window.removeEventListener("scroll", navHighlighter);
     };
-  }, [isClicked]);
+  }, []);
 
   const onNavClick = () => {
-    setIsClicked(true);
     const navElement = document.getElementById("navigation");
 
     if (!navElement) {
@@ -120,6 +114,7 @@ const Nav = styled.nav(() => ({
     left: 0,
     backgroundColor: "#f9bc3c",
     width: "100%",
+    paddingBottom: "2rem",
 
     ul: {
       display: "flex",

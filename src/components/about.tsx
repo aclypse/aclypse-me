@@ -36,11 +36,20 @@ const Wrapper = styled.div({
   fontWeight: 700,
   color: "#0f1c2e",
   backgroundColor: "#f9bc3c",
+
+  "@media only screen and (max-width: 768px)": {
+    padding: "2.5rem 2.5rem",
+    height: "auto",
+  },
 });
 
 const Content = styled.div({
   display: "flex",
   flexDirection: "row",
+
+  "@media only screen and (max-width: 768px)": {
+    flexDirection: "column-reverse",
+  },
 });
 
 const Header = styled.h2({
@@ -52,11 +61,21 @@ const Paragraph = styled.p({
   fontSize: "1.5rem",
   fontWeight: "normal",
   paddingRight: "2rem",
+
+  "@media only screen and (max-width: 768px)": {
+    paddingRight: "0",
+    paddingTop: "1rem",
+  },
 });
 
 const Image = styled.img({
   width: "25%",
   minWidth: "25%",
+
+  "@media only screen and (max-width: 768px)": {
+    width: "auto",
+    height: "auto",
+  },
 });
 
 export default About;

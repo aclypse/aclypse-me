@@ -18,7 +18,7 @@ const Header = () => {
     <>
       <HeaderContainer>
         <div>
-          <a href="/">Aclypse</a>
+          <a href="/#landing">Aclypse</a>
         </div>
         <Toggle onClick={toggle}>
           <svg viewBox="0 0 100 80" width="20" height="20">
@@ -61,6 +61,8 @@ const HeaderContainer = styled.header({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "start",
+    padding: "1.125rem 2.5rem",
+    height: "auto",
   },
 });
 

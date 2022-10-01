@@ -42,6 +42,11 @@ const FooterContainer = styled.footer({
   fontWeight: 700,
   color: "#f1f1e6",
   backgroundColor: "#f9bc3c",
+
+  "@media only screen and (max-width: 768px)": {
+    padding: "1.125rem 2.5rem",
+    height: "auto",
+  },
 });
 
 const Paragraph = styled.p({

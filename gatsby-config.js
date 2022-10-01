@@ -19,6 +19,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     "gatsby-plugin-emotion",
     "gatsby-plugin-typescript",
+    "gatsby-plugin-react-helmet",
     "gatsby-plugin-typescript-checker",
     {
       resolve: "gatsby-plugin-breakpoints",
@@ -92,13 +93,6 @@ module.exports = {
         emitPluginDocuments: {
           "./src/generated/gatsby-plugin-documents.graphql": true,
         },
-      },
-    },
-    {
-      resolve: "gatsby-plugin-typography",
-      options: {
-        pathToConfigModule: "./src/typography-config",
-        omitGoogleFont: true,
       },
     },
     {

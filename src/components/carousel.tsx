@@ -49,7 +49,10 @@ const Carousel: FC<{
       itemsToDisplay = edges.slice(currentStartIndex, edges.length);
     }
 
-    if (itemsToDisplay.length < amountOfProjectsToDisplay) {
+    if (
+      itemsToDisplay.length < amountOfProjectsToDisplay &&
+      edges.length > amountOfProjectsToDisplay
+    ) {
       const difference = amountOfProjectsToDisplay - itemsToDisplay.length;
       itemsToDisplay = itemsToDisplay.concat(edges.slice(0, difference));
     }

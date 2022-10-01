@@ -114,6 +114,7 @@ const Nav = styled.nav(() => ({
     left: 0,
     backgroundColor: "#f9bc3c",
     width: "100%",
+    paddingBottom: "2rem",
 
     ul: {
       display: "flex",

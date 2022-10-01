@@ -2,16 +2,17 @@ import React, { FC } from "react";
 import { graphql } from "gatsby";
 
 import { Global, css, ThemeProvider } from "@emotion/react";
+import styled from "@emotion/styled";
 
 import cssReset from "@eaze/css-reset";
 
 import { lightTheme } from "@themes/light";
-import Header from "@components/header";
 
 const theme = lightTheme;
 
 cssReset();
 
+import Header from "@components/header";
 import Landing from "@components/landing";
 import About from "@components/about";
 import Projects from "@components/projects";
@@ -26,13 +27,13 @@ const IndexPage: FC<{
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles} />
       <Header />
-      <main>
+      <Main>
         <Landing />
         <About />
         <Projects />
         <Portfolio />
         <Contacts />
-      </main>
+      </Main>
     </ThemeProvider>
   );
 };
@@ -48,6 +49,10 @@ export const query = graphql`
   }
 `;
 
+const Main = styled.main({
+  width: "fit-content",
+});
+
 const globalStyles = css`
   * {
     box-sizing: border-box;
@@ -60,6 +65,7 @@ const globalStyles = css`
     overflow: scroll;
     overflow-x: hidden;
     font-family: "Segoe UI", Arial, sans-serif !important;
+    background-color: #0f1c2e;
   }
 
   ::-webkit-scrollbar {

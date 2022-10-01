@@ -38,6 +38,11 @@ const Content = styled.div({
   backgroundColor: "#f9bc3c",
   padding: "4.125rem 8.75rem",
   width: "100%",
+
+  "@media only screen and (max-width: 768px)": {
+    padding: "2.5rem 2.5rem",
+    height: "auto",
+  },
 });
 
 const Wrapper = styled.div({

@@ -52,6 +52,10 @@ const Main = styled.main({
   color: "#f1f1e6",
   flex: 1,
   marginTop: "8rem",
+
+  "@media only screen and (max-width: 768px)": {
+    marginTop: "5rem",
+  },
 });
 
 const Section = styled.section({
@@ -59,14 +63,11 @@ const Section = styled.section({
   flexDirection: "column",
   flex: 1,
   padding: "2rem 8.75rem 2rem",
-});
 
-// const Content = styled.div({
-//   backgroundColor: "#f9bc3c",
-//   padding: "4.125rem 8.75rem",
-//   fontSize: "3rem",
-//   fontWeight: 700,
-// });
+  "@media only screen and (max-width: 768px)": {
+    padding: "2.5rem",
+  },
+});
 
 const globalStyles = css`
   * {
@@ -130,10 +131,10 @@ const globalStyles = css`
     padding-bottom: 1.5rem;
   }
 
-  // ::-webkit-scrollbar {
-  //   width: 0; /* Remove scrollbar space */
-  //   background: transparent; /* Optional: just make scrollbar invisible */
-  // }
+  ::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
+  }
 
   .openMenu {
     display: flex !important;

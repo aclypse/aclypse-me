@@ -58,6 +58,18 @@ const Main = styled.main({
 
   "@media only screen and (max-width: 768px)": {
     marginTop: "5rem",
+
+    "& img": {
+      height: "auto",
+      maxWidth: "100%",
+      maxHeight: "auto",
+    },
+
+    "& iframe": {
+      height: "auto",
+      maxWidth: "100%",
+      maxHeight: "auto",
+    },
   },
 
   "& h1": {
@@ -106,6 +118,73 @@ const Main = styled.main({
     fontSize: "1.125rem",
     lineHeight: "1.5",
     paddingBottom: "1.5rem",
+  },
+
+  "& a": {
+    color: "#f9bc3c",
+  },
+
+  "& a:hover": {
+    textDecoration: "underline",
+  },
+
+  "& th": {
+    fontWeight: 600,
+  },
+
+  "& th, & td": {
+    border: "solid 1px #f1f1e6",
+  },
+
+  "& blockquote": {
+    display: "block",
+    background: "#f9bc3c",
+    padding: "1rem 1.125rem 1rem 4rem",
+    margin: "0 0 1.125rem",
+    position: "relative",
+
+    color: "#0f1c2e",
+
+    borderLeftStyle: "solid",
+    borderLeftWidth: "1rem",
+
+    borderLeftColor: "#0f1c2e",
+  },
+
+  "& blockquote::before": {
+    content: `"\\201C"`,
+
+    fontSize: "6rem",
+    fontWeight: "bold",
+    color: "#0f1c2e",
+
+    position: "absolute",
+    left: "0.4rem",
+    top: "-0.8rem",
+  },
+
+  "& blockquote::after": {
+    content: `""`,
+  },
+
+  "& blockquote a": {
+    textDecoration: "none",
+    background: "#0f1c2e",
+    cursor: "pointer",
+    padding: "0 0.25rem",
+    color: "#f9bc3c",
+  },
+
+  "& blockquote a:hover": {
+    textDecoration: "underline",
+  },
+
+  "& blockquote em": {
+    fontStyle: "italic",
+  },
+
+  "& blockquote strong": {
+    fontStyle: "bold",
   },
 });
 

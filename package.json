@@ -11,7 +11,6 @@
   ],
   "license": "CC BY-NC-SA 4.0",
   "scripts": {
-    "postinstall": "patch-package",
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",

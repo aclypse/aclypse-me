@@ -4,13 +4,12 @@ import { graphql } from "gatsby";
 import { Global, css, ThemeProvider } from "@emotion/react";
 import styled from "@emotion/styled";
 
-import cssReset from "@eaze/css-reset";
+import { Helmet } from "react-helmet";
 
 import { lightTheme } from "@themes/light";
+import "../css-reset.css";
 
 const theme = lightTheme;
-
-cssReset();
 
 import Header from "@components/header";
 import Landing from "@components/landing";
@@ -21,11 +20,17 @@ import Contacts from "@components/contacts";
 
 const IndexPage: FC<{
   data: GatsbyTypes.HomePageDataQuery;
-  location: Location;
-}> = () => {
+}> = props => {
   return (
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles} />
+      <Helmet>
+        <title>{props.data.site?.siteMetadata?.title}</title>
+        <meta
+          name="description"
+          content={props.data.site?.siteMetadata?.description || ""}
+        />
+      </Helmet>
       <Header />
       <Main>
         <Landing />

@@ -4,16 +4,14 @@ import styled from "@emotion/styled";
 import { Global, css, ThemeProvider } from "@emotion/react";
 import { Helmet } from "react-helmet";
 
-import cssReset from "@eaze/css-reset";
-
 import { lightTheme } from "@themes/light";
 
 import Footer from "./footer";
 import Header from "./header";
 
-const theme = lightTheme;
+import "../css-reset.css";
 
-cssReset();
+const theme = lightTheme;
 
 const ContentLayout: FC<{
   title: string;

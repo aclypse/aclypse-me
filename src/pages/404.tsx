@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { graphql } from "gatsby";
 
 import { Global, css, ThemeProvider } from "@emotion/react";
 import styled from "@emotion/styled";
@@ -12,11 +13,18 @@ import "../css-reset.css";
 import Header from "@components/header";
 import NotFound from "@components/not-found";
 import Footer from "@components/footer";
+import SEO from "@components/seo";
 
-const NotFoundPage: FC<{}> = () => {
+const NotFoundPage: FC<{ data: GatsbyTypes.Page404DataQuery }> = props => {
   return (
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles} />
+      <SEO
+        title={props.data.site?.siteMetadata?.title || ""}
+        author={props.data.site?.siteMetadata?.author || ""}
+        description={props.data.site?.siteMetadata?.description || ""}
+        keywords={props.data.site?.siteMetadata?.keywords || ""}
+      />
       <Container>
         <Header />
         <Main>
@@ -27,6 +35,19 @@ const NotFoundPage: FC<{}> = () => {
     </ThemeProvider>
   );
 };
+
+export const query = graphql`
+  query Page404Data {
+    site {
+      siteMetadata {
+        title
+        author
+        keywords
+        description
+      }
+    }
+  }
+`;
 
 const Container = styled.div({
   display: "flex",

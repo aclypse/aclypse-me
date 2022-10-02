@@ -7,8 +7,17 @@ import ContentLayout from "./content-layout";
 
 const PortfolioItem: FC<{ data: GatsbyTypes.PortfolioByIdQuery }> = props => {
   const { frontmatter, body } = props.data.mdx!;
+  const { title, author, keywords, description } =
+    props.data.site!.siteMetadata!;
+
   return (
-    <ContentLayout title={frontmatter?.title!}>
+    <ContentLayout
+      postTitle={frontmatter?.title!}
+      title={`${frontmatter?.title!} | ${title!}`}
+      description={description!}
+      author={author!}
+      keywords={keywords!}
+    >
       <MDXRenderer>{body}</MDXRenderer>
     </ContentLayout>
   );
@@ -24,6 +33,14 @@ export const query = graphql`
       }
       fields {
         slug
+      }
+    }
+    site {
+      siteMetadata {
+        title
+        author
+        keywords
+        description
       }
     }
   }

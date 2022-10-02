@@ -2,7 +2,6 @@ import * as React from "react";
 import { FC } from "react";
 import styled from "@emotion/styled";
 import { Global, css, ThemeProvider } from "@emotion/react";
-import { Helmet } from "react-helmet";
 
 import { lightTheme } from "@themes/light";
 
@@ -10,25 +9,32 @@ import Footer from "./footer";
 import Header from "./header";
 
 import "../css-reset.css";
+import SEO from "./seo";
 
 const theme = lightTheme;
 
 const ContentLayout: FC<{
+  postTitle: string;
   title: string;
+  author: string;
+  keywords: string;
+  description: string;
   children: React.ReactNode;
 }> = props => {
   return (
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles} />
-      <Helmet>
-        <title>{props.title}</title>
-        <meta name="description" content="" />
-      </Helmet>
+      <SEO
+        title={props.title}
+        author={props.author}
+        keywords={props.keywords}
+        description={props.description}
+      />
       <Container>
         <Header />
         <Main>
           <Section>
-            <h1>{props.title}</h1>
+            <h1>{props.postTitle}</h1>
             {props.children}
           </Section>
         </Main>
@@ -185,6 +191,10 @@ const Main = styled.main({
 
   "& blockquote strong": {
     fontStyle: "bold",
+  },
+
+  "& iframe": {
+    marginBottom: "1.5rem",
   },
 });
 

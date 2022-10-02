@@ -4,8 +4,6 @@ import { graphql } from "gatsby";
 import { Global, css, ThemeProvider } from "@emotion/react";
 import styled from "@emotion/styled";
 
-import { Helmet } from "react-helmet";
-
 import { lightTheme } from "@themes/light";
 import "../css-reset.css";
 
@@ -17,6 +15,7 @@ import About from "@components/about";
 import Projects from "@components/projects";
 import Portfolio from "@components/portfolio";
 import Contacts from "@components/contacts";
+import SEO from "@components/seo";
 
 const IndexPage: FC<{
   data: GatsbyTypes.HomePageDataQuery;
@@ -24,13 +23,12 @@ const IndexPage: FC<{
   return (
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles} />
-      <Helmet>
-        <title>{props.data.site?.siteMetadata?.title}</title>
-        <meta
-          name="description"
-          content={props.data.site?.siteMetadata?.description || ""}
-        />
-      </Helmet>
+      <SEO
+        title={props.data.site?.siteMetadata?.title || ""}
+        author={props.data.site?.siteMetadata?.author || ""}
+        description={props.data.site?.siteMetadata?.description || ""}
+        keywords={props.data.site?.siteMetadata?.keywords || ""}
+      />
       <Header />
       <Main>
         <Landing />
@@ -48,6 +46,8 @@ export const query = graphql`
     site {
       siteMetadata {
         title
+        author
+        keywords
         description
       }
     }

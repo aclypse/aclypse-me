@@ -111,11 +111,12 @@ const Nav = styled.nav(() => ({
   "@media only screen and (max-width: 768px)": {
     position: "absolute",
     display: "none",
-    top: "4rem",
+    top: "5rem",
     left: 0,
     backgroundColor: "#f9bc3c",
     width: "100%",
     paddingBottom: "2rem",
+    boxShadow: "0px 20px 14px 2px rgba(0,0,0,0.5)",
 
     ul: {
       display: "flex",

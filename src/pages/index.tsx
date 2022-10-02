@@ -18,14 +18,21 @@ import About from "@components/about";
 import Projects from "@components/projects";
 import Portfolio from "@components/portfolio";
 import Contacts from "@components/contacts";
+import { Helmet } from "react-helmet";
 
 const IndexPage: FC<{
   data: GatsbyTypes.HomePageDataQuery;
-  location: Location;
-}> = () => {
+}> = props => {
   return (
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles} />
+      <Helmet>
+        <title>{props.data.site?.siteMetadata?.title}</title>
+        <meta
+          name="description"
+          content={props.data.site?.siteMetadata?.description || ""}
+        />
+      </Helmet>
       <Header />
       <Main>
         <Landing />

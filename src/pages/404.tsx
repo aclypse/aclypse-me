@@ -3,13 +3,11 @@ import React, { FC } from "react";
 import { Global, css, ThemeProvider } from "@emotion/react";
 import styled from "@emotion/styled";
 
-import cssReset from "@eaze/css-reset";
-
 import { lightTheme } from "@themes/light";
 
 const theme = lightTheme;
 
-cssReset();
+import "../css-reset.css";
 
 import Header from "@components/header";
 import NotFound from "@components/not-found";

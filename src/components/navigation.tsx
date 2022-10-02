@@ -1,4 +1,5 @@
 import React, { FC, useEffect } from "react";
+import { Link } from "gatsby";
 import styled from "@emotion/styled";
 
 const Navigation: FC = () => {
@@ -55,24 +56,24 @@ const Navigation: FC = () => {
     <Nav id="navigation">
       <ul>
         <li>
-          <a href="/#about" onClick={onNavClick}>
+          <Link to="/#about" onClick={onNavClick}>
             About
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/#projects" onClick={onNavClick}>
+          <Link to="/#projects" onClick={onNavClick}>
             Projects
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/#portfolio" onClick={onNavClick}>
+          <Link to="/#portfolio" onClick={onNavClick}>
             Portfolio
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/#contacts" onClick={onNavClick}>
+          <Link to="/#contacts" onClick={onNavClick}>
             Contacts
-          </a>
+          </Link>
         </li>
       </ul>
     </Nav>

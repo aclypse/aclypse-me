@@ -4,13 +4,12 @@ import { graphql } from "gatsby";
 import { Global, css, ThemeProvider } from "@emotion/react";
 import styled from "@emotion/styled";
 
-import cssReset from "@eaze/css-reset";
+import { Helmet } from "react-helmet";
 
 import { lightTheme } from "@themes/light";
+import "../css-reset.css";
 
 const theme = lightTheme;
-
-cssReset();
 
 import Header from "@components/header";
 import Landing from "@components/landing";
@@ -18,7 +17,6 @@ import About from "@components/about";
 import Projects from "@components/projects";
 import Portfolio from "@components/portfolio";
 import Contacts from "@components/contacts";
-import { Helmet } from "react-helmet";
 
 const IndexPage: FC<{
   data: GatsbyTypes.HomePageDataQuery;

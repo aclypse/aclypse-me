@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "gatsby";
 import styled from "@emotion/styled";
 
 import Navigation from "./navigation";
@@ -18,7 +19,7 @@ const Header = () => {
     <>
       <HeaderContainer>
         <div>
-          <a href="/#landing">Aclypse</a>
+          <Link to="/#landing">Aclypse</Link>
         </div>
         <Toggle onClick={toggle}>
           <svg viewBox="0 0 100 80" width="20" height="20">

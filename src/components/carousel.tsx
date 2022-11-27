@@ -159,7 +159,7 @@ const Wrapper = styled.div({
 });
 
 const CardHeader = styled.h3({
-  fontSize: "2rem",
+  fontSize: "1.5rem",
   paddingBottom: "1rem",
 });
 
@@ -173,7 +173,7 @@ const CardBody = styled.div({
 });
 
 const Paragraph = styled.p({
-  fontSize: "1.5rem",
+  fontSize: "1.2rem",
   fontWeight: "normal",
   paddingRight: "1rem",
 

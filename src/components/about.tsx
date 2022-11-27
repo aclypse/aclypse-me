@@ -10,10 +10,16 @@ const About: FC<{}> = () => {
           <Header>About</Header>
           <Content>
             <Paragraph>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel
-              fugit velit ipsa consectetur corporis? Explicabo ipsum, temporibus
-              eveniet ipsa qui voluptas totam a perferendis quaerat? Expedita
-              atque facilis corrupti accusamus.
+              I was born in Khmelnytskyi, Ukraine. From what I can remember, a
+              paper with a pencil have always been in my hand. Ever since I was
+              little I knew that art will always be part of my life. Before I
+              found the magical world of design I thought my true vocation is to
+              become an illustrator. At this point of my life I'm a college
+              student specializing in art and applied design, but my passion
+              stands for graphic and digital design. Aside from all the artistic
+              stuff I also have hobbies in different spheres (and passion for
+              coffee). My main goal is to present unusual and unique solutions
+              for this world.
             </Paragraph>
             <Image src="https://picsum.photos/240/240" alt="My photo" />
           </Content>

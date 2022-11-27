@@ -2,12 +2,12 @@ import React, { FC } from "react";
 
 import { graphql, useStaticQuery } from "gatsby";
 
-import Carousel from "./carousel";
+import CarouselPortfolio from "./carousel-portfolio";
 
 const Portfolio: FC<{}> = () => {
   const { edges } = usePortfolioListQuery();
 
-  return <Carousel id="portfolio" title="Portfolio" edges={edges} />;
+  return <CarouselPortfolio id="portfolio" title="Portfolio" edges={edges} />;
 };
 
 const usePortfolioListQuery = () => {

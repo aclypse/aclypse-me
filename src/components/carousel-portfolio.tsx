@@ -5,7 +5,7 @@ import { Link } from "gatsby";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
 
 import PageLayout from "./page-layout";
-import Img from "gatsby-image";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 
 const CarouselPortfolio: FC<{
   id: string;
@@ -89,21 +89,7 @@ const CarouselPortfolio: FC<{
                   <Link to={node.fields.slug}>
                     <CardHeader>{node.frontmatter.title}</CardHeader>
                     <CardBody>
-                      <Img
-                        loading="eager"
-                        style={{
-                          width: "160px",
-                          height: "160px",
-                          minWidth: "160px",
-                          minHeight: "160px",
-                          maxWidth: "160px",
-                          maxHeight: "160px",
-                        }}
-                        fixed={
-                          node!.frontmatter!.featuredImage!.childImageSharp!
-                            .fixed as any
-                        }
-                      />
+                      <MDXRenderer>{node.body}</MDXRenderer>
                     </CardBody>
                   </Link>
                 </Card>
@@ -155,13 +141,13 @@ const Wrapper = styled.div({
 });
 
 const CardHeader = styled.h3({
-  fontSize: "2rem",
+  fontSize: "1.5rem",
   paddingBottom: "1rem",
 });
 
 const CardBody = styled.div({
   display: "flex",
-  flexDirection: "row",
+  flexDirection: "column",
   justifyContent: "center",
 
   "@media only screen and (max-width: 768px)": {
@@ -232,6 +218,7 @@ const Card = styled.div({
 
   "& a": {
     color: "#0f1c2e",
+    flex: 1,
   },
 });
 

@@ -1,11 +1,13 @@
 import React, { FC, useEffect } from "react";
 import styled from "@emotion/styled";
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import { MDXProvider } from "@mdx-js/react";
 
 import { Link } from "gatsby";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
 
 import PageLayout from "./page-layout";
-import { MDXRenderer } from "gatsby-plugin-mdx";
+import { useSwipeable } from "react-swipeable";
 
 const CarouselPortfolio: FC<{
   id: string;
@@ -16,22 +18,22 @@ const CarouselPortfolio: FC<{
   const breakpoints = useBreakpoint();
   const [currentStartIndex, setCurrentStartIndex] = React.useState(0);
 
-  let amountOfProjectsToDisplay = 4;
+  let amountOfItemsToDisplay = 4;
 
   if (breakpoints.xl) {
-    amountOfProjectsToDisplay = 4;
+    amountOfItemsToDisplay = 4;
   } else if (breakpoints.l) {
-    amountOfProjectsToDisplay = 3;
+    amountOfItemsToDisplay = 3;
   } else if (breakpoints.md) {
-    amountOfProjectsToDisplay = 2;
+    amountOfItemsToDisplay = 2;
   } else if (breakpoints.sm || breakpoints.xs) {
-    amountOfProjectsToDisplay = 1;
+    amountOfItemsToDisplay = 1;
   } else {
-    amountOfProjectsToDisplay = 4;
+    amountOfItemsToDisplay = 4;
   }
 
   const [projects, setProjects] = React.useState(
-    edges.slice(0, amountOfProjectsToDisplay)
+    edges.slice(0, amountOfItemsToDisplay)
   );
 
   useEffect(() => {
@@ -39,45 +41,55 @@ const CarouselPortfolio: FC<{
 
     if (
       currentStartIndex >= 0 &&
-      currentStartIndex + amountOfProjectsToDisplay <= edges.length
+      currentStartIndex + amountOfItemsToDisplay <= edges.length
     ) {
       itemsToDisplay = edges.slice(
         currentStartIndex,
-        currentStartIndex + amountOfProjectsToDisplay
+        currentStartIndex + amountOfItemsToDisplay
       );
     } else {
       itemsToDisplay = edges.slice(currentStartIndex, edges.length);
     }
 
     if (
-      itemsToDisplay.length < amountOfProjectsToDisplay &&
-      edges.length > amountOfProjectsToDisplay
+      itemsToDisplay.length < amountOfItemsToDisplay &&
+      edges.length > amountOfItemsToDisplay
     ) {
-      const difference = amountOfProjectsToDisplay - itemsToDisplay.length;
+      const difference = amountOfItemsToDisplay - itemsToDisplay.length;
       itemsToDisplay = itemsToDisplay.concat(edges.slice(0, difference));
     }
 
     setProjects(itemsToDisplay);
-  }, [currentStartIndex, amountOfProjectsToDisplay]);
+  }, [currentStartIndex, amountOfItemsToDisplay]);
+
+  const next = () => {
+    if (currentStartIndex + amountOfItemsToDisplay > edges.length - 1) {
+      setCurrentStartIndex(0);
+    } else {
+      setCurrentStartIndex(currentStartIndex + amountOfItemsToDisplay);
+    }
+  };
+  const prev = () => {
+    if (currentStartIndex - amountOfItemsToDisplay < 0) {
+      setCurrentStartIndex(edges.length - amountOfItemsToDisplay);
+    } else {
+      setCurrentStartIndex(currentStartIndex - amountOfItemsToDisplay);
+    }
+  };
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => next(),
+    onSwipedRight: () => prev(),
+  });
 
   return (
     <PageLayout id={props.id}>
       <Container>
-        <Wrapper>
+        <Wrapper {...handlers}>
           <Header>{props.title}</Header>
           <Grid>
-            <ButtonContainer>
-              <Button
-                onClick={() => {
-                  if (currentStartIndex - 1 < 0) {
-                    setCurrentStartIndex(edges.length - 1);
-                  } else {
-                    setCurrentStartIndex(currentStartIndex - 1);
-                  }
-                }}
-              >
-                &#8249;
-              </Button>
+            <ButtonContainer id="prev-btn">
+              <Button onClick={prev}>&#8249;</Button>
             </ButtonContainer>
             {projects.map(({ node }: any) => {
               if (!node.fields?.slug || !node.frontmatter?.date) {
@@ -87,26 +99,22 @@ const CarouselPortfolio: FC<{
               return (
                 <Card key={node.fields.slug}>
                   <Link to={node.fields.slug}>
-                    <CardHeader>{node.frontmatter.title}</CardHeader>
-                    <CardBody>
-                      <MDXRenderer>{node.body}</MDXRenderer>
-                    </CardBody>
+                    <MDXProvider
+                      components={{
+                        a: props => <>{props.children}</>,
+                      }}
+                    >
+                      <CardHeader>{node.frontmatter.title}</CardHeader>
+                      <CardBody>
+                        <MDXRenderer>{node.body}</MDXRenderer>
+                      </CardBody>
+                    </MDXProvider>
                   </Link>
                 </Card>
               );
             })}
-            <ButtonContainer>
-              <Button
-                onClick={() => {
-                  if (currentStartIndex + 1 > edges.length - 1) {
-                    setCurrentStartIndex(0);
-                  } else {
-                    setCurrentStartIndex(currentStartIndex + 1);
-                  }
-                }}
-              >
-                &#8250;
-              </Button>
+            <ButtonContainer id="next-btn">
+              <Button onClick={next}>&#8250;</Button>
             </ButtonContainer>
           </Grid>
         </Wrapper>
@@ -133,6 +141,12 @@ const Wrapper = styled.div({
   fontWeight: 700,
   color: "#0f1c2e",
   backgroundColor: "#f9bc3c",
+
+  // "@media only screen and (max-width: 720px)": {
+  //   "& #prev-btn, & #next-btn": {
+  //     display: "none",
+  //   },
+  // },
 
   "@media only screen and (max-width: 768px)": {
     padding: "2.5rem 2.5rem",

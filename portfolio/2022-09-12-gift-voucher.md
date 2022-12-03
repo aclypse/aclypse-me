@@ -5,8 +5,8 @@ published: true
 categories:
   - Graphic Design
 tags:
-  - Gift
-  - Voucher
+  - gift
+  - voucher
 description: "A quick design I made for our friend’s birthday."
 featuredImage: "images/graphic-design/gift-voucher-2022.jpg"
 ---

@@ -16,22 +16,22 @@ const Carousel: FC<{
   const breakpoints = useBreakpoint();
   const [currentStartIndex, setCurrentStartIndex] = React.useState(0);
 
-  let amountOfProjectsToDisplay = 4;
+  let amountOfItemsToDisplay = 4;
 
   if (breakpoints.xl) {
-    amountOfProjectsToDisplay = 4;
+    amountOfItemsToDisplay = 4;
   } else if (breakpoints.l) {
-    amountOfProjectsToDisplay = 3;
+    amountOfItemsToDisplay = 3;
   } else if (breakpoints.md) {
-    amountOfProjectsToDisplay = 2;
+    amountOfItemsToDisplay = 2;
   } else if (breakpoints.sm || breakpoints.xs) {
-    amountOfProjectsToDisplay = 1;
+    amountOfItemsToDisplay = 1;
   } else {
-    amountOfProjectsToDisplay = 4;
+    amountOfItemsToDisplay = 4;
   }
 
   const [projects, setProjects] = React.useState(
-    edges.slice(0, amountOfProjectsToDisplay)
+    edges.slice(0, amountOfItemsToDisplay)
   );
 
   useEffect(() => {
@@ -39,26 +39,26 @@ const Carousel: FC<{
 
     if (
       currentStartIndex >= 0 &&
-      currentStartIndex + amountOfProjectsToDisplay <= edges.length
+      currentStartIndex + amountOfItemsToDisplay <= edges.length
     ) {
       itemsToDisplay = edges.slice(
         currentStartIndex,
-        currentStartIndex + amountOfProjectsToDisplay
+        currentStartIndex + amountOfItemsToDisplay
       );
     } else {
       itemsToDisplay = edges.slice(currentStartIndex, edges.length);
     }
 
     if (
-      itemsToDisplay.length < amountOfProjectsToDisplay &&
-      edges.length > amountOfProjectsToDisplay
+      itemsToDisplay.length < amountOfItemsToDisplay &&
+      edges.length > amountOfItemsToDisplay
     ) {
-      const difference = amountOfProjectsToDisplay - itemsToDisplay.length;
+      const difference = amountOfItemsToDisplay - itemsToDisplay.length;
       itemsToDisplay = itemsToDisplay.concat(edges.slice(0, difference));
     }
 
     setProjects(itemsToDisplay);
-  }, [currentStartIndex, amountOfProjectsToDisplay]);
+  }, [currentStartIndex, amountOfItemsToDisplay]);
 
   return (
     <PageLayout id={props.id}>
@@ -69,10 +69,12 @@ const Carousel: FC<{
             <ButtonContainer>
               <Button
                 onClick={() => {
-                  if (currentStartIndex - 1 < 0) {
+                  if (currentStartIndex - amountOfItemsToDisplay < 0) {
                     setCurrentStartIndex(edges.length - 1);
                   } else {
-                    setCurrentStartIndex(currentStartIndex - 1);
+                    setCurrentStartIndex(
+                      currentStartIndex - amountOfItemsToDisplay
+                    );
                   }
                 }}
               >
@@ -116,10 +118,15 @@ const Carousel: FC<{
             <ButtonContainer>
               <Button
                 onClick={() => {
-                  if (currentStartIndex + 1 > edges.length - 1) {
+                  if (
+                    currentStartIndex + amountOfItemsToDisplay >
+                    edges.length - 1
+                  ) {
                     setCurrentStartIndex(0);
                   } else {
-                    setCurrentStartIndex(currentStartIndex + 1);
+                    setCurrentStartIndex(
+                      currentStartIndex + amountOfItemsToDisplay
+                    );
                   }
                 }}
               >

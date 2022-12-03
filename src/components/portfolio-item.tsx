@@ -2,6 +2,7 @@ import * as React from "react";
 import { FC } from "react";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
+import { useSwipeable } from "react-swipeable";
 
 import ContentLayout from "./content-layout";
 
@@ -10,8 +11,14 @@ const PortfolioItem: FC<{ data: GatsbyTypes.PortfolioByIdQuery }> = props => {
   const { title, author, keywords, description } =
     props.data.site!.siteMetadata!;
 
+  const handlers = useSwipeable({
+    onSwipedLeft: () => console.log("swiped left"),
+    onSwipedRight: () => console.log("swiped right"),
+  });
+
   return (
     <ContentLayout
+      {...handlers}
       postTitle={frontmatter?.title!}
       title={`${frontmatter?.title!} | ${title!}`}
       description={description!}

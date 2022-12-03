@@ -7,6 +7,7 @@ import { Link } from "gatsby";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
 
 import PageLayout from "./page-layout";
+import { useSwipeable } from "react-swipeable";
 
 const CarouselPortfolio: FC<{
   id: string;
@@ -61,26 +62,34 @@ const CarouselPortfolio: FC<{
     setProjects(itemsToDisplay);
   }, [currentStartIndex, amountOfItemsToDisplay]);
 
+  const next = () => {
+    if (currentStartIndex + amountOfItemsToDisplay > edges.length - 1) {
+      setCurrentStartIndex(0);
+    } else {
+      setCurrentStartIndex(currentStartIndex + amountOfItemsToDisplay);
+    }
+  };
+  const prev = () => {
+    if (currentStartIndex - amountOfItemsToDisplay < 0) {
+      setCurrentStartIndex(edges.length - amountOfItemsToDisplay);
+    } else {
+      setCurrentStartIndex(currentStartIndex - amountOfItemsToDisplay);
+    }
+  };
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => next(),
+    onSwipedRight: () => prev(),
+  });
+
   return (
     <PageLayout id={props.id}>
       <Container>
-        <Wrapper>
+        <Wrapper {...handlers}>
           <Header>{props.title}</Header>
           <Grid>
-            <ButtonContainer>
-              <Button
-                onClick={() => {
-                  if (currentStartIndex - amountOfItemsToDisplay < 0) {
-                    setCurrentStartIndex(edges.length - amountOfItemsToDisplay);
-                  } else {
-                    setCurrentStartIndex(
-                      currentStartIndex - amountOfItemsToDisplay
-                    );
-                  }
-                }}
-              >
-                &#8249;
-              </Button>
+            <ButtonContainer id="prev-btn">
+              <Button onClick={prev}>&#8249;</Button>
             </ButtonContainer>
             {projects.map(({ node }: any) => {
               if (!node.fields?.slug || !node.frontmatter?.date) {
@@ -104,23 +113,8 @@ const CarouselPortfolio: FC<{
                 </Card>
               );
             })}
-            <ButtonContainer>
-              <Button
-                onClick={() => {
-                  if (
-                    currentStartIndex + amountOfItemsToDisplay >
-                    edges.length - 1
-                  ) {
-                    setCurrentStartIndex(0);
-                  } else {
-                    setCurrentStartIndex(
-                      currentStartIndex + amountOfItemsToDisplay
-                    );
-                  }
-                }}
-              >
-                &#8250;
-              </Button>
+            <ButtonContainer id="next-btn">
+              <Button onClick={next}>&#8250;</Button>
             </ButtonContainer>
           </Grid>
         </Wrapper>
@@ -147,6 +141,12 @@ const Wrapper = styled.div({
   fontWeight: 700,
   color: "#0f1c2e",
   backgroundColor: "#f9bc3c",
+
+  // "@media only screen and (max-width: 720px)": {
+  //   "& #prev-btn, & #next-btn": {
+  //     display: "none",
+  //   },
+  // },
 
   "@media only screen and (max-width: 768px)": {
     padding: "2.5rem 2.5rem",

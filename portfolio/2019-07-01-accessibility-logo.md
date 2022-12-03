@@ -5,8 +5,8 @@ published: true
 categories:
   - Graphic Design
 tags:
-  - Accessibility
-  - Logo
+  - accessibility
+  - logo
 description: "A project for Microsoft about making computers accessible for handy-caped people."
 featuredImage: "images/graphic-design/accessibility-logo-2019.png"
 ---

@@ -19,6 +19,7 @@ const PortfolioItem: FC<{ data: GatsbyTypes.PortfolioByIdQuery }> = props => {
       keywords={keywords!}
     >
       <MDXRenderer>{body}</MDXRenderer>
+      <p>{frontmatter!.description}</p>
     </ContentLayout>
   );
 };
@@ -30,6 +31,7 @@ export const query = graphql`
       frontmatter {
         title
         date
+        description
       }
       fields {
         slug

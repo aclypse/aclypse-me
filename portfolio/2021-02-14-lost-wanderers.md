@@ -8,4 +8,4 @@ description: "It initiated as few random strokes of clouds and developed into a 
 featuredImage: "images/illustrations/lost-wanderers-2021.jpg"
 ---
 
-![alt text](images/illustrations/lost-wanderers-2021.jpg "Lost wanderers")
+![Lost wanderers](images/illustrations/lost-wanderers-2021.jpg)

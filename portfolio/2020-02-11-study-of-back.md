@@ -8,4 +8,4 @@ description: "My first-time painting with oil on wood. The decision to use green
 featuredImage: "images/traditional-art/study-of-back-2020.jpg"
 ---
 
-![alt text](images/traditional-art/study-of-back-2020.jpg "Study of back")
+![Study of back](images/traditional-art/study-of-back-2020.jpg)

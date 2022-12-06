@@ -10,4 +10,4 @@ description: "A school assignment for a book cover. Haruki Murakami is my favori
 featuredImage: "images/graphic-design/a-wild-sheep-chase-book-cover-2022.jpg"
 ---
 
-![alt text](images/graphic-design/a-wild-sheep-chase-book-cover-2022.jpg "A wild sheep chase")
+![A wild sheep chase](images/graphic-design/a-wild-sheep-chase-book-cover-2022.jpg)

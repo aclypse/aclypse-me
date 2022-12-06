@@ -8,4 +8,4 @@ description: "Work from art course of a seductive and dangerous woman."
 featuredImage: "images/traditional-art/fire-woman-2019.jpg"
 ---
 
-![alt text](images/traditional-art/fire-woman-2019.jpg "Fire woman")
+![Fire woman](images/traditional-art/fire-woman-2019.jpg)

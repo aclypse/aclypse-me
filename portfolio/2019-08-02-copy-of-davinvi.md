@@ -8,4 +8,4 @@ description: "A painting of Lady with an Ermine I painted on art course. I was a
 featuredImage: "images/traditional-art/copy-of-davinvi-2019.jpg"
 ---
 
-![alt text](images/traditional-art/copy-of-davinvi-2019.jpg "Copy of Da Vinci")
+![Copy of Da Vinci](images/traditional-art/copy-of-davinvi-2019.jpg)

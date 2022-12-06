@@ -8,4 +8,4 @@ description: "One of the first commercial art."
 featuredImage: "images/illustrations/portrait-of-a-woman-2020.jpg"
 ---
 
-![alt text](images/illustrations/portrait-of-a-woman-2020.jpg "Portrait of a woman")
+![Portrait of a woman](images/illustrations/portrait-of-a-woman-2020.jpg)

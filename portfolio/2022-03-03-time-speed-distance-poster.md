@@ -10,4 +10,4 @@ description: "A school assignment for a poster."
 featuredImage: "images/graphic-design/time-speed-distance-poster-2022.pg"
 ---
 
-![alt text](images/graphic-design/time-speed-distance-poster-2022.jpg "Time, Speed, Distance")
+![Time, Speed, Distance](images/graphic-design/time-speed-distance-poster-2022.jpg)

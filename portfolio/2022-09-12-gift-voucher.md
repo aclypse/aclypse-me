@@ -1,5 +1,5 @@
 ---
-title: Gift Voucher, 2022
+title: The Gift Voucher, 2022
 date: 2022-09-12T19:24:03Z
 published: true
 categories:
@@ -11,4 +11,4 @@ description: "A quick design I made for our friend’s birthday."
 featuredImage: "images/graphic-design/gift-voucher-2022.jpg"
 ---
 
-![alt text](images/graphic-design/gift-voucher-2022.jpg "The gift voucher")
+![The gift voucher](images/graphic-design/gift-voucher-2022.jpg)

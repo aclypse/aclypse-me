@@ -10,4 +10,4 @@ description: "A school assignment for propagative bag. All the people around me 
 featuredImage: "images/graphic-design/shopping-bag-2021.jpg"
 ---
 
-![alt text](images/graphic-design/shopping-bag-2021.jpg "Shopping bag")
+![Shopping bag](images/graphic-design/shopping-bag-2021.jpg)

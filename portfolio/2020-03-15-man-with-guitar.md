@@ -8,4 +8,4 @@ description: "This man attended our art course with guitar and all of us wanted 
 featuredImage: "images/traditional-art/man-with-guitar-2020.jpg"
 ---
 
-![alt text](images/traditional-art/man-with-guitar-2020.jpg "A man with guitar")
+![A man with guitar](images/traditional-art/man-with-guitar-2020.jpg)

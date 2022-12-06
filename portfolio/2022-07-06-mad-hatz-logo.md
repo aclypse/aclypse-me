@@ -10,4 +10,4 @@ description: "Just a quick brand idea me and my friend came up with during a cof
 featuredImage: "images/graphic-design/mad-hatz-logo-2022.png"
 ---
 
-![alt text](images/graphic-design/mad-hatz-logo-2022.png "MadHatz logo")
+![MadHatz logo](images/graphic-design/mad-hatz-logo-2022.png)

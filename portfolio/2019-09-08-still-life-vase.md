@@ -8,4 +8,4 @@ description: "Still life from art course."
 featuredImage: "images/traditional-art/still-life-vase-2019.jpg"
 ---
 
-![alt text](images/traditional-art/still-life-vase-2019.jpg "Still life vase")
+![Still life vase](images/traditional-art/still-life-vase-2019.jpg)

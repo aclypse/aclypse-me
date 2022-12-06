@@ -8,4 +8,4 @@ description: "Drawing from art course. David is definitely a popular character t
 featuredImage: "images/traditional-art/david-portrait-2019.jpg"
 ---
 
-![alt text](images/traditional-art/david-portrait-2019.jpg "Portrait of David")
+![Portrait of David](images/traditional-art/david-portrait-2019.jpg)

@@ -1,32 +1,42 @@
 import * as React from "react";
 import { FC } from "react";
-import { graphql } from "gatsby";
+import { graphql, navigate } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { useSwipeable } from "react-swipeable";
 
 import ContentLayout from "./content-layout";
 
 const PortfolioItem: FC<{ data: GatsbyTypes.PortfolioByIdQuery }> = props => {
-  const { frontmatter, body } = props.data.mdx!;
+  const { frontmatter, body, fields } = props.data.mdx!;
   const { title, author, keywords, description } =
     props.data.site!.siteMetadata!;
 
+  const { edges } = props.data.allMdx!;
+  const idx = edges.findIndex(edge => edge.node.fields?.slug === fields?.slug);
+  const prev = idx - 1 < 0 ? edges[edges.length - 1] : edges[idx - 1];
+  const next = idx + 1 === edges.length ? edges[0] : edges[idx + 1];
+
   const handlers = useSwipeable({
-    onSwipedLeft: () => console.log("swiped left"),
-    onSwipedRight: () => console.log("swiped right"),
+    onSwipedLeft: () => {
+      navigate(next!.node.fields!.slug!);
+    },
+    onSwipedRight: () => {
+      navigate(prev!.node.fields!.slug!);
+    },
   });
 
   return (
     <ContentLayout
-      {...handlers}
       postTitle={frontmatter?.title!}
       title={`${frontmatter?.title!} | ${title!}`}
       description={description!}
       author={author!}
       keywords={keywords!}
     >
-      <MDXRenderer>{body}</MDXRenderer>
-      <p>{frontmatter!.description}</p>
+      <div {...handlers}>
+        <p>{frontmatter!.description}</p>
+        <MDXRenderer>{body}</MDXRenderer>
+      </div>
     </ContentLayout>
   );
 };
@@ -42,6 +52,22 @@ export const query = graphql`
       }
       fields {
         slug
+      }
+    }
+    allMdx(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: {
+        frontmatter: { published: { eq: true } }
+        fields: { type: { eq: "portfolio" } }
+      }
+    ) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+        }
       }
     }
     site {

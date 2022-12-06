@@ -108,11 +108,8 @@ const Carousel: FC<{
                         loading="eager"
                         style={{
                           width: "160px",
-                          height: "160px",
                           minWidth: "160px",
-                          minHeight: "160px",
                           maxWidth: "160px",
-                          maxHeight: "160px",
                         }}
                         fixed={
                           node!.frontmatter!.featuredImage!.childImageSharp!

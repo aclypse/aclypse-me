@@ -7,7 +7,7 @@ categories:
 tags:
   - poster
 description: "A school assignment for a poster."
-featuredImage: "images/graphic-design/time-speed-distance-poster-2022.pg"
+featuredImage: "images/graphic-design/time-speed-distance-poster-2022.jpg"
 ---
 
-![alt text](images/graphic-design/time-speed-distance-poster-2022.jpg "Time, Speed, Distance")
+![Time, Speed, Distance](images/graphic-design/time-speed-distance-poster-2022.jpg)

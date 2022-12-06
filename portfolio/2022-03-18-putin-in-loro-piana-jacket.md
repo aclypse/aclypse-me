@@ -10,4 +10,4 @@ description: "A satiric art of dictator."
 featuredImage: "images/illustrations/putin-in-loro-piana-jacket-2022.png"
 ---
 
-![alt text](images/illustrations/putin-in-loro-piana-jacket-2022.png "Putin in Loro Piana jacket")
+![Putin in Loro Piana jacket](images/illustrations/putin-in-loro-piana-jacket-2022.png)

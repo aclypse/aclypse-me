@@ -8,4 +8,4 @@ description: "A school assignment for cards. These are collectible cards of Gods
 featuredImage: "images/graphic-design/collectable-gods-cards-2022.jpg"
 ---
 
-![alt text](images/graphic-design/collectable-gods-cards-2022.jpg "Collectable Gods Cards")
+![Collectable Gods Cards](images/graphic-design/collectable-gods-cards-2022.jpg)

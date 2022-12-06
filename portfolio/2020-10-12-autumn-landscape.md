@@ -8,4 +8,4 @@ description: "A beautiful window surrounded by leaves painted/colored in autumn 
 featuredImage: "images/photos/autumn-landscape-2020.jpg"
 ---
 
-![alt text](images/photos/autumn-landscape-2020.jpg "Autumn landscape")
+![Autumn landscape](images/photos/autumn-landscape-2020.jpg)

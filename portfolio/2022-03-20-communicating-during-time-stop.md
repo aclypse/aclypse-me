@@ -10,4 +10,4 @@ description: "A school assignment for a poster. Nowadays all the people communic
 featuredImage: "images/graphic-design/communicating-during-time-stop-2022.jpg"
 ---
 
-![alt text](images/graphic-design/communicating-during-time-stop-2022.jpg "Communication during time-freeze")
+![Communication during time-freeze](images/graphic-design/communicating-during-time-stop-2022.jpg)

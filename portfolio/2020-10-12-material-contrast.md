@@ -8,4 +8,4 @@ description: "I find the difference between bricks and wood to be very welcoming
 featuredImage: "images/photos/material-contrast-2020.jpg"
 ---
 
-![alt text](images/photos/material-contrast-2020.jpg "Material contrast")
+![Material contrast](images/photos/material-contrast-2020.jpg)

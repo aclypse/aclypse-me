@@ -10,4 +10,4 @@ description: "I always wanted to make my own stickers and telegram gave me the o
 featuredImage: "images/illustrations/pizza-with-coffee-stickers-2022.jpg"
 ---
 
-![alt text](images/illustrations/pizza-with-coffee-stickers-2022.jpg "Pizza with coffee stickers")
+![Pizza with coffee stickers](images/illustrations/pizza-with-coffee-stickers-2022.jpg)

@@ -11,4 +11,4 @@ description: "A project for Microsoft about making computers accessible for hand
 featuredImage: "images/graphic-design/accessibility-logo-2019.png"
 ---
 
-![alt text](images/graphic-design/accessibility-logo-2019.png "The accessibility logo")
+![The accessibility logo](images/graphic-design/accessibility-logo-2019.png)

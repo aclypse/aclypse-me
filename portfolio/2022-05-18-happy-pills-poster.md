@@ -10,4 +10,4 @@ description: "School assignment for lettering. I decided to level up my work and
 featuredImage: "images/graphic-design/happy-pills-poster-2022.jpg"
 ---
 
-![alt text](images/graphic-design/happy-pills-poster-2022.jpg "Happy pills poster")
+![Happy pills poster](images/graphic-design/happy-pills-poster-2022.jpg)

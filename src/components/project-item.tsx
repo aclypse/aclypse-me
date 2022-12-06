@@ -12,7 +12,7 @@ const ProjectItem: FC<{ data: GatsbyTypes.ProjectByIdQuery }> = props => {
   const { title, author, keywords, description } =
     props.data.site!.siteMetadata!;
 
-  const { edges } = props.data.allMarkdownRemark!;
+  const { edges } = props.data.allMdx!;
   const idx = edges.findIndex(edge => edge.node.fields?.slug === fields?.slug);
   const prev = idx - 1 < 0 ? edges[edges.length - 1] : edges[idx - 1];
   const next = idx + 1 === edges.length ? edges[0] : edges[idx + 1];
@@ -83,7 +83,7 @@ export const query = graphql`
         slug
       }
     }
-    allMarkdownRemark(
+    allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
         frontmatter: { published: { eq: true } }

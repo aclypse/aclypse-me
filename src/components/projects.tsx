@@ -11,46 +11,45 @@ const Projects: FC<{}> = () => {
 };
 
 const useProjectsListQuery = () => {
-  const { allMarkdownRemark } =
-    useStaticQuery<GatsbyTypes.ProjectsListQuery>(graphql`
-      query ProjectsList {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          filter: {
-            frontmatter: { published: { eq: true } }
-            fields: { type: { eq: "project" } }
-          }
-        ) {
-          edges {
-            node {
-              id
-              excerpt(pruneLength: 80)
-              frontmatter {
-                title
-                date
-                description
-                featuredImage {
-                  childImageSharp {
-                    fixed(width: 160, height: 160) {
-                      base64
-                      width
-                      height
-                      src
-                      srcSet
-                    }
+  const { allMdx } = useStaticQuery<GatsbyTypes.ProjectsListQuery>(graphql`
+    query ProjectsList {
+      allMdx(
+        sort: { fields: [frontmatter___date], order: DESC }
+        filter: {
+          frontmatter: { published: { eq: true } }
+          fields: { type: { eq: "project" } }
+        }
+      ) {
+        edges {
+          node {
+            id
+            excerpt(pruneLength: 80)
+            frontmatter {
+              title
+              date
+              description
+              featuredImage {
+                childImageSharp {
+                  fixed(width: 160) {
+                    base64
+                    width
+                    height
+                    src
+                    srcSet
                   }
                 }
               }
-              fields {
-                slug
-              }
+            }
+            fields {
+              slug
             }
           }
         }
       }
-    `);
+    }
+  `);
 
-  return allMarkdownRemark;
+  return allMdx;
 };
 
 export default Projects;

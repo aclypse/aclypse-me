@@ -7,7 +7,7 @@ categories:
 tags:
   - book cover
 description: "A quick design I made for our friend’s birthday."
-featuredImage: "images/graphic-design/we-zamyatin-book-cover-2022.png"
+featuredImage: "images/graphic-design/we-zamyatin-book-cover-2022.jpg"
 ---
 
-![alt text](images/graphic-design/we-zamyatin-book-cover-2022.png "We, Zamyatin (book cover)")
+![alt text](images/graphic-design/we-zamyatin-book-cover-2022.jpg "We, Zamyatin (book cover)")

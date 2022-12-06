@@ -7,7 +7,7 @@ categories:
 tags:
   - logo
 description: "Just a quick brand idea me and my friend came up with during a coffee talk."
-featuredImage: "images/graphic-design/mad-hatz-logo-2022.jpg"
+featuredImage: "images/graphic-design/mad-hatz-logo-2022.png"
 ---
 
-![alt text](images/graphic-design/mad-hatz-logo-2022.jpg "MadHatz logo")
+![alt text](images/graphic-design/mad-hatz-logo-2022.png "MadHatz logo")

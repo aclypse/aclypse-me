@@ -6,7 +6,7 @@ categories:
   - Graphic Design
 tags:
   - book cover
-description: "A quick design I made for our friend’s birthday."
+description: " One of my favorite book genres are dystopian novels. I got carried away by the story of this book and decided to make a cover for it."
 featuredImage: "images/graphic-design/we-zamyatin-book-cover-2022.jpg"
 ---
 

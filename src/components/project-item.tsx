@@ -1,5 +1,6 @@
 import * as React from "react";
 import { FC } from "react";
+import styled from "@emotion/styled";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
@@ -18,10 +19,42 @@ const ProjectItem: FC<{ data: GatsbyTypes.ProjectByIdQuery }> = props => {
       author={author!}
       keywords={keywords!}
     >
-      <MDXRenderer>{body}</MDXRenderer>
+      <Container>
+        <MDXRenderer>{body}</MDXRenderer>
+      </Container>
     </ContentLayout>
   );
 };
+
+const Container = styled.div({
+  "& em": {
+    fontStyle: "italic",
+  },
+
+  "& strong": {
+    fontWeight: "bold",
+  },
+
+  "& .image-container": {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    paddingBottom: "1.5rem",
+
+    p: {
+      flex: 1,
+      padding: "0 1rem",
+    },
+
+    "@media only screen and (max-width: 768px)": {
+      flexDirection: "column",
+
+      p: {
+        paddingBottom: "1.5rem",
+      },
+    },
+  },
+});
 
 export const query = graphql`
   query ProjectById($id: String!) {

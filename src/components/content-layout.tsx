@@ -10,6 +10,7 @@ import Header from "./header";
 
 import "../css-reset.css";
 import SEO from "./seo";
+import { SwipeableHandlers } from "react-swipeable";
 
 const theme = lightTheme;
 
@@ -20,7 +21,10 @@ const ContentLayout: FC<{
   keywords: string;
   description: string;
   children: React.ReactNode;
+  handlers?: SwipeableHandlers;
 }> = props => {
+  const { handlers } = props;
+
   return (
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles} />
@@ -32,7 +36,7 @@ const ContentLayout: FC<{
       />
       <Container>
         <Header />
-        <Main>
+        <Main {...handlers}>
           <Section>
             <h1>{props.postTitle}</h1>
             {props.children}

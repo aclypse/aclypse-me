@@ -23,6 +23,12 @@ const PortfolioItem: FC<{ data: GatsbyTypes.PortfolioByIdQuery }> = props => {
     onSwipedRight: () => {
       navigate(prev!.node.fields!.slug!);
     },
+    onSwipedDown: () => {
+      navigate(prev!.node.fields!.slug!);
+    },
+    onSwipedUp: () => {
+      navigate(next!.node.fields!.slug!);
+    },
   });
 
   return (
@@ -32,8 +38,9 @@ const PortfolioItem: FC<{ data: GatsbyTypes.PortfolioByIdQuery }> = props => {
       description={description!}
       author={author!}
       keywords={keywords!}
+      handlers={handlers}
     >
-      <div {...handlers}>
+      <div>
         <p>{frontmatter!.description}</p>
         <MDXRenderer>{body}</MDXRenderer>
       </div>

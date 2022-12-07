@@ -1,13 +1,35 @@
 import React, { FC } from "react";
+import styled from "@emotion/styled";
 
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import { MDXProvider } from "@mdx-js/react";
 import { graphql, useStaticQuery } from "gatsby";
 
-import CarouselPortfolio from "./carousel-portfolio";
+import Carousel from "./carousel";
 
 const Portfolio: FC<{}> = () => {
   const { edges } = usePortfolioListQuery();
 
-  return <CarouselPortfolio id="portfolio" title="Portfolio" edges={edges} />;
+  return (
+    <Carousel
+      id="portfolio"
+      title="Portfolio"
+      edges={edges}
+      render={node => {
+        return (
+          <CardContainer>
+            <MDXProvider
+              components={{
+                a: props => <>{props.children}</>,
+              }}
+            >
+              <MDXRenderer>{node.body}</MDXRenderer>
+            </MDXProvider>
+          </CardContainer>
+        );
+      }}
+    ></Carousel>
+  );
 };
 
 const usePortfolioListQuery = () => {
@@ -52,5 +74,20 @@ const usePortfolioListQuery = () => {
 
   return allMdx;
 };
+
+const CardContainer = styled.div({
+  "& .gatsby-resp-image-wrapper": {
+    display: "flex!important",
+    maxHeight: "36vh",
+    justifyContent: "center",
+  },
+
+  "& img": {
+    left: "auto!important",
+    top: "auto!important",
+    width: "auto!important",
+    justifySelf: "center",
+  },
+});
 
 export default Portfolio;

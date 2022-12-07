@@ -141,6 +141,8 @@ const Wrapper = styled.div({
   fontWeight: 700,
   color: "#0f1c2e",
   backgroundColor: "#f9bc3c",
+  height: "70vh",
+  maxHeight: "70vh",
 
   // "@media only screen and (max-width: 720px)": {
   //   "& #prev-btn, & #next-btn": {
@@ -163,6 +165,19 @@ const CardBody = styled.div({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
+
+  "& .gatsby-resp-image-wrapper": {
+    display: "flex!important",
+    maxHeight: "36vh",
+    justifyContent: "center",
+  },
+
+  "& img": {
+    left: "auto!important",
+    top: "auto!important",
+    width: "auto!important",
+    justifySelf: "center",
+  },
 
   "@media only screen and (max-width: 768px)": {
     flexDirection: "column-reverse",
@@ -201,6 +216,7 @@ const Card = styled.div({
   flex: "25%",
   padding: "1.8rem 1.8rem",
   maxWidth: "25%",
+  maxHeight: "50vh",
 
   "@media screen and (max-width: 720px)": {
     flex: "100%",

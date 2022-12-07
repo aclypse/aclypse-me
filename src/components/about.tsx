@@ -42,6 +42,7 @@ const Wrapper = styled.div({
   fontWeight: 700,
   color: "#0f1c2e",
   backgroundColor: "#f9bc3c",
+  maxHeight: "70vh",
 
   "@media only screen and (max-width: 768px)": {
     padding: "2.5rem 2.5rem",
@@ -53,6 +54,7 @@ const Wrapper = styled.div({
 const Content = styled.div({
   display: "flex",
   flexDirection: "row",
+  alignItems: "flex-start",
 
   "@media only screen and (max-width: 768px)": {
     flexDirection: "column-reverse",
@@ -77,7 +79,7 @@ const Paragraph = styled.p({
 
 const Image = styled.img({
   width: "25%",
-  minWidth: "25%",
+  height: "auto",
 
   "@media only screen and (max-width: 768px)": {
     width: "auto",

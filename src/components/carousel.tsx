@@ -87,7 +87,7 @@ const Carousel: FC<{
         <Wrapper {...handlers}>
           <Header>{props.title}</Header>
           <Grid>
-            <ButtonContainer id="prev-btn">
+            <ButtonContainer id={`${props.id}-prev-btn`}>
               <Button onClick={prev}>&#8249;</Button>
             </ButtonContainer>
             {projects.map(({ node }: any) => {
@@ -104,7 +104,7 @@ const Carousel: FC<{
                 </Card>
               );
             })}
-            <ButtonContainer id="next-btn">
+            <ButtonContainer id={`${props.id}-next-btn`}>
               <Button onClick={next}>&#8250;</Button>
             </ButtonContainer>
           </Grid>
@@ -164,6 +164,7 @@ const CardBody = styled.div({
 const Grid = styled.div({
   display: "flex",
   margin: "0 -1.8rem",
+  height: "60%",
 });
 
 const ButtonContainer = styled.div({

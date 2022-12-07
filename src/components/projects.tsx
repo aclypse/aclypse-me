@@ -81,7 +81,7 @@ const useProjectsListQuery = () => {
   return allMdx;
 };
 
-const CardContainer = styled.p({
+const CardContainer = styled.div({
   display: "flex",
 
   "@media only screen and (max-width: 1024px)": {

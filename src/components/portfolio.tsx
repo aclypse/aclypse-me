@@ -75,7 +75,7 @@ const usePortfolioListQuery = () => {
   return allMdx;
 };
 
-const CardContainer = styled.p({
+const CardContainer = styled.div({
   "& .gatsby-resp-image-wrapper": {
     display: "flex!important",
     maxHeight: "36vh",

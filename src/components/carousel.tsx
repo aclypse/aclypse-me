@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 
 import { Link } from "gatsby";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
-import Img from "gatsby-image";
 
 import PageLayout from "./page-layout";
 import { useSwipeable } from "react-swipeable";
@@ -12,6 +11,7 @@ const Carousel: FC<{
   id: string;
   title: string;
   edges: any;
+  render: (node: any) => React.ReactNode;
 }> = props => {
   const { edges } = props;
   const breakpoints = useBreakpoint();
@@ -99,24 +99,7 @@ const Carousel: FC<{
                 <Card key={node.fields.slug}>
                   <Link to={node.fields.slug}>
                     <CardHeader>{node.frontmatter.title}</CardHeader>
-                    <CardBody>
-                      <Paragraph>
-                        {node.frontmatter?.description || node.excerpt}
-                      </Paragraph>
-
-                      <Img
-                        loading="eager"
-                        style={{
-                          width: "160px",
-                          minWidth: "160px",
-                          maxWidth: "160px",
-                        }}
-                        fixed={
-                          node!.frontmatter!.featuredImage!.childImageSharp!
-                            .fixed as any
-                        }
-                      />
-                    </CardBody>
+                    <CardBody>{props.render(node)}</CardBody>
                   </Link>
                 </Card>
               );
@@ -149,10 +132,17 @@ const Wrapper = styled.div({
   fontWeight: 700,
   color: "#0f1c2e",
   backgroundColor: "#f9bc3c",
+  height: "70vh",
+  maxHeight: "70vh",
+
+  // "@media only screen and (max-width: 720px)": {
+  //   "& #prev-btn, & #next-btn": {
+  //     display: "none",
+  //   },
+  // },
 
   "@media only screen and (max-width: 768px)": {
     padding: "2.5rem 2.5rem",
-    height: "auto",
   },
 });
 
@@ -163,21 +153,11 @@ const CardHeader = styled.h3({
 
 const CardBody = styled.div({
   display: "flex",
-  flexDirection: "row",
+  flexDirection: "column",
+  justifyContent: "center",
 
   "@media only screen and (max-width: 768px)": {
     flexDirection: "column-reverse",
-  },
-});
-
-const Paragraph = styled.p({
-  fontSize: "1.2rem",
-  fontWeight: "normal",
-  paddingRight: "1rem",
-
-  "@media only screen and (max-width: 768px)": {
-    paddingRight: "0",
-    paddingTop: "1rem",
   },
 });
 
@@ -213,6 +193,7 @@ const Card = styled.div({
   flex: "25%",
   padding: "1.8rem 1.8rem",
   maxWidth: "25%",
+  maxHeight: "50vh",
 
   "@media screen and (max-width: 720px)": {
     flex: "100%",
@@ -244,6 +225,7 @@ const Card = styled.div({
 
   "& a": {
     color: "#0f1c2e",
+    flex: 1,
   },
 });
 

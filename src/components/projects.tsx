@@ -17,10 +17,6 @@ const Projects: FC<{}> = () => {
       render={node => {
         return (
           <CardContainer>
-            <Paragraph>
-              {node.frontmatter?.description || node.excerpt}
-            </Paragraph>
-
             <Img
               loading="eager"
               style={{
@@ -32,6 +28,10 @@ const Projects: FC<{}> = () => {
                 node!.frontmatter!.featuredImage!.childImageSharp!.fixed as any
               }
             />
+
+            <Paragraph>
+              {node.frontmatter?.description || node.excerpt}
+            </Paragraph>
           </CardContainer>
         );
       }}
@@ -83,10 +83,7 @@ const useProjectsListQuery = () => {
 
 const CardContainer = styled.div({
   display: "flex",
-
-  "@media only screen and (max-width: 1024px)": {
-    flexDirection: "column-reverse",
-  },
+  flexDirection: "column",
 });
 
 const Paragraph = styled.p({

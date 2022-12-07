@@ -42,12 +42,12 @@ const Wrapper = styled.div({
   fontWeight: 700,
   color: "#0f1c2e",
   backgroundColor: "#f9bc3c",
-  maxHeight: "70vh",
+  maxHeight: "80vh",
 
   "@media only screen and (max-width: 768px)": {
     padding: "2.5rem 2.5rem",
     height: "auto",
-    marginBottom: "16rem",
+    fontSize: "1.5rem",
   },
 });
 
@@ -71,9 +71,10 @@ const Paragraph = styled.p({
   fontWeight: "normal",
   paddingRight: "2rem",
 
-  "@media only screen and (max-width: 768px)": {
+  "@media only screen and (max-width: 1024px)": {
     paddingRight: "0",
     paddingTop: "1rem",
+    fontSize: "1.2rem",
   },
 });
 
@@ -81,9 +82,9 @@ const Image = styled.img({
   width: "25%",
   height: "auto",
 
-  "@media only screen and (max-width: 768px)": {
+  "@media only screen and (max-width: 1024px)": {
     width: "auto",
-    height: "auto",
+    height: "160px",
   },
 });
 

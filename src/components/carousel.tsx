@@ -164,7 +164,11 @@ const CardBody = styled.div({
 const Grid = styled.div({
   display: "flex",
   margin: "0 -1.8rem",
-  height: "60%",
+  height: "100%",
+
+  "@media only screen and (max-width: 768px)": {
+    height: "calc(100% - 1.8rem)",
+  },
 });
 
 const ButtonContainer = styled.div({
@@ -180,6 +184,7 @@ const Button = styled.div({
   display: "flex",
   justifyContent: "center",
   alignItems: "flex-end",
+  marginTop: "-20rem",
 
   "&:hover": {
     backgroundColor: "#0f1c2e",

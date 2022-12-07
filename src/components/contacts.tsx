@@ -129,16 +129,15 @@ const Paragraph = styled.p({
   display: "flex",
   justifyContent: "flex-start",
   paddingBottom: "1.5rem",
-
-  "& svg": {
-    margin: "0 1rem",
-    width: "2rem",
-    height: "2rem",
-  },
 });
 
 const List = styled.ul({
   fontSize: "1.5rem",
+
+  "& svg": {
+    width: "2rem",
+    height: "2rem",
+  },
 
   "& li": {
     display: "flex",
@@ -150,6 +149,7 @@ const List = styled.ul({
     display: "flex",
     alignItems: "center",
   },
+
   "& a > span": {
     paddingLeft: "0.75rem",
   },

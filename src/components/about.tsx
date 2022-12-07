@@ -21,7 +21,7 @@ const About: FC<{}> = () => {
               coffee). My main goal is to present unusual and unique solutions
               for this world.
             </Paragraph>
-            <Image src="https://picsum.photos/240/240" alt="My photo" />
+            <Image src={"profile.jpg"} alt="Photo of myself" />
           </Content>
         </Wrapper>
       </Container>

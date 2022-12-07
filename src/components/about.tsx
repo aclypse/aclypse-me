@@ -21,7 +21,7 @@ const About: FC<{}> = () => {
               coffee). My main goal is to present unusual and unique solutions
               for this world.
             </Paragraph>
-            <Image src="https://picsum.photos/240/240" alt="My photo" />
+            <Image src="/profile.jpg" alt="Photo of myself" />
           </Content>
         </Wrapper>
       </Container>
@@ -71,7 +71,7 @@ const Paragraph = styled.p({
   fontWeight: "normal",
   paddingRight: "2rem",
 
-  "@media only screen and (max-width: 1024px)": {
+  "@media only screen and (max-width: 768px)": {
     paddingRight: "0",
     paddingTop: "1rem",
     fontSize: "1.2rem",
@@ -82,9 +82,9 @@ const Image = styled.img({
   width: "25%",
   height: "auto",
 
-  "@media only screen and (max-width: 1024px)": {
+  "@media only screen and (max-width: 768px)": {
     width: "auto",
-    height: "160px",
+    height: "40vh",
   },
 });
 

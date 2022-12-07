@@ -4,6 +4,15 @@ import styled from "@emotion/styled";
 import PageLayout from "./page-layout";
 import Footer from "./footer";
 
+import Instagram from "assets/instagram.svg";
+import Facebook from "assets/facebook.svg";
+import ArtStation from "assets/artstation.svg";
+import Tumblr from "assets/tumblr.svg";
+
+// ArtStation aclypse.artstation.com
+// Tumblr aclypse.tumblr.com
+// Facebook (20+) Diana Michajlova | Facebook
+
 const Contacts: FC<{}> = () => {
   return (
     <PageLayout id="contacts">
@@ -11,12 +20,66 @@ const Contacts: FC<{}> = () => {
         <Wrapper>
           <Content>
             <Header>Contacts</Header>
-            <Paragraph>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel
-              fugit velit ipsa consectetur corporis? Explicabo ipsum, temporibus
-              eveniet ipsa qui voluptas totam a perferendis quaerat? Expedita
-              atque facilis corrupti accusamus.
-            </Paragraph>
+            <Paragraph>You can find me on the social networks:</Paragraph>
+            <List>
+              <li>
+                <a
+                  href="https://www.instagram.com/aclypse.me"
+                  title="Aclypse's Instagram Art Profile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Instagram />
+                  <span>@aclypse.me</span>
+                </a>
+                <span>&nbsp;- Art Account</span>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/aclypse_aclypse"
+                  title="Aclypse's Instagram Personal Profile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Instagram />
+                  <span>@aclypse_aclypse</span>
+                </a>
+                <span>&nbsp;- Personal Account</span>
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/aclypseme"
+                  title="Aclypse's Facebook Profile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Facebook />
+                  <span>aclypseme</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://aclypse.artstation.com"
+                  title="Aclypse's ArtStation Profile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ArtStation />
+                  <span>aclypse.artstation.com</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://aclypse.tumblr.com"
+                  title="Aclypse's Tumblr Profile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Tumblr />
+                  <span>aclypse.tumblr.com</span>
+                </a>
+              </li>
+            </List>
           </Content>
         </Wrapper>
         <Footer />
@@ -65,11 +128,30 @@ const Paragraph = styled.p({
   fontWeight: "normal",
   display: "flex",
   justifyContent: "flex-start",
+  paddingBottom: "1.5rem",
+});
+
+const List = styled.ul({
+  fontSize: "1.5rem",
 
   "& svg": {
-    margin: "0 1rem",
     width: "2rem",
     height: "2rem",
+  },
+
+  "& li": {
+    display: "flex",
+    height: "2.75rem",
+    alignItems: "center",
+  },
+
+  "& a": {
+    display: "flex",
+    alignItems: "center",
+  },
+
+  "& a > span": {
+    paddingLeft: "0.75rem",
   },
 });
 

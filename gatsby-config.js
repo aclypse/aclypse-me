@@ -15,6 +15,7 @@ module.exports = {
     author: "Diana Michajlova",
     keywords: "graphic designer, designer, diana michajlova",
     description: "Work and Life",
+    siteUrl: "https://aclypse.me/",
   },
   plugins: [
     `gatsby-plugin-sharp`,

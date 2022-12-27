@@ -28,7 +28,7 @@ const Contacts: FC<{}> = () => {
                   <Instagram />
                   <span>@aclypse.me</span>
                 </a>
-                <span>&nbsp;- art</span>
+                <span className="description">&nbsp;- art</span>
               </li>
               <li>
                 <a
@@ -40,7 +40,7 @@ const Contacts: FC<{}> = () => {
                   <Instagram />
                   <span>@aclypse_aclypse</span>
                 </a>
-                <span>&nbsp;-&nbsp;personal</span>
+                <span className="description">&nbsp;-&nbsp;personal</span>
               </li>
               <li>
                 <a
@@ -101,6 +101,10 @@ const Content = styled.div({
   "@media only screen and (max-width: 768px)": {
     padding: "2.5rem 2.5rem",
     height: "auto",
+
+    "& span.description": {
+      display: "none",
+    },
   },
 });
 

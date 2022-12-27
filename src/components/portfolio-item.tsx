@@ -23,12 +23,6 @@ const PortfolioItem: FC<{ data: GatsbyTypes.PortfolioByIdQuery }> = props => {
     onSwipedRight: () => {
       navigate(prev!.node.fields!.slug!);
     },
-    onSwipedDown: () => {
-      navigate(prev!.node.fields!.slug!);
-    },
-    onSwipedUp: () => {
-      navigate(next!.node.fields!.slug!);
-    },
   });
 
   return (

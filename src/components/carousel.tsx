@@ -132,8 +132,8 @@ const Wrapper = styled.div({
   fontWeight: 700,
   color: "#0f1c2e",
   backgroundColor: "#f9bc3c",
-  height: "70vh",
-  maxHeight: "70vh",
+  height: "80vh",
+  maxHeight: "80vh",
 
   // "@media only screen and (max-width: 720px)": {
   //   "& #prev-btn, & #next-btn": {

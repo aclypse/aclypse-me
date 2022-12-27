@@ -42,7 +42,6 @@ const Wrapper = styled.div({
   fontWeight: 700,
   color: "#0f1c2e",
   backgroundColor: "#f9bc3c",
-  maxHeight: "80vh",
 
   "@media only screen and (max-width: 768px)": {
     padding: "2.5rem 2.5rem",
@@ -64,6 +63,7 @@ const Content = styled.div({
 const Header = styled.h2({
   textTransform: "uppercase",
   paddingBottom: "2rem",
+  fontSize: "3rem",
 });
 
 const Paragraph = styled.p({

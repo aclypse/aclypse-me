@@ -9,10 +9,6 @@ import Facebook from "assets/facebook.svg";
 import ArtStation from "assets/artstation.svg";
 import Tumblr from "assets/tumblr.svg";
 
-// ArtStation aclypse.artstation.com
-// Tumblr aclypse.tumblr.com
-// Facebook (20+) Diana Michajlova | Facebook
-
 const Contacts: FC<{}> = () => {
   return (
     <PageLayout id="contacts">
@@ -32,7 +28,7 @@ const Contacts: FC<{}> = () => {
                   <Instagram />
                   <span>@aclypse.me</span>
                 </a>
-                <span>&nbsp;- Art Account</span>
+                <span>&nbsp;- art</span>
               </li>
               <li>
                 <a
@@ -44,7 +40,7 @@ const Contacts: FC<{}> = () => {
                   <Instagram />
                   <span>@aclypse_aclypse</span>
                 </a>
-                <span>&nbsp;- Personal Account</span>
+                <span>&nbsp;-&nbsp;personal</span>
               </li>
               <li>
                 <a

@@ -8,9 +8,8 @@ import { useSwipeable } from "react-swipeable";
 import ContentLayout from "./content-layout";
 
 const ProjectItem: FC<{ data: GatsbyTypes.ProjectByIdQuery }> = props => {
-  const { frontmatter, body, fields } = props.data.mdx!;
-  const { title, author, keywords, description } =
-    props.data.site!.siteMetadata!;
+  const { frontmatter, body, fields, excerpt } = props.data.mdx!;
+  const { title, author, keywords } = props.data.site!.siteMetadata!;
 
   const { edges } = props.data.allMdx!;
   const idx = edges.findIndex(edge => edge.node.fields?.slug === fields?.slug);
@@ -30,7 +29,7 @@ const ProjectItem: FC<{ data: GatsbyTypes.ProjectByIdQuery }> = props => {
     <ContentLayout
       postTitle={frontmatter?.title!}
       title={`${frontmatter?.title!} | ${title!}`}
-      description={description!}
+      description={excerpt!}
       author={author!}
       keywords={keywords!}
     >
@@ -75,6 +74,7 @@ export const query = graphql`
   query ProjectById($id: String!) {
     mdx(id: { eq: $id }) {
       body
+      excerpt(pruneLength: 120)
       frontmatter {
         title
         date

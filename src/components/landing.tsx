@@ -35,7 +35,7 @@ const Content = styled.div({
   },
 });
 
-const Header = styled.h2({
+const Header = styled.h1({
   textTransform: "uppercase",
   paddingBottom: "2rem",
 });

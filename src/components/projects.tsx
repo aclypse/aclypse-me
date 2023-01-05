@@ -27,6 +27,7 @@ const Projects: FC<{}> = () => {
               fixed={
                 node!.frontmatter!.featuredImage!.childImageSharp!.fixed as any
               }
+              alt={node.frontmatter?.title || ""}
             />
 
             <Paragraph>

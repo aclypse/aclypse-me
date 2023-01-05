@@ -11,7 +11,7 @@ const myCustomQueries = {
 
 module.exports = {
   siteMetadata: {
-    title: "Diana Michajlova - Graphic Designer",
+    title: "Diana Michajlova - The Designer",
     author: "Diana Michajlova",
     keywords: "graphic designer, designer, diana michajlova",
     description: "Work and Life",

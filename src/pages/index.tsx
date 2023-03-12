@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { graphql } from "gatsby";
+import { graphql, HeadFC } from "gatsby";
 
 import { Global, css, ThemeProvider } from "@emotion/react";
 import styled from "@emotion/styled";
@@ -19,16 +19,10 @@ import SEO from "@components/seo";
 
 const IndexPage: FC<{
   data: GatsbyTypes.HomePageDataQuery;
-}> = props => {
+}> = () => {
   return (
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles} />
-      <SEO
-        title={props.data.site?.siteMetadata?.title || ""}
-        author={props.data.site?.siteMetadata?.author || ""}
-        description={props.data.site?.siteMetadata?.description || ""}
-        keywords={props.data.site?.siteMetadata?.keywords || ""}
-      />
       <Header />
       <Main>
         <Landing />
@@ -53,6 +47,18 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head: HeadFC<GatsbyTypes.HomePageDataQuery> = props => {
+  const siteMetadata = props.data.site?.siteMetadata!;
+  return (
+    <SEO
+      title={siteMetadata.title}
+      description={siteMetadata.description}
+      keywords={siteMetadata.keywords}
+      author={siteMetadata.author}
+    />
+  );
+};
 
 const Main = styled.main({
   width: "fit-content",
@@ -84,3 +90,4 @@ const globalStyles = css`
 `;
 
 export default IndexPage;
+

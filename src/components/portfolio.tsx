@@ -36,7 +36,7 @@ const usePortfolioListQuery = () => {
   const { allMdx } = useStaticQuery<GatsbyTypes.PortfolioListQuery>(graphql`
     query PortfolioList {
       allMdx(
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: { frontmatter: { date: DESC } }
         filter: {
           frontmatter: { published: { eq: true } }
           fields: { type: { eq: "portfolio" } }
@@ -91,3 +91,4 @@ const CardContainer = styled.div({
 });
 
 export default Portfolio;
+

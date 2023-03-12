@@ -11,6 +11,7 @@ import Header from "./header";
 import "../css-reset.css";
 import SEO from "./seo";
 import { SwipeableHandlers } from "react-swipeable";
+import { HeadFC } from "gatsby";
 
 const theme = lightTheme;
 
@@ -28,12 +29,6 @@ const ContentLayout: FC<{
   return (
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles} />
-      <SEO
-        title={props.title}
-        author={props.author}
-        keywords={props.keywords}
-        description={props.description}
-      />
       <Container>
         <Header />
         <Main {...handlers}>
@@ -49,6 +44,17 @@ const ContentLayout: FC<{
 };
 
 export default ContentLayout;
+
+export const Head: HeadFC = props => {
+  return (
+    <SEO
+      title={props.data.title}
+      author={props.data.author}
+      keywords={props.data.keywords}
+      description={props.data.description}
+    />
+  );
+};
 
 const Container = styled.div({
   display: "flex",
@@ -237,3 +243,4 @@ const globalStyles = css`
     display: flex !important;
   }
 `;
+

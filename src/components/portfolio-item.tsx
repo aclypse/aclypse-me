@@ -56,7 +56,7 @@ export const query = graphql`
       }
     }
     allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
       filter: {
         frontmatter: { published: { eq: true } }
         fields: { type: { eq: "portfolio" } }
@@ -83,3 +83,4 @@ export const query = graphql`
 `;
 
 export default PortfolioItem;
+

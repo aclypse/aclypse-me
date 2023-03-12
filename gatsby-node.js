@@ -1,6 +1,7 @@
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 const slugify = require("slugify");
+const readingTime = require(`reading-time`);
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
   if (stage.startsWith("develop")) {
@@ -23,7 +24,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     const value = createFilePath({ node, getNode }).substring(12);
 
     const nodeType =
-      node.fileAbsolutePath.lastIndexOf("projects") > 0
+      node.internal.contentFilePath.lastIndexOf("projects") > 0
         ? "project"
         : "portfolio";
 
@@ -37,6 +38,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       name: "type",
       node,
       value: nodeType,
+    });
+
+    createNodeField({
+      node,
+      name: `readingTime`,
+      value: readingTime(node.body),
     });
   }
 };
@@ -56,7 +63,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               slug
               type
             }
-            fileAbsolutePath
+            internal {
+              contentFilePath
+            }
           }
         }
       }
@@ -72,20 +81,21 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const content = mdxResult.data.allMdx.edges;
 
   content.forEach(({ node }) => {
-    if (node.fileAbsolutePath.lastIndexOf("projects") > 0) {
+    if (node.internal.contentFilePath.lastIndexOf("projects") > 0) {
       createPage({
         path: `${node.fields.slug}`,
-        component: projectPage,
+        component: `${projectPage}?__contentFilePath=${node.internal.contentFilePath}`,
         context: { id: node.id },
       });
     }
 
-    if (node.fileAbsolutePath.lastIndexOf("portfolio") > 0) {
+    if (node.internal.contentFilePath.lastIndexOf("portfolio") > 0) {
       createPage({
         path: `${node.fields.slug}`,
-        component: portfolioPage,
+        component: `${portfolioPage}?__contentFilePath=${node.internal.contentFilePath}`,
         context: { id: node.id },
       });
     }
   });
 };
+

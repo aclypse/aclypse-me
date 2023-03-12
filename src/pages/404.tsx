@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { graphql } from "gatsby";
+import { graphql, HeadFC } from "gatsby";
 
 import { Global, css, ThemeProvider } from "@emotion/react";
 import styled from "@emotion/styled";
@@ -15,16 +15,10 @@ import NotFound from "@components/not-found";
 import Footer from "@components/footer";
 import SEO from "@components/seo";
 
-const NotFoundPage: FC<{ data: GatsbyTypes.Page404DataQuery }> = props => {
+const NotFoundPage: FC<{ data: GatsbyTypes.Page404DataQuery }> = () => {
   return (
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles} />
-      <SEO
-        title={props.data.site?.siteMetadata?.title || ""}
-        author={props.data.site?.siteMetadata?.author || ""}
-        description={props.data.site?.siteMetadata?.description || ""}
-        keywords={props.data.site?.siteMetadata?.keywords || ""}
-      />
       <Container>
         <Header />
         <Main>
@@ -48,6 +42,19 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head: HeadFC<GatsbyTypes.Page404DataQuery> = props => {
+  const siteMetadata = props.data.site?.siteMetadata!;
+
+  return (
+    <SEO
+      title={`404 | ${siteMetadata.title}`}
+      description={siteMetadata.description}
+      keywords={siteMetadata.keywords}
+      author={siteMetadata.author}
+    />
+  );
+};
 
 const Container = styled.div({
   display: "flex",
@@ -94,3 +101,4 @@ const globalStyles = css`
 `;
 
 export default NotFoundPage;
+

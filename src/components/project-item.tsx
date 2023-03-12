@@ -84,7 +84,7 @@ export const query = graphql`
       }
     }
     allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
       filter: {
         frontmatter: { published: { eq: true } }
         fields: { type: { eq: "project" } }
@@ -111,3 +111,4 @@ export const query = graphql`
 `;
 
 export default ProjectItem;
+

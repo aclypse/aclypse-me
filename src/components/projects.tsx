@@ -44,7 +44,7 @@ const useProjectsListQuery = () => {
   const { allMdx } = useStaticQuery<GatsbyTypes.ProjectsListQuery>(graphql`
     query ProjectsList {
       allMdx(
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: { frontmatter: { date: DESC } }
         filter: {
           frontmatter: { published: { eq: true } }
           fields: { type: { eq: "project" } }
@@ -99,3 +99,4 @@ const Paragraph = styled.p({
 });
 
 export default Projects;
+

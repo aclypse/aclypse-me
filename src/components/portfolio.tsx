@@ -1,13 +1,12 @@
-import React, { FC } from "react";
+import React, { FC, PropsWithChildren } from "react";
 import styled from "@emotion/styled";
 
-import { MDXRenderer } from "gatsby-plugin-mdx";
 import { MDXProvider } from "@mdx-js/react";
 import { graphql, useStaticQuery } from "gatsby";
 
 import Carousel from "./carousel";
 
-const Portfolio: FC<{}> = () => {
+const Portfolio: FC<PropsWithChildren<{}>> = props => {
   const { edges } = usePortfolioListQuery();
 
   return (
@@ -23,7 +22,7 @@ const Portfolio: FC<{}> = () => {
                 a: props => <>{props.children}</>,
               }}
             >
-              <MDXRenderer>{node.body}</MDXRenderer>
+              {props.children}
             </MDXProvider>
           </CardContainer>
         );

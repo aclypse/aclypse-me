@@ -2,13 +2,14 @@ import * as React from "react";
 import { FC } from "react";
 import styled from "@emotion/styled";
 import { graphql, navigate } from "gatsby";
-import { MDXRenderer } from "gatsby-plugin-mdx";
 import { useSwipeable } from "react-swipeable";
 
 import ContentLayout from "./content-layout";
 
-const ProjectItem: FC<{ data: GatsbyTypes.ProjectByIdQuery }> = props => {
-  const { frontmatter, body, fields, excerpt } = props.data.mdx!;
+const ProjectItem: FC<
+  React.PropsWithChildren<{ data: GatsbyTypes.ProjectByIdQuery }>
+> = props => {
+  const { frontmatter, fields, excerpt } = props.data.mdx!;
   const { title, author, keywords } = props.data.site!.siteMetadata!;
 
   const { edges } = props.data.allMdx!;
@@ -33,9 +34,7 @@ const ProjectItem: FC<{ data: GatsbyTypes.ProjectByIdQuery }> = props => {
       author={author!}
       keywords={keywords!}
     >
-      <Container {...handlers}>
-        <MDXRenderer>{body}</MDXRenderer>
-      </Container>
+      <Container {...handlers}>{props.children}</Container>
     </ContentLayout>
   );
 };

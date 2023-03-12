@@ -1,13 +1,14 @@
 import * as React from "react";
 import { FC } from "react";
 import { graphql, navigate } from "gatsby";
-import { MDXRenderer } from "gatsby-plugin-mdx";
 import { useSwipeable } from "react-swipeable";
 
 import ContentLayout from "./content-layout";
 
-const PortfolioItem: FC<{ data: GatsbyTypes.PortfolioByIdQuery }> = props => {
-  const { frontmatter, body, fields, excerpt } = props.data.mdx!;
+const PortfolioItem: FC<
+  React.PropsWithChildren<{ data: GatsbyTypes.PortfolioByIdQuery }>
+> = props => {
+  const { frontmatter, fields, excerpt } = props.data.mdx!;
   const { title, author, keywords } = props.data.site!.siteMetadata!;
 
   const { edges } = props.data.allMdx!;
@@ -35,7 +36,7 @@ const PortfolioItem: FC<{ data: GatsbyTypes.PortfolioByIdQuery }> = props => {
     >
       <div>
         <p>{frontmatter!.description}</p>
-        <MDXRenderer>{body}</MDXRenderer>
+        {props.children}
       </div>
     </ContentLayout>
   );

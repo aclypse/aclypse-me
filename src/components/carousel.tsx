@@ -59,7 +59,7 @@ const Carousel: FC<{
     }
 
     setProjects(itemsToDisplay);
-  }, [currentStartIndex, amountOfItemsToDisplay]);
+  }, [currentStartIndex, amountOfItemsToDisplay, edges]);
 
   const next = () => {
     if (currentStartIndex + amountOfItemsToDisplay > edges.length - 1) {

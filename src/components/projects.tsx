@@ -99,4 +99,3 @@ const Paragraph = styled.p({
 });
 
 export default Projects;
-

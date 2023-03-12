@@ -7,8 +7,6 @@ import styled from "@emotion/styled";
 import { lightTheme } from "@themes/light";
 import "../css-reset.css";
 
-const theme = lightTheme;
-
 import Header from "@components/header";
 import Landing from "@components/landing";
 import About from "@components/about";
@@ -16,6 +14,8 @@ import Projects from "@components/projects";
 import Portfolio from "@components/portfolio";
 import Contacts from "@components/contacts";
 import SEO from "@components/seo";
+
+const theme = lightTheme;
 
 const IndexPage: FC<{
   data: GatsbyTypes.HomePageDataQuery;
@@ -90,4 +90,3 @@ const globalStyles = css`
 `;
 
 export default IndexPage;
-

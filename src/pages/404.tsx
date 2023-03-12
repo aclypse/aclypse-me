@@ -6,14 +6,14 @@ import styled from "@emotion/styled";
 
 import { lightTheme } from "@themes/light";
 
-const theme = lightTheme;
-
 import "../css-reset.css";
 
 import Header from "@components/header";
 import NotFound from "@components/not-found";
 import Footer from "@components/footer";
 import SEO from "@components/seo";
+
+const theme = lightTheme;
 
 const NotFoundPage: FC<{ data: GatsbyTypes.Page404DataQuery }> = () => {
   return (
@@ -101,4 +101,3 @@ const globalStyles = css`
 `;
 
 export default NotFoundPage;
-

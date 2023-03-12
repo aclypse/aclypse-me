@@ -243,4 +243,3 @@ const globalStyles = css`
     display: flex !important;
   }
 `;
-

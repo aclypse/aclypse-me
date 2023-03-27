@@ -59,6 +59,7 @@ module.exports = {
         name: "pages",
         path: "./src/pages/",
       },
+      __key: "pages",
     },
     {
       resolve: "gatsby-source-filesystem",
@@ -66,12 +67,14 @@ module.exports = {
         name: "projects",
         path: "./projects/",
       },
+      __key: "projects",
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         path: "./projects/images",
       },
+      __key: "images",
     },
     {
       resolve: "gatsby-source-filesystem",
@@ -79,6 +82,7 @@ module.exports = {
         name: "portfolio",
         path: "./portfolio/",
       },
+      __key: "portfolio",
     },
     {
       resolve: "gatsby-plugin-tsconfig-paths",
@@ -109,4 +113,3 @@ module.exports = {
     },
   ],
 };
-

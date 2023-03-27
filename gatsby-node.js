@@ -1,32 +1,23 @@
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 const slugify = require("slugify");
-const readingTime = require(`reading-time`);
-
-exports.onCreateWebpackConfig = ({ stage, actions }) => {
-  if (stage.startsWith("develop")) {
-    actions.setWebpackConfig({
-      resolve: {
-        alias: {
-          "react-dom": "@hot-loader/react-dom",
-        },
-      },
-    });
-  }
-};
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === "Mdx" || node.internal.type === "MarkdownRemark") {
+  if (
+    node.internal.type === "Mdx" ||
+    node.internal.type === "Md" ||
+    node.internal.type === "MarkdownRemark"
+  ) {
     // .substring(12) - removes date from slug
     // 2020-10-24-first -> first
     const value = createFilePath({ node, getNode }).substring(12);
 
     const nodeType =
-      node.internal.contentFilePath.lastIndexOf("projects") > 0
-        ? "project"
-        : "portfolio";
+      node.internal.contentFilePath.includes("/portfolio/") > 0
+        ? "portfolio"
+        : "projects";
 
     createNodeField({
       name: "slug",
@@ -38,12 +29,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       name: "type",
       node,
       value: nodeType,
-    });
-
-    createNodeField({
-      node,
-      name: `readingTime`,
-      value: readingTime(node.body),
     });
   }
 };
@@ -81,7 +66,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const content = mdxResult.data.allMdx.edges;
 
   content.forEach(({ node }) => {
-    if (node.internal.contentFilePath.lastIndexOf("projects") > 0) {
+    if (node.fields.type === "projects") {
       createPage({
         path: `${node.fields.slug}`,
         component: `${projectPage}?__contentFilePath=${node.internal.contentFilePath}`,
@@ -89,7 +74,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     }
 
-    if (node.internal.contentFilePath.lastIndexOf("portfolio") > 0) {
+    if (node.fields.type === "portfolio") {
       createPage({
         path: `${node.fields.slug}`,
         component: `${portfolioPage}?__contentFilePath=${node.internal.contentFilePath}`,
@@ -98,4 +83,3 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   });
 };
-

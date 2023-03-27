@@ -48,9 +48,13 @@ export default ContentLayout;
 export const Head: HeadFC = props => {
   return (
     <SEO
+      // @ts-ignore
       title={props.data.title}
+      // @ts-ignore
       author={props.data.author}
+      // @ts-ignore
       keywords={props.data.keywords}
+      // @ts-ignore
       description={props.data.description}
     />
   );

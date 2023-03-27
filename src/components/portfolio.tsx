@@ -14,7 +14,7 @@ const Portfolio: FC<PropsWithChildren<{}>> = props => {
       id="portfolio"
       title="Portfolio"
       edges={edges}
-      render={node => {
+      render={() => {
         return (
           <CardContainer>
             <MDXProvider

@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
 
-import { MDXRenderer } from "gatsby-plugin-mdx";
+// import { MDXRenderer } from "gatsby-plugin-mdx";
 import { MDXProvider } from "@mdx-js/react";
 import { graphql, useStaticQuery } from "gatsby";
 
@@ -15,7 +15,7 @@ const Portfolio: FC<{}> = () => {
       id="portfolio"
       title="Portfolio"
       edges={edges}
-      render={node => {
+      render={() => {
         return (
           <CardContainer>
             <MDXProvider
@@ -23,7 +23,7 @@ const Portfolio: FC<{}> = () => {
                 a: props => <>{props.children}</>,
               }}
             >
-              <MDXRenderer>{node.body}</MDXRenderer>
+              {/* <MDXRenderer>{node.body}</MDXRenderer> */}
             </MDXProvider>
           </CardContainer>
         );
@@ -33,7 +33,7 @@ const Portfolio: FC<{}> = () => {
 };
 
 const usePortfolioListQuery = () => {
-  const { allMdx } = useStaticQuery<GatsbyTypes.PortfolioListQuery>(graphql`
+  const { allMdx } = useStaticQuery<any>(graphql`
     query PortfolioList {
       allMdx(
         sort: { fields: [frontmatter___date], order: DESC }

@@ -13,15 +13,15 @@ featuredImage: "images/3d-modelling/knight_bunny_back-2023.jpg"
 ---
 
 ![Bunny knight front](images/3d-modelling/knight_bunny_pose-2023.jpg)
+
 ![Bunny knight hero pose](images/3d-modelling/knight_bunny_front-2023.jpg)
+
 ![Bunny knight back view](images/3d-modelling/knight_bunny_back-2023.jpg)
+
 ![Bunny knight solid view](images/3d-modelling/knight_bunny_solid-2023.jpg)
+
 ![Bunny knight wireframe view](images/3d-modelling/knight_bunny_wireframe-2023.jpg)
+
 ![Bunny knight](images/3d-modelling/knight-bunny-2023.mp4)
 
-<video width="320" height="240" controls>
-  <source
-    src="images/3d-modelling/knight_bunny_balet-2023.mp4"
-    type="video/mp4"
-  />
-</video>
+![Bunny knight ballet](images/3d-modelling/knight_bunny_balet-2023.mp4)

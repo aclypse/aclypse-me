@@ -1,8 +1,6 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
 
-// import { MDXRenderer } from "gatsby-plugin-mdx";
-import { MDXProvider } from "@mdx-js/react";
 import { graphql, useStaticQuery } from "gatsby";
 
 import Carousel from "./carousel";
@@ -15,16 +13,34 @@ const Portfolio: FC<{}> = () => {
       id="portfolio"
       title="Portfolio"
       edges={edges}
-      render={() => {
+      render={node => {
         return (
           <CardContainer>
-            <MDXProvider
+            {/* <MDXProvider
               components={{
                 a: props => <>{props.children}</>,
               }}
             >
-              {/* <MDXRenderer>{node.body}</MDXRenderer> */}
-            </MDXProvider>
+               <MDXRenderer>{node.body}</MDXRenderer>
+            </MDXProvider> */}
+
+            {/* <Img
+              loading="eager"
+              style={{
+                width: "160px",
+                minWidth: "160px",
+                maxWidth: "160px",
+              }}
+              fixed={
+                node!.frontmatter!.featuredImage!.childImageSharp!.fixed as any
+              }
+              alt={node.frontmatter?.title || ""}
+            /> */}
+
+            <img
+              src={node!.frontmatter!.featuredImage!.childImageSharp!.fluid.src}
+              alt={node.frontmatter?.title || ""}
+            />
           </CardContainer>
         );
       }}
@@ -59,6 +75,9 @@ const usePortfolioListQuery = () => {
                     src
                     srcSet
                   }
+                  fluid {
+                    src
+                  }
                 }
               }
             }
@@ -87,6 +106,8 @@ const CardContainer = styled.div({
     top: "auto!important",
     width: "auto!important",
     justifySelf: "center",
+    maxHeight: "36vh",
+    maxWidth: "100%",
   },
 });
 

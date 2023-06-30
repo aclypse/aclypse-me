@@ -1,27 +1,27 @@
 ---
-title: Knight bunny, 2023
-date: 2023-03-19 14:22:02
+title: Exercise with shapes
+date: 2023-06-25 14:22:02
 published: true
 categories:
-  - 3D modelling
+  - Digital art
 tags:
-  - 3dmodelling
-  - animation
-  - 3danimation
-description: 'My first try of coping with animation in Blender. I imagine this cute girl could be a character of some game. There is a problem with her face showing through her head, and with the twisted typology as well, but just imagine her as a "suspense monster".'
-featuredImage: "images/3d-modelling/knight_bunny_back-2023.jpg"
+  - digitalart
+  - artexercise
+  - drawinshapes
+description: "A drawing exercise about drawing in shapes."
+featuredImage: "images/digital-art/shapes-excersice-color-2023.png"
 ---
 
-![Bunny knight front](images/3d-modelling/knight_bunny_pose-2023.jpg)
+![Full view of the exercise](images/digital-art/shapes-excersice-full-2023.png)
 
-![Bunny knight hero pose](images/3d-modelling/knight_bunny_front-2023.jpg)
+![Starting shapes](images/digital-art/shapes-excersice-2023.png)
 
-![Bunny knight back view](images/3d-modelling/knight_bunny_back-2023.jpg)
+![Sketch of the characters](images/digital-art/shapes-excersice-sketch-2023.png)
 
-![Bunny knight solid view](images/3d-modelling/knight_bunny_solid-2023.jpg)
+![Line](images/digital-art/shapes-excersice-line-2023.png)
 
-![Bunny knight wireframe view](images/3d-modelling/knight_bunny_wireframe-2023.jpg)
+![Silhouettes](images/digital-art/shapes-excersice-silhouettes-2023.png)
 
-![Bunny knight](images/3d-modelling/knight-bunny-2023.mp4)
+![Characters in color](images/digital-art/shapes-excersice-color-2023.png)
 
 ![Bunny knight ballet](images/3d-modelling/knight_bunny_balet-2023.mp4)

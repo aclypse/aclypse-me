@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 
 import { Link } from "gatsby";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
+// import Img from "gatsby-image";
 
 import PageLayout from "./page-layout";
 import { useSwipeable } from "react-swipeable";

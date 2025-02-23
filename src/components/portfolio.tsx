@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
 
-import { MDXRenderer } from "gatsby-plugin-mdx";
+import Img from "gatsby-image";
 import { MDXProvider } from "@mdx-js/react";
 import { graphql, useStaticQuery } from "gatsby";
 
@@ -23,7 +23,16 @@ const Portfolio: FC<{}> = () => {
                 a: props => <>{props.children}</>,
               }}
             >
-              <MDXRenderer>{node.body}</MDXRenderer>
+              <Img
+                loading="eager"
+                style={{
+                  minWidth: "240px",
+                }}
+                fixed={
+                  node.frontmatter?.featuredImage?.childImageSharp?.fixed as any
+                }
+                alt={node.frontmatter?.title || ""}
+              />
             </MDXProvider>
           </CardContainer>
         );
@@ -52,7 +61,7 @@ const usePortfolioListQuery = () => {
               description
               featuredImage {
                 childImageSharp {
-                  fixed(width: 160, height: 160) {
+                  fixed(width: 240, height: 240) {
                     base64
                     width
                     height

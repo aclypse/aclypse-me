@@ -8,7 +8,7 @@ const Landing: FC<{}> = () => {
       <Container>
         <Content>
           <Header>Aclypse</Header>
-          <p>the designer and illustrator</p>
+          <p>designer and illustrator</p>
         </Content>
       </Container>
     </PageLayout>
